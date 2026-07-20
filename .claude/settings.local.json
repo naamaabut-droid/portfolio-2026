@@ -154,7 +154,11 @@
       "Bash(python3 digest.py wixel-new.jsx wixel-new-digest.txt)",
       "Bash(sips -g pixelWidth -g pixelHeight assets/melio-opt/imgHero22.png assets/melio-opt/imgHero12.png assets/melio-opt/imgHero32.png)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git fetch *)",
+      "Bash(git ls-tree *)",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" merge origin/main --allow-unrelated-histories -m \"Merge GitHub initial commit \\(README\\)\")",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Update local Claude permission allowlist *)"
     ]
   }
 }
