@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melio — Mobile Web Redesign — Naama Abitbol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
+  <link rel="stylesheet" href="../css/site.css?v=1" />
+  <link rel="stylesheet" href="../css/case-study.css?v=1" />
+  <style>
+    /* page-specific: Melio hero art (Safari window + phone) */
+    .melio-art { position: relative; height: 412px; align-self: center; }
+    .melio-safari {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 50px;
+      width: 527px;
+      border: 0.75px solid var(--line);
+      border-radius: var(--radius-xxs);
+      overflow: hidden;
+      opacity: 0.7;
+      background: #fff;
+    }
+    .melio-safari .toolbar {
+      position: relative;
+      height: 19.4px;
+      background: #f6f6f6;
+      border-bottom: 0.4px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .melio-safari .dots { position: absolute; left: 7.7px; top: 7.3px; display: flex; gap: 2.9px; }
+    .melio-safari .dots span { width: 4.4px; height: 4.4px; border-radius: 50%; }
+    .melio-safari .dots span:nth-child(1) { background: #ee6a5f; }
+    .melio-safari .dots span:nth-child(2) { background: #f5bd4f; }
+    .melio-safari .dots span:nth-child(3) { background: #61c454; }
+    .melio-safari .url {
+      width: 217px;
+      height: 10.2px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6px;
+      color: #666;
+      letter-spacing: 0;
+    }
+    .melio-safari img { width: 100%; display: block; }
+    .melio-phone {
+      position: absolute;
+      left: calc(50% + 164.8px);
+      bottom: 0;
+      height: 412px;
+      border: 0.75px solid var(--line);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-float);
+      overflow: hidden;
+      background: #fff;
+    }
+    .melio-phone img { height: 100%; width: auto; display: block; }
+
+    /* tabs cards rows (Bills/Payments/Vendors full-width strips) */
+    .tab-strip { display: flex; flex-direction: column; gap: var(--sm); align-items: center; width: 100%; }
+    .tab-strip .strip {
+      width: 100%;
+      height: 165px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-s) var(--radius-s) 0 0;
+      border-bottom: 0;
+      overflow: hidden;
+    }
+    .tab-strip .strip img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .tab-strip .strip-label { font-size: 12px; color: var(--body); line-height: 1.4; }
+
+    /* 4-col comparison table */
+    .comparison-table.cols-4 .row p:first-child { flex: 0 0 101px; min-width: 101px; font-weight: 500; font-size: 14px; line-height: 1.2; }
+    .comparison-table.cols-4 .row { gap: var(--ml); font-size: 14px; }
+    .comparison-table.cols-4 .row.head p:first-child { font-weight: 500; }
+
+    /* exploration grid */
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--max);
+      width: 100%;
+    }
+    .explore-grid img { width: 100%; height: 195px; object-fit: contain; }
+    .finals { display: flex; flex-direction: column; gap: var(--sm); align-items: center; padding-top: var(--ml); width: 100%; }
+    .finals-row { display: flex; gap: 19px; align-items: flex-start; justify-content: center; }
+    .finals-cell { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+    .finals-cell .lbl { font-size: 12px; color: var(--body); line-height: 1.4; }
+    .finals-cell img { width: 303.5px; }
+
+    /* A/B/C grid */
+    .abc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 20px;
+      row-gap: 22px;
+      width: 100%;
+    }
+    .abc-cell { display: flex; flex-direction: column; gap: var(--s); align-items: center; }
+    .abc-cell img { width: 100%; height: auto; }
+    .abc-cell .abc-label { font-family: "Fraunces", serif; font-style: italic; font-size: 14px; letter-spacing: 0.04em; color: var(--body); font-variation-settings: "SOFT" 0, "WONK" 1; }
+
+    /* small insight/decision cards */
+    .insight-row { display: flex; gap: var(--sm); align-items: stretch; width: 100%; }
+    .insight-card {
+      flex: 1 1 0;
+      min-width: 1px;
+      background: var(--card);
+      border-radius: var(--radius-s);
+      padding: var(--m) var(--ml);
+      display: flex;
+      flex-direction: column;
+      gap: var(--xxs);
+      align-items: flex-start;
+      transition: transform 0.25s ease;
+    }
+    .insight-card:hover { transform: translateY(-2px); }
+    .insight-card.r-md { border-radius: var(--radius-md); }
+    .insight-card h4 { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink); }
+    .insight-card p.b { font-size: 16px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--body); }
+
+    /* screens-by-area groups */
+    .area-card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: var(--xxl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--ml);
+      width: 100%;
+    }
+    .area-headers { display: flex; align-items: center; gap: 8.75px; width: 100%; }
+    .area-headers .divider { flex: 1; height: 1px; background: var(--ink); }
+    .tile { display: flex; flex-direction: column; gap: var(--s); align-items: flex-start; }
+    .tile .t-label { font-size: 14px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
+    .tile .t-img { border: 1px solid var(--line); border-radius: var(--radius-xs); overflow: hidden; }
+    .tile .t-img img { display: block; width: 140px; }
+    .tile-row { display: flex; gap: var(--s); align-items: flex-end; }
+    .phones-compare { display: flex; gap: var(--ml); align-items: center; justify-content: center; }
+    .phone-col { display: flex; flex-direction: column; gap: var(--sm); align-items: center; }
+    .phone-col .p-label { font-size: 12px; color: var(--body); line-height: 1.4; }
+    .phone-col .p-img { border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; height: 605px; }
+    .phone-col .p-img img { height: 100%; width: auto; }
+
+    @media (max-width: 1100px) {
+      .finals-row, .tile-row { flex-wrap: wrap; }
+      .abc-grid { grid-template-columns: 1fr; }
+      .insight-row { flex-direction: column; }
+      .phones-compare { flex-wrap: wrap; }
+      .explore-grid { grid-template-columns: 1fr; gap: var(--ml); }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="page-nav" href="../case-studies.html">
+    <span class="btn-icon-40"><img src="../assets/melio-redesign/imgIcon.svg" alt="" /></span>
+    <span class="tab-label tab">Back to Projects</span>
+  </a>
+
+  <!-- Header -->
+  <header class="cs-hero">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="cs-hero-grid">
+      <div class="cs-hero-copy">
+        <h1 class="h1">Redesigning Experience</h1>
+        <p class="h3 subtitle">From forward-planning to a fast, pay-now mobile workflow</p>
+        <div class="cs-hero-tags">
+          <span class="tag">Melio</span>
+          <span class="tag">Product Designer</span>
+          <span class="tag">Project owner</span>
+          <span class="tag">Mobile Web</span>
+          <span class="tag">B2B</span>
+          <span class="tag">2023</span>
+        </div>
+      </div>
+      <div class="cs-hero-art melio-art">
+        <div class="melio-safari rise-1">
+          <div class="toolbar">
+            <span class="dots"><span></span><span></span><span></span></span>
+            <span class="url">meliopayments.com</span>
+          </div>
+          <img src="../assets/melio-redesign/imgBillsDashboard1.png" alt="" />
+        </div>
+        <div class="melio-phone rise-3">
+          <div class="float-a" style="height:100%;">
+            <img src="../assets/melio-redesign/imgMobile.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="cs-container">
+    <div class="cs-inner">
+
+      <!-- TL;DR -->
+      <section class="tldr narrow reveal">
+        <h2 class="h2-med">TL;DR</h2>
+        <div class="tldr-bullets">
+          <div class="tldr-bullet">
+            <p class="label-serif">The problem</p>
+            <p class="txt">The dashboard assumed forward planning, leaving the main screen empty ~80% of the time — while mobile users open the app to pay now, last-minute.</p>
+          </div>
+          <div class="tldr-bullet">
+            <p class="label-serif">The work</p>
+            <p class="txt">Redesigned Melio's mobile web dashboard around task-optimized cards, a new top-tab navigation, and one adaptive layout for standalone and partner environments.</p>
+          </div>
+          <div class="tldr-bullet">
+            <p class="label-serif">The outcome</p>
+            <p class="txt">User engagement improved by 7%, more users initiated payments, and approval-workflow usage grew by 4%.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Overview</p>
+        <p class="body-2 txt-ink">Melio is an accounts payable tool for small businesses, processing $20B annually — letting them pay vendors, suppliers, and contractors flexibly to optimize cash flow. This project adapted the desktop dashboard redesign into a mobile-first experience — pivoting to a task-optimized card structure, with dedicated mobile components, revamped navigation for partner-embedded contexts, and key data fields prioritized for on-the-go scannability.</p>
+      </section>
+
+      <!-- My role -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--xxl);">
+        <p class="label-serif" style="width:100%;">My role</p>
+        <p class="body-2 txt-ink">As part of a larger initiative, I worked within a dedicated mobile web squad — 5 developers, a PM, a Design Manager, and 2 other designers — leading the mobile platform responsibilities:</p>
+        <div class="cs-list">
+          <div class="cs-bullet"><p class="marker">•</p><p>UX mobile research and mobile web product design.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>New components for design and development.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Adapting the new layout for seamless integration on the mobile web platform.</p></div>
+        </div>
+      </section>
+
+      <!-- The assumption -->
+      <section class="sec sec-gap-16 narrow pt-48 reveal">
+        <p class="label-serif" style="width:100%;">The assumption</p>
+        <p class="body-2 txt-ink">The dashboard was built around forward planning — an inbox of invoices ordered by urgency, on desktop and mobile alike. Real user behavior didn't match the assumption:</p>
+      </section>
+
+      <!-- Highlight -->
+      <section class="narrow reveal" style="padding:var(--ml) 0 var(--max); display:flex; align-items:center; justify-content:center;">
+        <p class="h1" style="width:100%;">The main screen sat empty 80% of the time.</p>
+      </section>
+
+      <!-- The intent gap -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--ml);">
+        <p class="label-serif" style="width:100%;">The intent gap</p>
+        <p class="body-2 txt-ink">Users don't plan ahead on mobile — they open the app to pay now, last-minute, searching for a known vendor.</p>
+      </section>
+
+      <!-- Existing state -->
+      <section class="wide reveal" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--ml);">
+        <div style="display:flex; flex-direction:column; gap:var(--sm); align-items:center;">
+          <div class="shot" style="width:100%; aspect-ratio:3240/1965;"><img src="../assets/melio-redesign/imgFull1.png" alt="" /></div>
+          <div class="card-caption" style="padding:0 var(--max);">
+            <p style="font-weight:500;">Old dashboard</p>
+            <p>Desktop-first, urgency-ordered inbox.</p>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:var(--sm); align-items:center;">
+          <div class="shot" style="width:100%; aspect-ratio:3240/1965;"><img src="../assets/melio-redesign/imgEmpty1.png" alt="" /></div>
+          <div class="card-caption" style="padding:0 var(--max);">
+            <p style="font-weight:500;">Current view</p>
+            <p>The Inbox — empty 80% of the time.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Objective -->
+      <section class="sec sec-gap-24 narrow pt-48 pb-72 reveal">
+        <p class="label-serif" style="width:100%;">The Objective</p>
+        <p class="body-2 txt-ink">Shift the mobile dashboard from a forward-planning model to a fast, immediate "pay-now" workflow.</p>
+        <div class="sec sec-gap-12" style="width:100%; gap:var(--xs);">
+          <p class="body-2 txt-ink">The challenge:</p>
+          <div class="cs-list">
+            <div class="cs-bullet"><p class="marker">•</p><p>Prioritize essential user information on mobile, condensing desktop data for improved clarity.</p></div>
+            <div class="cs-bullet"><p class="marker">•</p><p>Design a single adaptive layout for standalone and partner environments that stays scannable — without losing the primary focus on the core payment action.</p></div>
+          </div>
+        </div>
+        <p class="body-2 txt-ink"><span class="med-ink">The approach: </span>structural adaptation over cosmetic shrinking.</p>
+      </section>
+
+      <!-- The Solution -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--xxl);">
+        <p class="label-serif" style="width:100%;">The Solution</p>
+        <h2 class="h2-med">Structure over shrinking</h2>
+        <p class="body-2 txt-ink">The redesign started with IA and conceptual modeling — remapping the information architecture around mobile intent before touching visual polish.</p>
+      </section>
+
+      <!-- IA collage card -->
+      <section class="case-card wide reveal" style="align-items:center;">
+        <div style="display:flex; gap:27px; align-items:flex-start; width:100%; justify-content:center;">
+          <img src="../assets/melio-redesign/imgImg1490.png" alt="" style="height:339px; width:auto; border-radius:var(--radius-xs);" />
+          <img src="../assets/melio-redesign/imgImg1489.png" alt="" style="height:339px; width:auto; border-radius:var(--radius-xs);" />
+          <img src="../assets/melio-redesign/imgImg1491.png" alt="" style="height:339px; width:159px; object-fit:cover; border-radius:var(--radius-xs);" />
+          <img src="../assets/melio-redesign/imgImg1491.png" alt="" style="height:339px; width:178px; object-fit:cover; object-position:right; border-radius:var(--radius-xs);" />
+        </div>
+      </section>
+
+      <!-- Execution/01 -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/01</p>
+        <h2 class="h2-med">Sketching the navigation</h2>
+        <p class="body-2 txt-ink">Early concepting explored how far navigation could be simplified for small screens and partner-embedded contexts.</p>
+      </section>
+
+      <section class="wide reveal" style="display:flex; flex-direction:column; gap:var(--xl); align-items:center;">
+        <img src="../assets/melio-redesign/imgNavigationSketching1.png" alt="" style="width:100%; aspect-ratio:3257/1781; object-fit:cover;" class="lb" />
+        <div class="card-caption" style="padding:0 var(--max); color:var(--body); font-size:12px; text-align:center; display:flex; flex-direction:column; gap:var(--3xs); align-items:center;">
+          <p style="font-weight:500;">Navigation sketching</p>
+          <p style="opacity:0.65;">Click to enlarge.</p>
+        </div>
+      </section>
+
+      <!-- Execution/02 -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/02</p>
+        <h2 class="h2-med">Cards that know their job</h2>
+        <p class="body-2 txt-ink">A multi-column desktop table can't scale down without destroying readability. I broke the tables into modular mobile cards — the hierarchy inside each card shifts with the tab's user goal: Bills for tap-to-pay, Payments for tracking, Vendors for ad-hoc payment. Secondary data nests inside a card dropdown, keeping the layout scan-ready.</p>
+      </section>
+
+      <!-- Tab mapping table -->
+      <section class="sec sec-gap-24 narrow reveal" style="align-items:center;">
+        <div class="comparison-table cols-4" style="max-width:840px;">
+          <div class="row head">
+            <p>Mobile tab</p>
+            <p>Target task</p>
+            <p>Primary focus</p>
+            <p>Interaction model</p>
+          </div>
+          <div class="row">
+            <p>Bills</p>
+            <p>Pay a single invoice before its deadline</p>
+            <p>Due date (urgency) and total amount</p>
+            <p>Direct tap-to-pay path</p>
+          </div>
+          <div class="row">
+            <p>Payments</p>
+            <p>Track money in motion on the go</p>
+            <p>Status indicator and delivery method</p>
+            <p>High-visibility tracking states</p>
+          </div>
+          <div class="row">
+            <p>Vendors</p>
+            <p>Initiate an ad-hoc payment without an invoice</p>
+            <p>Vendor name and outstanding balance</p>
+            <p>One-tap payment initiation</p>
+          </div>
+        </div>
+        <p class="caption" style="color:var(--body); text-align:center;">Secondary data (partial bank details, internal notes) was nested inside an interactive card dropdown,<br />keeping the initial layout clean and scan-ready.</p>
+      </section>
+
+      <!-- Tab strips -->
+      <section class="wide py-72 reveal" style="display:flex; flex-direction:column; gap:var(--xl); align-items:center;">
+        <div class="tab-strip">
+          <div class="strip"><img src="../assets/melio-redesign/imgBills1.png" alt="" class="lb" /></div>
+          <p class="strip-label">Bills Tab</p>
+        </div>
+        <div class="tab-strip">
+          <div class="strip"><img src="../assets/melio-redesign/imgPayments1.png" alt="" class="lb" /></div>
+          <p class="strip-label">Payments Tab</p>
+        </div>
+        <div class="tab-strip">
+          <div class="strip"><img src="../assets/melio-redesign/imgVendors1.png" alt="" class="lb" /></div>
+          <p class="strip-label">Vendors Tab</p>
+        </div>
+      </section>
+
+      <!-- Execution/03 -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/03</p>
+        <h2 class="h2-med">Analyzed &amp; Iterated</h2>
+        <p class="body-2 txt-ink">Layout explorations ran against real constraints — testing card styles and navigation patterns across the Melio standalone and partner dashboards.</p>
+      </section>
+
+      <!-- Explorations card -->
+      <section class="case-card wide reveal" style="gap:var(--xl); align-items:center;">
+        <div class="card-caption">
+          <p style="font-weight:500;">Card layout sketching</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+        <div class="explore-grid">
+          <img src="../assets/melio-redesign/imgFrame1261152750.png" alt="" class="lb" />
+          <img src="../assets/melio-redesign/imgB.png" alt="" class="lb" />
+          <img src="../assets/melio-redesign/imgC.png" alt="" class="lb" />
+          <img src="../assets/melio-redesign/imgD.png" alt="" class="lb" />
+        </div>
+        <div class="finals">
+          <p class="strip-label">Finals</p>
+          <div class="finals-row">
+            <div class="finals-cell">
+              <p class="lbl">Payments tabs</p>
+              <img src="../assets/melio-redesign/finals-payments.png" alt="" />
+            </div>
+            <div class="finals-cell">
+              <p class="lbl">Bills</p>
+              <img src="../assets/melio-redesign/finals-bills.png" alt="" />
+            </div>
+            <div class="finals-cell">
+              <p class="lbl">Vendors</p>
+              <img src="../assets/melio-redesign/finals-vendors.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Validation -->
+      <section class="sec sec-gap-24 narrow py-72 reveal" style="align-items:center;">
+        <div class="sec sec-gap-16" style="width:100%;">
+          <p class="label-serif" style="width:100%;">Validation</p>
+          <p class="body-2 txt-ink">A/B testing infrastructure wasn't fully integrated for this mobile web release, so validation relied on upfront usability testing — which surfaced the exact failures:</p>
+        </div>
+        <div style="width:100%; display:flex; flex-direction:column; gap:var(--sm);">
+          <div class="insight-row">
+            <div class="insight-card">
+              <p class="label-serif">01</p>
+              <h4>Navigation overload</h4>
+              <p class="b">Multiple stacked menus felt overwhelming and "too much" on small screens.</p>
+            </div>
+            <div class="insight-card">
+              <p class="label-serif">02</p>
+              <h4>Low discoverability</h4>
+              <p class="b">The bottom tab bar wasn't prominent enough, and the new avatar menu lacked clarity.</p>
+            </div>
+          </div>
+          <div class="insight-card">
+            <p class="label-serif">03</p>
+            <h4>Switcher misalignment</h4>
+            <p class="b">Only 18% of users have multi-org accounts — and they rarely switch profiles while on mobile. Yet the switcher kept its prominent desktop placement, occupying prime real estate.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- A/B/C -->
+      <section class="wide pt-48 pb-72 reveal" style="display:flex; flex-direction:column; gap:var(--ml); align-items:center;">
+        <div class="abc-grid">
+          <div class="abc-cell"><img src="../assets/melio-redesign/imgA1.png" alt="" class="lb" /><p class="abc-label">A</p></div>
+          <div class="abc-cell"><img src="../assets/melio-redesign/imgB1.png" alt="" class="lb" /><p class="abc-label">B</p></div>
+          <div class="abc-cell"><img src="../assets/melio-redesign/imgC1.png" alt="" class="lb" /><p class="abc-label">C</p></div>
+        </div>
+        <div class="card-caption" style="color:var(--body); font-size:12px; display:flex; flex-direction:column; gap:var(--3xs); align-items:center;">
+          <p style="font-weight:500;">Melio dashboard vrs. Partners dashboard</p>
+          <p style="opacity:0.65;">Click to enlarge.</p>
+        </div>
+      </section>
+
+      <!-- Key decisions -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+        <p class="label-serif" style="width:100%;">Key decisions</p>
+        <div class="insight-row">
+          <div class="insight-card r-md">
+            <p class="label-serif">01</p>
+            <h4>Tabs on top</h4>
+            <p class="b">A bottom bar inside partner apps caused layout conflicts — top tabs separate Melio from the host wrapper.</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">02</p>
+            <h4>Switcher, demoted</h4>
+            <p class="b">Moved from prime placement into the Profile menu, reclaiming real estate for payments.</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">03</p>
+            <h4>Cards, not tables</h4>
+            <p class="b">Desktop tables can't scale down — modular cards shift the hierarchy to match each tab's user goal.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screens by area -->
+      <section class="reveal" style="width:100%; display:flex; flex-direction:column; gap:var(--ml); align-items:center; padding-top:var(--xxl);">
+        <div class="card-caption" style="color:var(--body); font-size:12px; display:flex; flex-direction:column; gap:var(--3xs); align-items:center;">
+          <p style="font-weight:500;">Screens by area</p>
+          <p style="opacity:0.65;">Click any screen to enlarge.</p>
+        </div>
+        <div class="wide" style="display:flex; flex-direction:column; gap:var(--xxl); width:100%;">
+
+          <div class="area-card" style="align-items:center;">
+            <div class="phones-compare">
+              <div class="phone-col">
+                <p class="p-label">Old mobile dashboard</p>
+                <div class="p-img"><img src="../assets/melio-redesign/imgDashboard51.png" alt="" class="lb" /></div>
+              </div>
+              <div class="phone-col">
+                <p class="p-label">New mobile dashboard</p>
+                <div class="p-img"><img src="../assets/melio-redesign/imgPaymentsNewDashboard1.png" alt="" class="lb" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:var(--xxl); align-items:stretch;">
+            <div class="area-card" style="flex:1;">
+              <div class="area-headers"><h3 class="h3-med">Header</h3><span class="divider"></span></div>
+              <div class="tile-row">
+                <div class="tile">
+                  <p class="t-label">melio.com</p>
+                  <div class="t-img"><img src="../assets/melio-redesign/imgDashboard5.png" alt="" class="lb" /></div>
+                </div>
+                <div class="tile">
+                  <p class="t-label">Partners</p>
+                  <div class="t-img"><img src="../assets/melio-redesign/imgDashboard2.png" alt="" class="lb" /></div>
+                </div>
+              </div>
+            </div>
+            <div class="area-card" style="flex:1;">
+              <div class="area-headers"><h3 class="h3-med">Navigation</h3><span class="divider"></span></div>
+              <div class="tile-row">
+                <div class="tile">
+                  <p class="t-label">Main menu</p>
+                  <div class="t-img"><img src="../assets/melio-redesign/imgNavigation.png" alt="" class="lb" /></div>
+                </div>
+                <div class="tile">
+                  <p class="t-label">Company switcher</p>
+                  <div class="t-img"><img src="../assets/melio-redesign/imgNavigation1.png" alt="" class="lb" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="area-card">
+            <div class="area-headers"><h3 class="h3-med">Dashboard Tabs + Actions</h3><span class="divider"></span></div>
+            <div style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:var(--ml);">
+              <div class="tile">
+                <p class="t-label">Tabs</p>
+                <div class="tile-row">
+                  <div class="t-img"><img src="../assets/melio-redesign/imgDashboard3.png" alt="" class="lb" /></div>
+                  <div class="t-img"><img src="../assets/melio-redesign/imgMobile.png" alt="" class="lb" /></div>
+                  <div class="t-img"><img src="../assets/melio-redesign/imgDashboard5.png" alt="" class="lb" /></div>
+                </div>
+              </div>
+              <div class="tile">
+                <p class="t-label">FAB</p>
+                <div class="t-img"><img src="../assets/melio-redesign/imgSort.png" alt="" class="lb" /></div>
+              </div>
+              <div class="tile">
+                <p class="t-label">Sort</p>
+                <div class="t-img"><img src="../assets/melio-redesign/imgSort1.png" alt="" class="lb" /></div>
+              </div>
+              <div class="tile">
+                <p class="t-label">Search focus</p>
+                <div class="t-img"><img src="../assets/melio-redesign/imgDashboard6.png" alt="" class="lb" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="area-card">
+            <div class="area-headers"><h3 class="h3-med">Cards drill-in</h3><span class="divider"></span></div>
+            <div style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:var(--ml);">
+              <div class="tile">
+                <p class="t-label">Vendor page</p>
+                <div class="t-img"><img src="../assets/melio-redesign/imgVendorPageV2.png" alt="" class="lb" /></div>
+              </div>
+              <div class="tile">
+                <p class="t-label">Edit</p>
+                <div class="t-img"><img src="../assets/melio-redesign/imgImage.png" alt="" class="lb" /></div>
+              </div>
+              <div class="tile">
+                <p class="t-label">Bill details</p>
+                <div class="t-img"><img src="../assets/melio-redesign/imgBillDetails.png" alt="" class="lb" /></div>
+              </div>
+              <div class="tile">
+                <p class="t-label">Payment details</p>
+                <div class="t-img"><img src="../assets/melio-redesign/imgBillDetails1.png" alt="" class="lb" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Measuring success -->
+      <section class="sec sec-gap-16 narrow pt-48 pb-72 reveal">
+        <p class="label-serif" style="width:100%;">Measuring success</p>
+        <h2 class="h2-med">Adaptation is not translation</h2>
+        <p class="body-2 txt-ink">User engagement was not only unaffected — it improved by 7%. More users initiated payments, and approval-workflow usage increased by 4%. Beyond the numbers, the process left two clear lessons:</p>
+        <div class="cs-list">
+          <div class="cs-bullet"><p class="marker">•</p><p>Mobile optimization means adapting to user behavior, not shrinking desktop elements.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Deliberate platform trade-offs delivered a lean, high-performing tool.</p></div>
+        </div>
+      </section>
+
+      <!-- Back to top -->
+      <a class="btn back-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back To Top<span class="btn-icon arrow-nudge"><img src="../assets/shared/icon-arrow-right.svg" alt="" style="transform:rotate(-90deg);" /></span></a>
+
+      <!-- Discover more -->
+      <section class="discover reveal">
+        <h2 class="h3-med">Discover More</h2>
+        <div class="cards">
+          <a class="project-card" href="wixel.html">
+            <div class="cover"></div>
+            <div class="card-body">
+              <p class="label-serif">WIX · Mobile App · 2025</p>
+              <h3 class="h3-med">Wixel — AI image editing</h3>
+              <p class="body-3 desc">The full mobile flow for AI background replacement — 64 screens, one design sprint.</p>
+              <span class="link-btn">Read case study<span class="icon"><img src="../assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+            </div>
+          </a>
+          <a class="project-card" href="melio-redesign.html">
+            <div class="cover"></div>
+            <div class="card-body">
+              <p class="label-serif">MELIO · 2021–2024</p>
+              <h3 class="h3-med">Melio — Mobile web redesign</h3>
+              <p class="body-3 desc">A complete mobile experience strategy that lifted conversion from 6% to 14%.</p>
+              <span class="link-btn">Read case study<span class="icon"><img src="../assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <div class="footer-margin cs-footer-margin">
+        <footer class="footer">
+          <div class="footer-inner">
+            <p>Naama Abitbol — Product Builder</p>
+            <p>Melio · Redesigning Experience</p>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox"><img src="" alt="" /></div>
+
+  <script src="../js/cs-hero.js"></script>
+  <script src="../js/site.js"></script>
+  <script>
+    (() => {
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = lightbox.querySelector('img');
+      document.querySelectorAll('.shot img, .lb, .t-img img, .p-img img, .strip img').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => { lbImg.src = img.src; lightbox.classList.add('open'); });
+      });
+      lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+    })();
+  </script>
+</body>
+</html>

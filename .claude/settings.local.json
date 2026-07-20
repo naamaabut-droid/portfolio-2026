@@ -84,7 +84,15 @@
       "Bash(awk -F: '{ if \\($1+0 >= 817\\) print }' /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/wixel-digest.txt)",
       "Bash(awk -F: '{ if \\($1+0 >= 1306\\) print }' /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/wixel-digest.txt)",
       "Bash(git add *)",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -q -m 'Wixel project page 1:1 from Figma 191:39802 + case-study template CSS *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -q -m 'Wixel project page 1:1 from Figma 191:39802 + case-study template CSS *)",
+      "Bash(awk 'NR>=360' /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/melio-redesign-digest.txt)",
+      "Bash(awk -F: '{ if \\($1+0 >= 727\\) print }')",
+      "Bash(awk -F: '{ if \\($1+0 >= 1079\\) print }' /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/melio-redesign-digest.txt)",
+      "Bash(curl -s -o finals-payments.png \"https://www.figma.com/api/mcp/asset/3899f9f7-0905-474f-9dbd-ff15f6f6007d\")",
+      "Bash(curl -s -o finals-bills.png \"https://www.figma.com/api/mcp/asset/20b02908-c9dd-4871-bf52-372532507b47\")",
+      "Bash(curl -s -o finals-vendors.png \"https://www.figma.com/api/mcp/asset/e1fac307-4b76-4f14-931d-34b16ad80dc2\")",
+      "Bash(file finals-*.png)",
+      "Bash(curl -sL -o /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/melio-hero-figma.png https://www.figma.com/api/mcp/asset/ac6f6a98-b672-4eef-ac6f-c31ee4ade045)"
     ]
   }
 }
