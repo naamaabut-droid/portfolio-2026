@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melio — Mobile Web Optimization — Naama Abitbol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
+  <link rel="stylesheet" href="../css/site.css?v=1" />
+  <link rel="stylesheet" href="../css/case-study.css?v=1" />
+  <style>
+    .mo-art { position: relative; width: 528px; height: 512px; }
+    .mo-art .ph {
+      position: absolute; top: 50%; height: 354px;
+      border: 0.75px solid var(--line);
+      border-radius: var(--radius-s);
+      overflow: hidden; background: #fff;
+    }
+    .mo-art .ph img { height: 100%; width: auto; display: block; }
+    .mo-art .ph-1 { left: calc(50% - 181px); transform: translate(-50%, -50%); box-shadow: var(--shadow-shot); }
+    .mo-art .ph-3 { left: calc(50% + 181px); transform: translate(-50%, -50%); box-shadow: var(--shadow-shot); }
+    .mo-art .ph-2 { left: 50%; transform: translate(-50%, -50%); box-shadow: var(--shadow-float); z-index: 2; }
+
+    .insight-row { display: flex; gap: var(--sm); align-items: stretch; width: 100%; }
+    .insight-card {
+      flex: 1 1 0; min-width: 1px;
+      background: var(--card); border-radius: var(--radius-md);
+      padding: 22px var(--ml) 20px;
+      display: flex; flex-direction: column; gap: var(--xs); align-items: flex-start;
+      transition: transform 0.25s ease;
+    }
+    .insight-card:hover { transform: translateY(-2px); }
+    .insight-card h4 { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink); }
+    .insight-card p.b { font-size: 16px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--body); }
+    .insight-card .big { font-size: 56px; font-weight: 600; line-height: 1.2; letter-spacing: -0.03em; color: var(--ink); }
+    .insight-card .k12 { font-size: 12px; font-weight: 500; line-height: 1.4; color: var(--body); }
+
+    .num-bullets { display: flex; flex-direction: column; gap: var(--s); width: 100%; }
+    .num-bullet { display: flex; gap: var(--s); align-items: center; font-size: 20px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink); }
+
+    .before-after { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--ml); width: 100%; }
+    .ba-col { display: flex; flex-direction: column; gap: var(--sm); align-items: center; }
+    .ba-col .ba-label { font-size: 14px; font-weight: 500; line-height: 1.2; color: var(--ink); }
+    .ba-col .imgs { display: flex; gap: var(--sm); width: 100%; }
+    .ba-col .imgs .shot { flex: 1 1 0; min-width: 1px; aspect-ratio: 330/714; border-radius: var(--radius-md); }
+
+    /* marquee rows */
+    .bugs-band { width: 100%; overflow: hidden; display: flex; flex-direction: column; gap: var(--sm); align-items: center; }
+    .bugs-band img.row {
+      width: 1440px; max-width: none; flex: none;
+      animation: bugs-drift 2s ease-in-out infinite alternate;
+    }
+    .bugs-band img.row.rev { animation-name: bugs-drift-rev; }
+    .bugs-band img.row:nth-child(2) { animation-delay: 0.2s; }
+    .bugs-band img.row:nth-child(3) { animation-delay: 0.4s; }
+    .bugs-band img.row:nth-child(4) { animation-delay: 0.6s; }
+    .bugs-band img.row:nth-child(5) { animation-delay: 0.8s; }
+    @keyframes bugs-drift { from { transform: translateX(0); } to { transform: translateX(-200px); } }
+    @keyframes bugs-drift-rev { from { transform: translateX(0); } to { transform: translateX(200px); } }
+    @media (prefers-reduced-motion: reduce) { .bugs-band img.row { animation: none; } }
+
+    .flows-cols { display: flex; gap: var(--max); align-items: flex-start; justify-content: center; width: 100%; }
+    .flows-cols .fc { display: flex; flex-direction: column; gap: 42px; }
+    .flows-cols img { display: block; }
+
+    .layouts-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: var(--max); width: 100%; max-width: 1080px; }
+    .layouts-screens { display: flex; gap: var(--xxl); justify-content: center; align-items: flex-start; width: 100%; flex-wrap: wrap; }
+    .layouts-screens img { height: 388px; width: auto; }
+
+    .examples-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--ml); width: 100%; }
+    .ex-pair { display: flex; gap: var(--s); }
+    .ex-pair img { flex: 1 1 0; min-width: 1px; border-radius: var(--radius-xs); }
+    .ex-pair img.before { opacity: 0.8; }
+    .ex-pair img.after { border: 0.75px solid var(--line); }
+
+    .cap-block { display: flex; flex-direction: column; gap: var(--3xs); align-items: center; text-align: center; font-size: 12px; color: var(--body); line-height: 1.4; }
+    .cap-block .t { font-weight: 500; }
+    .cap-block .dim { opacity: 0.65; }
+
+    .annot-pair { display: flex; gap: 120px; justify-content: center; width: 100%; padding: 0 60px; }
+    .annot { position: relative; }
+    .annot .phone { width: 280px; height: 606px; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background:#fff; }
+    .annot .phone img { width: 100%; height: 100%; object-fit: cover; }
+    .annot .a-cap { margin-top: var(--sm); text-align: center; font-size: 12px; color: var(--body); }
+    .annot .dot {
+      position: absolute; width: 22px; height: 22px; border-radius: 999px;
+      background: var(--accent); color: #fff; display: grid; place-items: center;
+      font-size: 12px; font-weight: 600; z-index: 2;
+    }
+    .annot .frame-box { position: absolute; border: 1px solid var(--accent); border-radius: var(--radius-s); }
+
+    @media (max-width: 1100px) {
+      .mo-art { display: none; }
+      .insight-row, .flows-cols, .annot-pair { flex-direction: column; }
+      .before-after, .examples-grid, .layouts-grid { grid-template-columns: 1fr; }
+      .annot-pair { align-items: center; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="page-nav" href="../case-studies.html">
+    <span class="btn-icon-40"><img src="../assets/melio-opt/imgIcon.svg" alt="" /></span>
+    <span class="tab-label tab">Back to Projects</span>
+  </a>
+
+  <!-- Header -->
+  <header class="cs-hero">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="cs-hero-grid">
+      <div class="cs-hero-copy">
+        <h1 class="h1">Melio<br />Mobile Web</h1>
+        <p class="h3 subtitle">Conversion Optimization &amp; Responsive Redesign</p>
+        <div class="cs-hero-tags">
+          <span class="tag">Melio</span>
+          <span class="tag">Product Designer</span>
+          <span class="tag">Project owner</span>
+          <span class="tag">Mobile Web</span>
+          <span class="tag">B2B</span>
+          <span class="tag">2021</span>
+        </div>
+      </div>
+      <div class="cs-hero-art mo-art">
+        <div class="ph ph-1 rise-1"><img src="../assets/melio-opt/imgHero12.png" alt="" /></div>
+        <div class="ph ph-3 rise-3"><img src="../assets/melio-opt/imgHero32.png" alt="" /></div>
+        <div class="ph ph-2 rise-2"><div class="float-a" style="height:100%;"><img src="../assets/melio-opt/imgHero22.png" alt="" /></div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="cs-container">
+    <div class="cs-inner">
+
+      <!-- TL;DR -->
+      <section class="tldr narrow reveal">
+        <h2 class="h2-med">TL;DR</h2>
+        <div class="tldr-bullets">
+          <div class="tldr-bullet" style="gap:var(--m);">
+            <div style="display:flex; flex-direction:column; gap:var(--s);">
+              <p class="label-serif">About Melio</p>
+              <p class="txt">Melio is an account payable tool designed for small businesses, processing $20B annually. It lets businesses pay vendors, suppliers, and contractors flexibly to optimize cash flow and payment workflows.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:var(--s);">
+              <p class="label-serif">The Challenge</p>
+              <p class="txt">Prioritize mobile users’ key actions, surface essential information, and pinpoint where the drop-off occurs in the funnel.</p>
+            </div>
+          </div>
+          <div class="tldr-bullet">
+            <p class="label-serif">My Role</p>
+            <p class="txt">Collaborating with a cross-functional platform team I led the mobile web redesign, My responsibilities included:</p>
+            <div style="display:flex; flex-direction:column; gap:var(--xxs); font-size:14px; font-weight:300; line-height:1.4; letter-spacing:-0.01em; color:var(--ink);">
+              <p>• Flows &amp; Bugs mapping</p>
+              <p>• Mobile UX research</p>
+              <p>• End-to-end product design</p>
+              <p>• Conducting design reviews</p>
+              <p>• Coordinating closely with developers</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Overview</p>
+        <p class="body-2 txt-ink">Melio is an accounts payable tool for small businesses, processing $20B annually — letting them pay vendors, suppliers, and contractors flexibly to optimize cash flow. As Melio shifted its focus from direct SMB acquisition to a white-label platform for enterprise partners, mobile web became a core product offering. Supporting that pivot meant closing a significant conversion gap between the mobile and desktop experiences.</p>
+      </section>
+
+      <!-- The problem -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max);">
+        <div class="sec sec-gap-16" style="width:100%;">
+          <p class="label-serif" style="width:100%;">The problem</p>
+          <p class="body-2 txt-ink">First-time payment (FTP) conversion was significantly lower for users who registered on mobile web than on desktop.</p>
+        </div>
+        <div class="sec sec-gap-12" style="width:100%;">
+          <div class="insight-row">
+            <div class="insight-card" style="border-radius:var(--radius-s);">
+              <p class="k12">Mobile</p>
+              <p class="big">6%</p>
+            </div>
+            <div class="insight-card" style="border-radius:var(--radius-s);">
+              <p class="k12">Desktop</p>
+              <p class="big">34%</p>
+            </div>
+          </div>
+          <p class="caption" style="color:var(--body);">*% Completed a first payment - Conversion rate before optimization</p>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--xxl);">
+        <p class="label-serif" style="width:100%;">Research</p>
+        <div class="sec sec-gap-12" style="width:100%;">
+          <h2 class="h2-med">Discovery questions</h2>
+          <p class="body-2 txt-ink">Melio runs on both desktop and mobile web, each needing its own design considerations. To optimize mobile, we focused on two questions:</p>
+        </div>
+        <div class="cs-list">
+          <div class="cs-bullet"><p class="marker">•</p><p>Who are our primary mobile users, and <span class="med-ink">what motivates them</span> to engage with their Melio accounts on mobile devices?</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>How many of our users <span class="med-ink">successfully complete end-to-end flow</span>, and at which stage do drop-offs occur in the process?</p></div>
+        </div>
+        <p class="body-2 txt-ink">We pulled the following data:</p>
+        <div class="sec sec-gap-16" style="width:100%;">
+          <div class="insight-row">
+            <div class="insight-card">
+              <h4>82% are SMB owners</h4>
+              <p class="b">Usually paying instant bills and tracking payments on mobile.</p>
+            </div>
+            <div class="insight-card">
+              <h4>87% of vendors</h4>
+              <p class="b">Are added inside the “Pay a Bill” flow, not the dedicated “Add a Vendor” flow.</p>
+            </div>
+          </div>
+          <div class="insight-row">
+            <div class="insight-card">
+              <h4>72%</h4>
+              <p class="b">Pay by bank transfer</p>
+            </div>
+            <div class="insight-card">
+              <h4>28%</h4>
+              <p class="b">Pay by credit card</p>
+            </div>
+            <div class="insight-card">
+              <h4>64%</h4>
+              <p class="b">Payments delivered by bank transfer</p>
+            </div>
+            <div class="insight-card">
+              <h4>32%</h4>
+              <p class="b">Payments delivered by check</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Funnel charts -->
+      <section class="wide reveal" style="display:flex; flex-direction:column; gap:var(--ml); align-items:center; border-radius:var(--radius-xl);">
+        <div style="display:flex; gap:var(--ml); width:100%; justify-content:center;">
+          <img src="../assets/melio-opt/imgChartMobile1.png" alt="" style="width:509px; max-width:48%;" class="lb" />
+          <img src="../assets/melio-opt/imgChartDesktop1.png" alt="" style="width:509px; max-width:48%;" class="lb" />
+        </div>
+        <div class="cap-block">
+          <p class="t">First-Time Payment Funnel: Primary Drop-Off Stage</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+      </section>
+
+      <!-- Highlight -->
+      <section class="narrow reveal" style="padding:var(--xxl) 0 var(--max); display:flex; align-items:center; justify-content:center;">
+        <p class="h1" style="width:100%; letter-spacing:-0.03em;">The biggest mobile drop-off: ‘Enter Vendor’s Payment Details.’</p>
+      </section>
+
+      <!-- Mapping user flows -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+        <div class="sec sec-gap-16" style="width:100%;">
+          <p class="label-serif" style="width:100%;">Mapping user flows</p>
+          <p class="body-2 txt-ink">A thorough analysis of all user flows surfaced usability problems, inconsistencies, and bugs. Focusing on the core Pay a Bill flow revealed three critical problems:</p>
+        </div>
+        <div class="insight-row">
+          <div class="insight-card">
+            <p class="label-serif">01</p>
+            <h4>Dead ends, no 'Back'</h4>
+            <p class="b">Users without the info get stuck at payment delivery and abandon the flow.</p>
+          </div>
+          <div class="insight-card">
+            <p class="label-serif">02</p>
+            <h4>No exit warning</h4>
+            <p class="b">Leaving the screen resets progress without confirming the user’s intent.</p>
+          </div>
+          <div class="insight-card">
+            <p class="label-serif">03</p>
+            <h4>Progress loss</h4>
+            <p class="b">Entered information isn't saved, frustrating users who already typed a lot.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Annotated screens -->
+      <section class="case-card wide reveal" style="align-items:center;">
+        <div class="annot-pair">
+          <div class="annot">
+            <div class="phone"><img src="../assets/melio-opt/imgImage.png" alt="" class="lb" /></div>
+            <span class="dot" style="left:-25px; top:123px;">1</span>
+            <span class="dot" style="left:47px; top:433px;">2</span>
+            <span class="dot" style="right:-11px; top:calc(50% + 1px);">3</span>
+            <p class="a-cap">Payment delivery: Paper Checks</p>
+          </div>
+          <div class="annot">
+            <div class="phone"><img src="../assets/melio-opt/imgImage1.png" alt="" class="lb" /></div>
+            <span class="dot" style="left:-25px; top:123px;">1</span>
+            <span class="dot" style="left:-54px; top:448px;">2</span>
+            <span class="dot" style="left:-54px; top:172px;">3</span>
+            <p class="a-cap">Payment delivery: Bank Transfer</p>
+          </div>
+        </div>
+        <div class="cap-block" style="width:100%;">
+          <p class="t">Enter vendor’s payment delivery details screen.</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+      </section>
+
+      <!-- numbered issues -->
+      <section class="num-bullets narrow reveal" style="padding:var(--xxl) 0;">
+        <div class="num-bullet"><span class="counter">1</span><p>Main navigation — no ‘Back’ option.</p></div>
+        <div class="num-bullet"><span class="counter">2</span><p>Content — center-aligned content is hard to read when moving between screens.</p></div>
+        <div class="num-bullet"><span class="counter">3</span><p>CTA — inconsistent in position and style across screens, sometimes below the fold.</p></div>
+      </section>
+
+      <!-- Solution -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--max);">
+        <p class="label-serif" style="width:100%;">The Solution</p>
+        <h2 class="h2-med">Safe to exit, easy to read, consistent to navigate</h2>
+        <p class="body-2 txt-ink">Addressing these areas makes the mobile web experience clearer and easier to complete:</p>
+        <div class="cs-list gap-8">
+          <div class="cs-bullet"><p class="marker">•</p><p>Add confirmation before destructive actions, like exiting a payment mid-flow.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Define responsive rules for components and layouts.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Ensure consistent design and clear navigation to reduce overload and confusion.</p></div>
+        </div>
+        <p class="body-2 txt-ink">Together, these help users complete actions from start to finish — and lift conversion.</p>
+      </section>
+
+      <!-- Before / After -->
+      <section class="case-card wide reveal" style="align-items:center;">
+        <div class="before-after">
+          <div class="ba-col">
+            <p class="ba-label">Before</p>
+            <div class="imgs">
+              <div class="shot"><img src="../assets/melio-opt/imgImage.png" alt="" class="lb" /></div>
+              <div class="shot"><img src="../assets/melio-opt/imgImage1.png" alt="" class="lb" /></div>
+            </div>
+          </div>
+          <div class="ba-col">
+            <p class="ba-label">After</p>
+            <div class="imgs">
+              <div class="shot"><img src="../assets/melio-opt/imgImage2.png" alt="" class="lb" /></div>
+              <div class="shot"><img src="../assets/melio-opt/imgImage3.png" alt="" class="lb" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="cap-block" style="width:100%;">
+          <p class="t">Screens Comparison: Before and after</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+      </section>
+
+      <!-- numbered fixes -->
+      <section class="num-bullets narrow reveal" style="padding:var(--xxl) 0 var(--max);">
+        <div class="num-bullet"><span class="counter">1</span><p>Main navigation — ‘Back’ added to the top bar.</p></div>
+        <div class="num-bullet"><span class="counter">2</span><p>Content — a consistent grid layout across all screens.</p></div>
+        <div class="num-bullet"><span class="counter">3</span><p>CTA — fixed position across all screens, with consistent UI.</p></div>
+      </section>
+    </div>
+
+    <!-- More key actions (wide band) -->
+    <div class="reveal" style="width:100%; display:flex; flex-direction:column; gap:var(--xxl); align-items:center; padding:var(--xxl) 0 var(--max); overflow:hidden;">
+      <div class="sec sec-gap-16" style="max-width:800px; width:100%; padding:0 var(--ml);">
+        <p class="label-serif" style="width:100%;">More key actions</p>
+        <h2 class="h2-med">Mapping the entire system, not just one flow</h2>
+      </div>
+
+      <p class="cap-block t" style="font-weight:500;">Flows mapping</p>
+      <div class="flows-cols" style="max-width:1440px; padding:0 40px;">
+        <div class="fc" style="width:313px;">
+          <img src="../assets/melio-opt/imgImage4.png" alt="" style="width:313px;" class="lb" />
+          <img src="../assets/melio-opt/imgImage5.png" alt="" style="width:313px;" class="lb" />
+          <img src="../assets/melio-opt/imgImage6.png" alt="" style="width:313px;" class="lb" />
+        </div>
+        <div class="fc">
+          <img src="../assets/melio-opt/imgImage7.png" alt="" style="width:382px;" class="lb" />
+        </div>
+        <div class="fc" style="max-height:983px; overflow:hidden;">
+          <img src="../assets/melio-opt/imgImage8.png" alt="" style="width:600px;" class="lb" />
+        </div>
+      </div>
+
+      <p class="cap-block t" style="font-weight:500;">System bugs and inconsistency mapping</p>
+      <div class="bugs-band">
+        <img class="row" src="../assets/melio-opt/bugs-row-1.png" alt="" />
+        <img class="row rev" src="../assets/melio-opt/bugs-row-2.png" alt="" />
+        <img class="row" src="../assets/melio-opt/bugs-row-3.png" alt="" />
+        <img class="row rev" src="../assets/melio-opt/bugs-row-4.png" alt="" />
+        <img class="row" src="../assets/melio-opt/bugs-row-5.png" alt="" />
+      </div>
+
+      <p class="cap-block t" style="font-weight:500;">Responsive Layouts Guidelines</p>
+      <div style="display:flex; flex-direction:column; gap:var(--xxl); align-items:center; width:100%;">
+        <div class="layouts-grid" style="padding:0 40px;">
+          <img src="../assets/melio-opt/imgLayout1.png" alt="" style="width:100%;" class="lb" />
+          <img src="../assets/melio-opt/imgSplitScreen1.png" alt="" style="width:100%;" class="lb" />
+          <img src="../assets/melio-opt/imgExternalLayout1.png" alt="" style="width:100%;" class="lb" />
+        </div>
+        <div class="layouts-screens">
+          <img src="../assets/melio-opt/imgSplitScreen11.png" alt="" class="lb" />
+          <img src="../assets/melio-opt/img6Columns1.png" alt="" class="lb" />
+          <img src="../assets/melio-opt/imgExternalLayout11.png" alt="" class="lb" />
+          <img src="../assets/melio-opt/imgFullScreen1.png" alt="" class="lb" />
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-inner" style="padding-top:var(--xxl);">
+
+      <!-- More examples -->
+      <section class="case-card wide reveal" style="align-items:center;">
+        <div class="cap-block">
+          <p class="t">More examples (Before → Left, After → Right)</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+        <div class="examples-grid">
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage9.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage18.png" alt="" /></div>
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage21.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage31.png" alt="" /></div>
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage41.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage51.png" alt="" /></div>
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage61.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage71.png" alt="" /></div>
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage81.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage91.png" alt="" /></div>
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage101.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage111.png" alt="" /></div>
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage121.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage131.png" alt="" /></div>
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage141.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage151.png" alt="" /></div>
+          <div class="ex-pair"><img class="before lb" src="../assets/melio-opt/imgImage161.png" alt="" /><img class="after lb" src="../assets/melio-opt/imgImage171.png" alt="" /></div>
+        </div>
+      </section>
+
+      <!-- What we improved -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">What we improved</p>
+        <h2 class="h2-med">Every fix became a rule, not a patch</h2>
+        <div class="cs-list gap-8">
+          <div class="cs-bullet"><p class="marker" style="color:var(--accent);">•</p><p><span class="med-ink">Fixed CTA:</span> anchored the primary action for constant visibility.</p></div>
+          <div class="cs-bullet"><p class="marker" style="color:var(--accent);">•</p><p><span class="med-ink">Layout &amp; responsiveness:</span> clear content sections, defined per breakpoint.</p></div>
+          <div class="cs-bullet"><p class="marker" style="color:var(--accent);">•</p><p><span class="med-ink">Navigation:</span> added clear paths where they were missing.</p></div>
+          <div class="cs-bullet"><p class="marker" style="color:var(--accent);">•</p><p><span class="med-ink">Consistency:</span> standardized UI elements across the product.</p></div>
+          <div class="cs-bullet"><p class="marker" style="color:var(--accent);">•</p><p><span class="med-ink">Quality assurance:</span> fixed critical bugs and improved accessibility.</p></div>
+        </div>
+      </section>
+
+      <!-- Impact -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max);">
+        <div class="sec sec-gap-16" style="width:100%;">
+          <p class="label-serif" style="width:100%;">impact</p>
+          <h2 class="h2-med">First-time payment conversion from mobile more than doubled</h2>
+        </div>
+        <div class="insight-row">
+          <div class="insight-card" style="border-radius:var(--radius-s);">
+            <p class="k12">Before</p>
+            <p class="big">6%</p>
+          </div>
+          <div class="insight-card" style="border-radius:var(--radius-s);">
+            <p class="k12">After</p>
+            <p class="big">14%</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="sec sec-gap-12 narrow pt-48 pb-72 reveal">
+        <h2 class="h2-med">Reflection</h2>
+        <p class="body-2 txt-ink">This project ran on funnel analytics and flow mapping rather than formal user research — the questions were pulled with the PM from the data, and the redesign was judged by the one number that mattered. It moved. What I'd examine next:</p>
+        <div class="cs-list gap-8">
+          <div class="cs-bullet"><p class="marker">1.</p><p>Did the 62% drop flatten — or just move downstream?</p></div>
+          <div class="cs-bullet"><p class="marker">2.</p><p>The 20-point gap to desktop: how much is context, how much is UX debt?</p></div>
+          <div class="cs-bullet"><p class="marker">3.</p><p>Does saved progress actually bring abandoners back?</p></div>
+        </div>
+      </section>
+
+      <!-- Back to top -->
+      <a class="btn back-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back To Top<span class="btn-icon arrow-nudge"><img src="../assets/shared/icon-arrow-right.svg" alt="" style="transform:rotate(-90deg);" /></span></a>
+
+      <!-- Discover more -->
+      <section class="discover reveal">
+        <h2 class="h3-med">Discover More</h2>
+        <div class="cards">
+          <a class="project-card" href="wixel.html">
+            <div class="cover"></div>
+            <div class="card-body">
+              <p class="label-serif">WIX · Mobile App · 2025</p>
+              <h3 class="h3-med">Wixel — AI image editing</h3>
+              <p class="body-3 desc">The full mobile flow for AI background replacement — 64 screens, one design sprint.</p>
+              <span class="link-btn">Read case study<span class="icon"><img src="../assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+            </div>
+          </a>
+          <a class="project-card" href="melio-redesign.html">
+            <div class="cover"></div>
+            <div class="card-body">
+              <p class="label-serif">MELIO · 2021–2024</p>
+              <h3 class="h3-med">Melio — Mobile web redesign</h3>
+              <p class="body-3 desc">A complete mobile experience strategy that lifted conversion from 6% to 14%.</p>
+              <span class="link-btn">Read case study<span class="icon"><img src="../assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <div class="footer-margin cs-footer-margin">
+        <footer class="footer">
+          <div class="footer-inner">
+            <p>Naama Abitbol — Product Builder</p>
+            <p>Melio · Mobile Web Optimization</p>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox"><img src="" alt="" /></div>
+
+  <script src="../js/cs-hero.js"></script>
+  <script src="../js/site.js"></script>
+  <script>
+    (() => {
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = lightbox.querySelector('img');
+      document.querySelectorAll('.lb').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => { lbImg.src = img.src; lightbox.classList.add('open'); });
+      });
+      lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+    })();
+  </script>
+</body>
+</html>
