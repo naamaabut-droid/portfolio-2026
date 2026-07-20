@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naama Abitbol — Product Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
+  <link rel="stylesheet" href="css/site.css?v=1" />
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-glows" aria-hidden="true">
+      <span class="glow glow-cream"></span>
+      <span class="glow glow-peach"></span>
+      <span class="glow glow-peach-2"></span>
+      <span class="glow glow-lilac"></span>
+      <span class="glow glow-periwinkle"></span>
+    </div>
+    <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-intro">
+      <p class="h2 line-1">Hi, I’m Naama &amp; I’m a</p>
+      <h1 class="display line-2 collider">Product Builder</h1>
+    </div>
+
+    <canvas id="chips-canvas" class="chips-canvas" aria-hidden="true"></canvas>
+
+    <!-- measured by the physics sim; visible fallback when motion is reduced -->
+    <div class="chips-measure" aria-hidden="true">
+      <span class="logo-chip"><span class="logo-circle"><img src="assets/home/chip-figma.svg" alt="" /></span><span class="chip-label">Figma</span></span>
+      <span class="logo-chip"><span class="logo-circle"><img src="assets/home/chip-claude.svg" alt="" /></span><span class="chip-label">Claude Code</span></span>
+      <span class="logo-chip"><span class="logo-circle"><img src="assets/home/chip-storybook.svg" alt="" /></span><span class="chip-label">Storybook</span></span>
+      <span class="logo-chip"><span class="logo-plain"><img src="assets/home/chip-adobe.svg" alt="" /></span><span class="chip-label">Adobe</span></span>
+      <span class="logo-chip"><span class="logo-circle"><img src="assets/home/chip-cursor.svg" alt="" /></span><span class="chip-label">Cursor</span></span>
+      <span class="logo-chip"><span class="logo-circle"><img src="assets/home/chip-github.svg" alt="" /></span><span class="chip-label">GitHub</span></span>
+      <span class="logo-chip"><span class="logo-circle"><img src="assets/home/chip-vscode.svg" alt="" /></span><span class="chip-label">VS Code</span></span>
+      <span class="logo-chip"><span class="logo-circle"><img src="assets/home/chip-jira.svg" alt="" /></span><span class="chip-label">Jira</span></span>
+      <span class="logo-chip"><span class="logo-circle"><img src="assets/home/chip-html.svg" alt="" /></span><span class="chip-label">HTML &amp; CSS</span></span>
+    </div>
+
+    <div class="nav-wrap">
+      <nav class="nav" aria-label="Main">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="case-studies.html">Projects</a>
+        <a href="index.html#contact" data-contact-link>Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Selected Work -->
+  <section class="selected-work">
+    <div class="home-bio reveal">
+      <p class="body-2">Senior Product Designer with a branding background and design systems expertise. I turn complex UX into clean, elegant products — obsessed with the details, fast without cutting corners, and puts the product's success ahead of ego. People person, animals person (three pets and counting 🐾), always leveling up.</p>
+    </div>
+    <div class="work-content">
+      <div class="work-header reveal">
+        <p class="label-serif">Selected work</p>
+        <h2 class="h2-med">Selected projects</h2>
+      </div>
+      <div class="work-cards">
+        <a class="project-card reveal" href="projects/wixel.html">
+          <div class="cover"></div>
+          <div class="card-body">
+            <p class="label-serif">WIX · Mobile App · 2025</p>
+            <h3 class="h3-med">Wixel — AI image editing</h3>
+            <p class="body-3 desc">The full mobile flow for AI background replacement — 64 screens, one design sprint.</p>
+            <span class="link-btn">Read case study<span class="icon"><img src="assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+          </div>
+        </a>
+        <a class="project-card reveal" href="projects/melio-redesign.html">
+          <div class="cover"></div>
+          <div class="card-body">
+            <p class="label-serif">Melio · Mobile Web · 2021</p>
+            <h3 class="h3-med">Melio — Mobile web redesign</h3>
+            <p class="body-3 desc">A complete mobile experience strategy that lifted conversion from 6% to 14%.</p>
+            <span class="link-btn">Read case study<span class="icon"><img src="assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+          </div>
+        </a>
+      </div>
+      <a class="btn reveal" href="case-studies.html">View All Projects<span class="btn-icon arrow-nudge"><img src="assets/shared/icon-arrow-right.svg" alt="" /></span></a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-anchor" id="contact">
+    <div class="contact-section">
+      <div class="contact-content">
+        <p class="label-serif">Get in touch</p>
+        <div class="contact-body">
+          <h2 class="h2-med">Let's build something.</h2>
+          <p class="body-1 sub">Product, design systems, or a role that needs both a designer and a builder — I'd love to talk.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-plain" href="mailto:naamaabut@gmail.com"><span class="btn-icon-20"><img src="assets/shared/icon-gmail.svg" alt="" /></span>Email me</a>
+          <a class="btn btn-plain" href="#" data-linkedin><span class="btn-icon-20"><img src="assets/shared/icon-linkedin.svg" alt="" /></span>Connect on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer-margin" style="max-width: 1080px;">
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>Naama Abitbol — Product Builder</p>
+        <p>© 2026</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/vendor/matter.min.js"></script>
+  <script src="js/home-hero.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
