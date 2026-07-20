@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
-  <link rel="stylesheet" href="css/site.css?v=2" />
+  <link rel="stylesheet" href="css/site.css?v=3" />
 </head>
 <body>
 
@@ -17,7 +17,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="case-studies.html" class="active">Projects</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="case-studies.html#contact" data-contact-link>Contact</a>
     </nav>
   </div>
 
@@ -34,7 +34,7 @@
   <section class="cs-grid">
     <div class="cs-row">
       <a class="project-card reveal" href="projects/wixel.html">
-        <div class="cover"></div>
+        <div class="cover cover-shot"><img src="assets/wixel-page/imgDialog011.png" alt="Wixel — AI image editing" loading="lazy" /></div>
         <div class="card-body">
           <p class="label-serif">WIX · Mobile App · 2025</p>
           <h3 class="h3-med">Wixel — AI image editing</h3>
@@ -42,8 +42,8 @@
           <span class="link-btn">Read case study<span class="icon"><img src="assets/shared/icon-arrow-right.svg" alt="" /></span></span>
         </div>
       </a>
-      <a class="project-card reveal" href="projects/melio-redesign.html">
-        <div class="cover"></div>
+      <a class="project-card reveal" href="projects/melio-optimization.html">
+        <div class="cover cover-shot cover-phone"><img src="assets/melio-opt/imgHero22.png" alt="Melio — Mobile web redesign" loading="lazy" /></div>
         <div class="card-body">
           <p class="label-serif">MELIO · 2021–2024</p>
           <h3 class="h3-med">Melio — Mobile web redesign</h3>
@@ -54,7 +54,7 @@
     </div>
     <div class="cs-row">
       <a class="project-card reveal" href="projects/finaloop.html">
-        <div class="cover"></div>
+        <div class="cover cover-shot"><img src="assets/finaloop-page/img04FinishEditing1.png" alt="Finaloop — Bulk invoice upload" loading="lazy" /></div>
         <div class="card-body">
           <p class="label-serif">FINALOOP · COMING SOON</p>
           <h3 class="h3-med">Bookkeeping, untangled</h3>
@@ -63,7 +63,7 @@
         </div>
       </a>
       <a class="project-card reveal" href="projects/penny.html">
-        <div class="cover"></div>
+        <div class="cover"><img src="assets/penny-page/hero-art.png" alt="Penny design system" loading="lazy" /></div>
         <div class="card-body">
           <p class="label-serif">MELIO · COMING SOON</p>
           <h3 class="h3-med">A design system for 8 teams</h3>
@@ -82,20 +82,37 @@
           <span class="link-btn">Read case study<span class="icon"><img src="assets/shared/icon-arrow-right.svg" alt="" /></span></span>
         </div>
       </a>
-      <a class="project-card reveal" href="#">
-        <div class="cover"></div>
+      <a class="project-card reveal" href="projects/melio-redesign.html">
+        <div class="cover cover-shot"><img src="assets/melio-redesign/imgBillsDashboard1.png" alt="Melio — Redesigning the experience" loading="lazy" /></div>
         <div class="card-body">
-          <p class="label-serif">TBD · COMING SOON</p>
-          <h3 class="h3-med">Project six</h3>
-          <p class="body-3 desc">Placeholder — next case study slot.</p>
+          <p class="label-serif">MELIO · 2021–2024</p>
+          <h3 class="h3-med">Redesigning the experience</h3>
+          <p class="body-3 desc">From a dashboard that sat empty 80% of the time to an actionable home for payments.</p>
           <span class="link-btn">Read case study<span class="icon"><img src="assets/shared/icon-arrow-right.svg" alt="" /></span></span>
         </div>
       </a>
     </div>
   </section>
 
+  <!-- Contact -->
+  <section class="contact-anchor" id="contact" style="padding-top: var(--xxl); padding-bottom: var(--xxl);">
+    <div class="contact-section">
+      <div class="contact-content">
+        <p class="label-serif">Get in touch</p>
+        <div class="contact-body">
+          <h2 class="h2-med">Let's build something.</h2>
+          <p class="body-1 sub">Product, design systems, or a role that needs both a designer and a builder — I'd love to talk.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-plain" href="mailto:naamaabut@gmail.com"><span class="btn-icon-20"><img src="assets/shared/icon-gmail.svg" alt="" /></span>Email me</a>
+          <a class="btn btn-plain" href="https://www.linkedin.com/in/naama-abitbol-475aa8166/" target="_blank" rel="noopener"><span class="btn-icon-20"><img src="assets/shared/icon-linkedin.svg" alt="" /></span>Connect on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <div class="footer-margin" style="max-width: 1160px;">
+  <div class="footer-margin" style="max-width: 1080px;">
     <footer class="footer">
       <div class="footer-inner">
         <p>Naama Abitbol — Product Builder</p>
@@ -105,5 +122,6 @@
   </div>
 
   <script src="js/site.js"></script>
+  <script src="js/contact-glow.js"></script>
 </body>
 </html>

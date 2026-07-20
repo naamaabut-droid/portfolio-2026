@@ -140,21 +140,8 @@
         Bodies.rectangle(W - 16 + 200, H / 2, 400, H * 4, { isStatic: true }),
       ]);
 
-      // headline lines as static colliders so chips can rest on the title
+      // chips fall past the headline all the way to the floor — no text colliders
       const heroRect = hero.getBoundingClientRect();
-      document.querySelectorAll('.hero-intro .collider').forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (!r.width) return;
-        Composite.add(world, Bodies.rectangle(
-          r.left - heroRect.left + r.width / 2,
-          r.top - heroRect.top + r.height / 2 + 6,
-          Math.max(6, r.width * 0.94),
-          Math.max(10, r.height - 16),
-          { isStatic: true, friction: 0.6, restitution: 0.05 }
-        ));
-      });
-
-      // chips spawn above the hero, spread across the headline width
       const intro = document.querySelector('.hero-intro');
       const ir = intro.getBoundingClientRect();
       const left = ir.left - heroRect.left, width = ir.width;
@@ -183,6 +170,7 @@
           constraint: { stiffness: 0.2, render: { visible: false } },
         });
         // Matter hijacks the wheel — give it back to the page
+        chipsCanvas.removeEventListener('wheel', mouse.mousewheel);
         chipsCanvas.removeEventListener('mousewheel', mouse.mousewheel);
         chipsCanvas.removeEventListener('DOMMouseScroll', mouse.mousewheel);
         Composite.add(world, mc);

@@ -137,7 +137,24 @@
       "Bash(git remote *)",
       "Bash(git branch *)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -q -m 'Fix Penny jpg asset extensions; all local refs verified *)",
-      "Bash(sips -g pixelWidth -g pixelHeight imgReplaceBackground021.png)"
+      "Bash(sips -g pixelWidth -g pixelHeight imgReplaceBackground021.png)",
+      "Bash(cp \"assets/finaloop-page/prototyps/step 1.mp4\" assets/finaloop-page/finaloop-step1.mp4)",
+      "Bash(cp \"assets/finaloop-page/prototyps/step 2.mp4\" assets/finaloop-page/finaloop-step2.mp4)",
+      "Bash(cp \"assets/finaloop-page/prototyps/step 3.mp4\" assets/finaloop-page/finaloop-step3.mp4)",
+      "Bash(cp \"assets/finaloop-page/prototyps/Full flow.mp4\" assets/finaloop-page/finaloop-fullflow.mp4)",
+      "Bash(cp \"assets/finaloop-page/prototyps/duplicated invoice-1.mp4\" assets/finaloop-page/finaloop-duplicated.mp4)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(mkdir -p assets/home assets/about)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/338189ff-1600-4c93-be28-ffd67dd9fb29\" -o assets/home/profile.tmp)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/5ccc196f-27bf-46de-afaf-99f6d8d31429\" -o assets/about/review-1.tmp)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/de016147-8e82-4655-bd4f-a2aa1e02cb05\" -o assets/about/review-2.tmp)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/60d4cd95-51c2-4788-9762-f0f80840a65e\" -o assets/about/review-3.tmp)",
+      "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio/assets/about\" && rm review-*.png && ls)",
+      "Bash(python3 digest.py wixel-new.jsx)",
+      "Bash(python3 digest.py wixel-new.jsx wixel-new-digest.txt)",
+      "Bash(sips -g pixelWidth -g pixelHeight assets/melio-opt/imgHero22.png assets/melio-opt/imgHero12.png assets/melio-opt/imgHero32.png)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

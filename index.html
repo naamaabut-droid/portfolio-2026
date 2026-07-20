@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
-  <link rel="stylesheet" href="css/site.css?v=2" />
+  <link rel="stylesheet" href="css/site.css?v=3" />
 </head>
 <body>
 
@@ -24,8 +24,11 @@
     <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
 
     <div class="hero-intro">
-      <p class="h2 line-1">Hi, I’m Naama &amp; I’m a</p>
-      <h1 class="display line-2 collider">Product Builder</h1>
+      <img class="hero-profile" src="assets/home/profile.jpg" alt="Naama Abitbol" />
+      <div class="hero-lines">
+        <p class="h2 line-1">Hi, I’m Naama &amp; I’m a</p>
+        <h1 class="display line-2">Product Builder</h1>
+      </div>
     </div>
 
     <canvas id="chips-canvas" class="chips-canvas" aria-hidden="true"></canvas>
@@ -56,7 +59,7 @@
   <!-- Selected Work -->
   <section class="selected-work">
     <div class="home-bio reveal">
-      <p class="body-2">Senior Product Designer with a branding background and design systems expertise. I turn complex UX into clean, elegant products — obsessed with the details, fast without cutting corners, and puts the product's success ahead of ego. People person, animals person (three pets and counting 🐾), always leveling up.</p>
+      <p class="body-2">Senior Product Designer working across B2B/B2C SaaS — I turn complex flows into clean, scalable products, owning the work end-to-end from concept to measurable impact.</p>
     </div>
     <div class="work-content">
       <div class="work-header reveal">
@@ -65,7 +68,7 @@
       </div>
       <div class="work-cards">
         <a class="project-card reveal" href="projects/wixel.html">
-          <div class="cover"></div>
+          <div class="cover cover-shot"><img src="assets/wixel-page/imgDialog011.png" alt="Wixel — AI image editing" loading="lazy" /></div>
           <div class="card-body">
             <p class="label-serif">WIX · Mobile App · 2025</p>
             <h3 class="h3-med">Wixel — AI image editing</h3>
@@ -73,8 +76,8 @@
             <span class="link-btn">Read case study<span class="icon"><img src="assets/shared/icon-arrow-right.svg" alt="" /></span></span>
           </div>
         </a>
-        <a class="project-card reveal" href="projects/melio-redesign.html">
-          <div class="cover"></div>
+        <a class="project-card reveal" href="projects/melio-optimization.html">
+          <div class="cover cover-shot cover-phone"><img src="assets/melio-opt/imgHero22.png" alt="Melio — Mobile web redesign" loading="lazy" /></div>
           <div class="card-body">
             <p class="label-serif">Melio · Mobile Web · 2021</p>
             <h3 class="h3-med">Melio — Mobile web redesign</h3>
@@ -98,7 +101,7 @@
         </div>
         <div class="contact-actions">
           <a class="btn btn-plain" href="mailto:naamaabut@gmail.com"><span class="btn-icon-20"><img src="assets/shared/icon-gmail.svg" alt="" /></span>Email me</a>
-          <a class="btn btn-plain" href="#" data-linkedin><span class="btn-icon-20"><img src="assets/shared/icon-linkedin.svg" alt="" /></span>Connect on LinkedIn</a>
+          <a class="btn btn-plain" href="https://www.linkedin.com/in/naama-abitbol-475aa8166/" target="_blank" rel="noopener"><span class="btn-icon-20"><img src="assets/shared/icon-linkedin.svg" alt="" /></span>Connect on LinkedIn</a>
         </div>
       </div>
     </div>
@@ -117,5 +120,6 @@
   <script src="js/vendor/matter.min.js"></script>
   <script src="js/home-hero.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/contact-glow.js"></script>
 </body>
 </html>
