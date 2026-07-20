@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penny Design System — Naama Abitbol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
+  <link rel="stylesheet" href="../css/site.css?v=1" />
+  <link rel="stylesheet" href="../css/case-study.css?v=1" />
+  <style>
+    .penny-art { position: relative; height: 100%; width: 638px; max-width: none; align-self: stretch; justify-self: end; font-family: "DM Sans", sans-serif; }
+    .penny-art .layer { position: absolute; inset: 0; }
+    /* split button */
+    .p-split { position: absolute; left: 140px; top: 108px; display: flex; gap: 1px; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 24px rgba(120, 73, 255, 0.35); }
+    .p-split .main { background: #7849ff; color: #fff; display: flex; align-items: center; gap: 8px; padding: 12px 16px 12px 12px; font-size: 16px; font-weight: 600; }
+    .p-split .main .plus { width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.2); display: grid; place-items: center; font-weight: 400; font-size: 18px; line-height: 1; }
+    .p-split .caret { background: #7849ff; color: #fff; display: grid; place-items: center; padding: 8px 12px; }
+    .p-split .caret span { width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.2); display: grid; place-items: center; font-size: 10px; }
+    .p-guide { position: absolute; font-size: 7px; color: #7849ff; letter-spacing: 0; }
+    /* avatar panel */
+    .p-avatar { position: absolute; left: 373px; top: 42px; width: 220px; display: flex; flex-direction: column; gap: 10px; }
+    .p-avatar h4 { font-size: 26px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
+    .p-avatar .props { font-size: 12px; color: var(--body); margin-bottom: 2px; }
+    .p-row { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(17,17,19,0.06); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+    .p-row .k { color: var(--body); font-weight: 300; }
+    .p-row .v { color: var(--ink); font-weight: 500; }
+    /* type specimens */
+    .p-specimens { position: absolute; left: 80px; top: 205px; width: 265px; display: flex; flex-direction: column; gap: 10px; }
+    .p-spec { background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(17,17,19,0.08); padding: 18px 22px; display: flex; align-items: center; gap: 22px; }
+    .p-spec .aa-1 { font-size: 50px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); }
+    .p-spec .aa-2 { font-size: 29px; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); }
+    .p-spec .aa-3 { font-size: 18px; font-weight: 500; letter-spacing: -0.03em; color: var(--ink); }
+    .p-spec .meta { display: flex; flex-direction: column; gap: 2px; }
+    .p-spec .meta .l1 { font-size: 14px; font-weight: 300; color: var(--body); }
+    .p-spec .meta .l2 { font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -0.03em; }
+    /* color chips */
+    .p-chip { position: absolute; display: inline-flex; align-items: center; gap: 6px; background: #fff; border-radius: 6px; box-shadow: 0 2px 6px rgba(17,17,19,0.08); padding: 5px 10px 5px 5px; font-size: 11px; color: var(--ink); white-space: nowrap; }
+    .p-chip .sw { width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgba(17,17,19,0.08); }
+    /* radius circles */
+    .p-radii { position: absolute; right: 45px; bottom: 62px; display: flex; gap: 12px; }
+    .p-radii .r {
+      width: 48px; height: 48px;
+      background: rgba(255, 255, 255, 0.35);
+      display: grid; place-items: center;
+      font-size: 12px; font-weight: 500; color: var(--body);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+    }
+
+    .insight-row { display: flex; gap: var(--sm); align-items: stretch; width: 100%; }
+    .insight-card {
+      flex: 1 1 0; min-width: 1px;
+      background: var(--card); border-radius: var(--radius-s);
+      padding: var(--m) var(--ml);
+      display: flex; flex-direction: column; gap: var(--xxs); align-items: flex-start;
+      transition: transform 0.25s ease;
+    }
+    .insight-card:hover { transform: translateY(-2px); }
+    .insight-card.r-md { border-radius: var(--radius-md); }
+    .insight-card h4 { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink); }
+    .insight-card p.b { font-size: 16px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--body); }
+
+    /* quote bubbles */
+    .quotes { width: 100%; max-width: 1080px; display: flex; flex-direction: column; gap: var(--ml); }
+    .quote-row { display: flex; gap: var(--ml); align-items: center; width: 100%; }
+    .bubble {
+      position: relative;
+      flex: 1 1 0; min-width: 1px;
+      background: var(--ink);
+      color: var(--pill);
+      border-radius: 15px;
+      padding: 22px var(--sm);
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+    .bubble::after {
+      content: '';
+      position: absolute;
+      width: 21px; height: 21px;
+      background: var(--ink);
+      transform: rotate(45deg);
+      bottom: -8px;
+      left: 64%;
+    }
+    .bubble.tail-left::after { left: 18%; }
+    .bubble.tail-up::after { bottom: auto; top: -8px; }
+
+    .media-video { width: 100%; border: 1px solid var(--line); overflow: hidden; background: #fff; border-radius: var(--radius-s); }
+    .media-video img, .media-video video { width: 100%; height: auto; display: block; }
+
+    /* screens rows with spring slide */
+    .screens-band { width: 100%; overflow: hidden; padding: var(--max) 0; display: flex; flex-direction: column; gap: var(--ml); align-items: center; }
+    .screens-row { display: flex; gap: var(--ml); justify-content: center; }
+    .screens-row .sshot {
+      flex: none; width: 375px; height: 213px;
+      border: 0.5px solid var(--line); border-radius: var(--radius-xxs);
+      overflow: hidden; background: #fff;
+      transition: transform 3.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .screens-row .sshot img { width: 100%; height: 100%; object-fit: cover; }
+    .screens-band.slid .row-l .sshot { transform: translateX(-80px); }
+    .screens-band.slid .row-r .sshot { transform: translateX(80px); }
+    .screens-row .sshot:nth-child(2) { transition-delay: 0.08s; }
+    .screens-row .sshot:nth-child(3) { transition-delay: 0.16s; }
+    .screens-row .sshot:nth-child(4) { transition-delay: 0.24s; }
+
+    /* testimonials masonry */
+    .testimonials { width: 100%; max-width: 1080px; display: flex; gap: var(--ml); align-items: flex-start; justify-content: center; }
+    .t-col { display: flex; flex-direction: column; gap: var(--max); }
+    .t-item { display: flex; flex-direction: column; gap: var(--sm); width: 320px; }
+    .t-item img { width: 320px; border-radius: var(--radius-s); }
+    .t-item.bordered img { border: 1px solid var(--line); }
+    .t-cap { font-size: 12px; line-height: 1.4; color: var(--body); }
+    .t-cap b { font-weight: 500; color: var(--ink); }
+
+    .knowledge-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--ml); width: 100%; max-width: 984px; }
+    .k-cell { display: flex; flex-direction: column; gap: var(--sm); align-items: center; }
+    .k-cell .k-img { border: 1px solid var(--line); border-radius: var(--radius-xs); overflow: hidden; width: 100%; }
+    .k-cell .k-img img { width: 100%; display: block; }
+    .k-cell .k-label { font-size: 12px; color: var(--body); line-height: 1.4; }
+
+    @media (max-width: 1100px) {
+      .penny-art { display: none; }
+      .insight-row, .quote-row, .testimonials { flex-direction: column; }
+      .quote-row .bubble { width: 100%; }
+      .knowledge-grid { grid-template-columns: 1fr; }
+      .screens-row { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="page-nav" href="../case-studies.html">
+    <span class="btn-icon-40"><img src="../assets/penny-page/imgIcon.svg" alt="" /></span>
+    <span class="tab-label tab">Back to Projects</span>
+  </a>
+
+  <!-- Header -->
+  <header class="cs-hero">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="cs-hero-grid">
+      <div class="cs-hero-copy">
+        <h1 class="h1">Penny Design System</h1>
+        <p class="h3 subtitle">Creating a Single Source of Truth for Melio products</p>
+        <div class="cs-hero-tags">
+          <span class="tag">Melio</span>
+          <span class="tag">Product Designer</span>
+          <span class="tag">Project owner</span>
+          <span class="tag">Design System</span>
+          <span class="tag">Desktop &amp; Mobile</span>
+          <span class="tag">2022</span>
+        </div>
+      </div>
+      <div class="cs-hero-art penny-art">
+        <div class="layer rise-2">
+          <div class="float-b" style="position:absolute; inset:0;">
+            <div class="p-avatar">
+              <h4>Avatar</h4>
+              <p class="props">Properties</p>
+              <div class="p-row"><span class="k">Style</span><span class="v">Circle</span></div>
+              <div class="p-row"><span class="k">Size</span><span class="v">24px</span></div>
+              <div class="p-row"><span class="k">Type</span><span class="v">Initial</span></div>
+            </div>
+            <span class="p-chip" style="left:398px; top:292px;"><span class="sw" style="background:#f5a623;"></span>colors/warning/700</span>
+            <span class="p-chip" style="left:428px; top:326px;"><span class="sw" style="background:#6a35ff;"></span>colors/action/primary/rest</span>
+            <span class="p-chip" style="left:404px; top:360px;"><span class="sw" style="background:#fff;"></span>colors/text/inverse</span>
+            <div class="p-radii">
+              <span class="r" style="border-radius:8px;">s</span>
+              <span class="r" style="border-radius:16px;">m</span>
+              <span class="r" style="border-radius:20px;">ml</span>
+              <span class="r" style="border-radius:999px;">full</span>
+            </div>
+          </div>
+        </div>
+        <div class="layer rise-1">
+          <div class="float-a" style="position:absolute; inset:0;">
+            <div class="p-split">
+              <span class="main"><span class="plus">+</span>Label</span>
+              <span class="caret"><span>▾</span></span>
+            </div>
+            <span class="p-guide" style="left:142px; top:94px;">xs</span>
+            <span class="p-guide" style="left:178px; top:94px;">xs</span>
+            <span class="p-guide" style="left:236px; top:94px;">s</span>
+            <span class="p-guide" style="left:258px; top:88px; text-align:right;">Fixed size:<br />48px</span>
+            <span class="p-guide" style="left:305px; top:126px;">Fixed size:<br />48px</span>
+            <span class="p-guide" style="left:148px; top:158px;">xxs</span>
+            <div class="p-specimens">
+              <div class="p-spec"><span class="aa-1">Aa</span><span class="meta"><span class="l1">Text Style</span><span class="l2">Heading 1 Semi</span></span></div>
+              <div class="p-spec"><span class="aa-2">Aa</span><span class="meta"><span class="l1">Text Style</span><span class="l2">Body 1 Regular</span></span></div>
+              <div class="p-spec"><span class="aa-3">Aa</span><span class="meta"><span class="l1">Text Style</span><span class="l2">Label Medium</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="cs-container">
+    <div class="cs-inner">
+
+      <!-- TL;DR -->
+      <section class="tldr narrow reveal">
+        <h2 class="h2-med">TL;DR</h2>
+        <div class="tldr-bullets">
+          <div class="tldr-bullet">
+            <p class="label-serif">The problem</p>
+            <p class="txt">Designers stopped trusting the system — defective components, missing documentation, and outdated libraries slowed every team.</p>
+          </div>
+          <div class="tldr-bullet">
+            <p class="label-serif">The work</p>
+            <p class="txt">Rebuilt the foundations, audited components into reusable atoms, documented everything in Figma and Storybook, and set up cross-team workflows.</p>
+          </div>
+          <div class="tldr-bullet">
+            <p class="label-serif">The outcome</p>
+            <p class="txt">Faster design and dev cycles, fewer detached components, and a system solid enough to ship to partners as a standalone product.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Overview</p>
+        <p class="body-2 txt-ink">Melio is an accounts payable platform for small businesses, processing $20B annually. Behind that scale sits Penny — Melio's design system. We made it the single source of truth for design and development — fixing usability issues and system bugs, refining guidelines, and unifying the component library across Figma and Storybook. The result: faster work, fewer detached components, more team autonomy — and a system strong enough to ship to partners as a standalone product.</p>
+      </section>
+
+      <!-- My Role -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--xxl);">
+        <p class="label-serif" style="width:100%;">My Role</p>
+        <p class="body-2 txt-ink">Partnering with a design manager and 6 developers, I led cross-platform standardization for desktop and mobile, serving as the gatekeeper for design system consistency across all teams. My responsibilities included:</p>
+        <div class="cs-list">
+          <div class="cs-bullet"><p class="marker">•</p><p>Led strategic design and product decisions, aligned with business goals and deadlines.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Collaborated with cross-functional teams on Melio's native and white-label platforms.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Conducted design reviews to maintain consistency and quality.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Worked closely with PMs to define requirements and strategic goals.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Resolved issues and kept communication smooth, internally and externally.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Ran design and user research to ground solutions in real user and business needs.</p></div>
+        </div>
+      </section>
+
+      <!-- Highlight -->
+      <section class="narrow reveal" style="padding:var(--xxl) 0 var(--max); display:flex; align-items:center; justify-content:center;">
+        <p class="h1" style="width:100%; letter-spacing:-0.03em;">Designers stopped trusting the system, so they stopped using it.</p>
+      </section>
+
+      <!-- The result -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--max);">
+        <p class="label-serif" style="width:100%;">The result</p>
+        <p class="body-2 txt-ink">Inconsistent designs across teams, friction in collaboration with developers, and a slower workflow.</p>
+      </section>
+
+      <!-- Research -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+        <div class="sec sec-gap-16" style="width:100%;">
+          <p class="label-serif" style="width:100%;">Research</p>
+          <p class="body-2 txt-ink">Our user base spans 8 teams, with designers as the primary users. We collected feedback from stakeholders and peers to identify the key pain points:</p>
+        </div>
+        <div style="width:100%; display:flex; flex-direction:column; gap:var(--sm);">
+          <div class="insight-row">
+            <div class="insight-card">
+              <p class="label-serif">01</p>
+              <h4>No single source of truth</h4>
+              <p class="b">Poor visibility and documentation in Figma and Storybook led to inconsistency and confusion.</p>
+            </div>
+            <div class="insight-card">
+              <p class="label-serif">02</p>
+              <h4>Technical issues and limitations</h4>
+              <p class="b">Defective components caused delays and eroded trust, requiring frequent fixes.</p>
+            </div>
+          </div>
+          <div class="insight-row">
+            <div class="insight-card">
+              <p class="label-serif">03</p>
+              <h4>Open access to outdated libraries</h4>
+              <p class="b">Unrestricted entry to old libraries caused redundant work and confusion.</p>
+            </div>
+            <div class="insight-card">
+              <p class="label-serif">04</p>
+              <h4>Developer-centric design library</h4>
+              <p class="b">Prioritizing developers over designers hindered workflow and efficiency.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quotes -->
+      <section class="quotes reveal" style="padding-bottom:var(--max);">
+        <div class="quote-row">
+          <p class="bubble">“I’m not sure which components are available”</p>
+          <p class="bubble tail-left">“I can’t be independent in the process, don’t want to reach the team for every question”</p>
+        </div>
+        <div class="quote-row">
+          <p class="bubble tail-up">”The components are not consistent with production”</p>
+          <p class="bubble">“Some components are missing edge cases”</p>
+        </div>
+        <div class="quote-row">
+          <p class="bubble tail-left">“The old libraries are still available and i’m not sure if i’m selecting the right option”</p>
+          <p class="bubble tail-up">“It’s hard to understand how to use the components”</p>
+        </div>
+      </section>
+
+      <!-- Our Goals -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+        <p class="label-serif" style="width:100%;">Our Goals</p>
+        <div class="insight-row">
+          <div class="insight-card r-md">
+            <p class="label-serif">01</p>
+            <h4>Solid infrastructure</h4>
+            <p class="b">Enhance the design system's infrastructure and improve component quality.</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">02</p>
+            <h4>Trust by default</h4>
+            <p class="b">Establish trust, so designers and developers rely on the system.</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">03</p>
+            <h4>Autonomous teams</h4>
+            <p class="b">Boost team autonomy and streamline development processes.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Assumption -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max);">
+        <p class="label-serif" style="width:100%;">Core Assumption</p>
+        <p class="body-2 txt-ink">A unified design system will build team trust — faster work, better collaboration, higher efficiency.</p>
+        <div class="sec" style="width:100%; gap:var(--xs);">
+          <p class="body-2 txt-ink">What would success look like?</p>
+          <div class="cs-list">
+            <div class="cs-bullet"><p class="marker">•</p><p>Designers use components more — without detaching them.</p></div>
+            <div class="cs-bullet"><p class="marker">•</p><p>Development moves faster, producing new features efficiently.</p></div>
+          </div>
+        </div>
+        <p class="body-2 txt-ink">The team vision was clear: give our users — designers and developers — the most efficient environment to design and code in, focused on speed, quality, and ease of use.</p>
+      </section>
+
+      <!-- The Challange -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+        <p class="label-serif" style="width:100%;">The Challange</p>
+        <div class="insight-row">
+          <div class="insight-card r-md">
+            <p class="label-serif">01</p>
+            <h4>Scale without breaking trust</h4>
+            <p class="b">Establish trust in the system and scale component usage — without compromising quality and performance over time</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">02</p>
+            <h4>Autonomy, not dependency</h4>
+            <p class="b">Empower designers and developers to work autonomously, reducing their reliance on the design system team.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Execution: Foundations -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--xxl);">
+        <p class="label-serif" style="width:100%;">Execution</p>
+        <h2 class="h2-med">Foundations that hold up</h2>
+        <p class="body-2 txt-ink">We redesigned the foundations library with a focus on accessibility and readability — refining font sizes and styles, improving the color palette, and running contrast testing.</p>
+      </section>
+
+      <!-- Color contrast (white card) -->
+      <section class="case-card wide reveal" style="background:var(--ground);">
+        <p class="body-3-med" style="color:var(--ink);">Color contrast</p>
+        <img src="../assets/penny-page/imgContrast1.png" alt="" style="width:100%; aspect-ratio:3241/1592; object-fit:cover;" class="lb" />
+        <div style="display:flex; gap:var(--ml); width:100%;">
+          <div style="flex:1; display:flex; flex-direction:column; gap:var(--s);">
+            <p class="body-3-med" style="color:var(--ink);">Old</p>
+            <img src="../assets/penny-page/imgOld1.png" alt="" style="width:100%; aspect-ratio:1496/1022; object-fit:cover;" class="lb" />
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; gap:var(--s);">
+            <p class="body-3-med" style="color:var(--ink);">New</p>
+            <img src="../assets/penny-page/imgNew1.png" alt="" style="width:100%; aspect-ratio:1496/1022; object-fit:cover;" class="lb" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Execution: Atoms -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution</p>
+        <h2 class="h2-med">Atoms before organisms</h2>
+        <p class="body-2 txt-ink">We audited existing components to build reusable atoms, mapping all edge cases and zero states. This established consistent patterns, eliminated duplication, and secured a strong groundwork for the system.</p>
+      </section>
+
+      <section class="wide reveal" style="display:flex; flex-direction:column; gap:var(--ml); align-items:center;">
+        <img src="../assets/penny-page/imgComponents1.png" alt="" style="width:100%; aspect-ratio:3130/1931; object-fit:cover; border-radius:var(--radius-xl);" class="lb" />
+        <div class="case-card" style="width:100%;">
+          <div style="display:flex; gap:var(--ml); width:100%;">
+            <div class="media-video" data-video="penny-nested-a" style="flex:1; aspect-ratio:528/351;"><img src="../assets/penny-page/video-nested-a.png" alt="" class="lb" /></div>
+            <div class="media-video" data-video="penny-nested-b" style="flex:1; aspect-ratio:528/351;"><img src="../assets/penny-page/video-nested-b.png" alt="" class="lb" /></div>
+          </div>
+          <div class="card-caption">
+            <p style="font-weight:500;">Nested Components</p>
+            <p class="dim">Click to enlarge.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Execution: Storybook -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution</p>
+        <h2 class="h2-med">One truth, in Figma and Storybook</h2>
+        <p class="body-2 txt-ink">We developed a Storybook library mirroring the design system's capabilities in Figma to ensure alignment with production, with detailed documentation for each component — explicit guidelines, definitions, and best practices for designers and developers.</p>
+      </section>
+
+      <section class="wide reveal" style="display:flex; flex-direction:column; gap:var(--ml); align-items:center;">
+        <div style="display:flex; gap:13px; width:100%; align-items:flex-start;">
+          <img src="../assets/penny-page/imgImage.png" alt="" style="flex:1; min-width:1px; aspect-ratio:406/679; object-fit:cover;" class="lb" />
+          <img src="../assets/penny-page/imgImage1.png" alt="" style="flex:1; min-width:1px; aspect-ratio:406/661; object-fit:cover;" class="lb" />
+          <img src="../assets/penny-page/imgFrame1261152539.png" alt="" style="flex:1; min-width:1px; aspect-ratio:406/750; object-fit:cover;" class="lb" />
+        </div>
+        <div class="card-caption" style="color:var(--body); font-size:12px; display:flex; flex-direction:column; gap:var(--3xs); align-items:center;">
+          <p style="font-weight:500;">Design Specs For Developers</p>
+          <p style="opacity:0.65;">Click any screen to enlarge.</p>
+        </div>
+      </section>
+
+      <section class="case-card wide reveal" style="margin-top:var(--xxl);">
+        <div style="position:relative; width:100%; height:392px;">
+          <div style="position:absolute; right:0; bottom:0; width:60.4%; border:1px solid var(--line); border-radius:var(--radius-s); overflow:hidden;"><img src="../assets/penny-page/imgImage2.png" alt="" class="lb" /></div>
+          <div style="position:absolute; left:0; top:0; width:60.4%; border:1px solid var(--line); border-radius:var(--radius-s); overflow:hidden; box-shadow:var(--shadow-card);"><img src="../assets/penny-page/imgImage3.png" alt="" class="lb" /></div>
+        </div>
+        <div class="card-caption">
+          <p style="font-weight:500;">Storybook</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+      </section>
+
+      <!-- Execution/01 responsive -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/01</p>
+        <h2 class="h2-med">Every screen size, one system</h2>
+        <p class="body-2 txt-ink">We created mobile-optimized component versions and defined responsive behavior for seamless compatibility across screen sizes and devices.</p>
+      </section>
+
+      <section class="case-card wide reveal">
+        <div class="media-video" data-video="penny-responsive" style="aspect-ratio:1264/460;"><img src="../assets/penny-page/video-responsive.png" alt="" class="lb" /></div>
+        <div class="card-caption">
+          <p style="font-weight:500;">Responsive Components and adaptation to mobile</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+      </section>
+
+      <!-- Execution/02 page components -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/02</p>
+        <h2 class="h2-med">A flow from scratch, in minutes</h2>
+        <p class="body-2 txt-ink">We set up a library of page components and flow screens to streamline the design process — enabling designers to spin up a flow from scratch quickly and efficiently.</p>
+      </section>
+
+      <section class="case-card wide reveal">
+        <div class="media-video" data-video="penny-pagecomponents" style="aspect-ratio:1264/633;"><img src="../assets/penny-page/video-pagecomponents.png" alt="" class="lb" /></div>
+        <div class="card-caption">
+          <p style="font-weight:500;">Dashboard Page Component</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Screens band (full bleed, spring slide) -->
+    <div class="screens-band" id="screens-band">
+      <div class="screens-row row-l">
+        <div class="sshot"><img src="../assets/penny-page/imgAccountantsTeam.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgPayDashboard.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgSettingsProfileInformation.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgVendorExperience.png" alt="" class="lb" /></div>
+      </div>
+      <div class="screens-row row-r">
+        <div class="sshot"><img src="../assets/penny-page/imgAddABillManually.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgWizardStepAddPaymentMethod.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgWizardStepCalander.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgAddABillUploadFile.png" alt="" class="lb" /></div>
+      </div>
+      <div class="screens-row row-l">
+        <div class="sshot"><img src="../assets/penny-page/imgMultiCompanyDashboard.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgBatchPayment.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgWizardStepAddDeliveryMethod.png" alt="" class="lb" /></div>
+        <div class="sshot"><img src="../assets/penny-page/imgWizardStepReviewAndConfirm.png" alt="" class="lb" /></div>
+      </div>
+      <div class="card-caption" style="color:var(--body); font-size:12px; display:flex; flex-direction:column; gap:var(--3xs); align-items:center;">
+        <p style="font-weight:500;">Pages Component</p>
+        <p style="opacity:0.65;">Click any page to enlarge.</p>
+      </div>
+    </div>
+
+    <div class="cs-inner" style="padding-top:var(--ml);">
+
+      <!-- Execution/03 knowledge -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--xxl);">
+        <p class="label-serif" style="width:100%;">Execution/03</p>
+        <h2 class="h2-med">Self-serve knowledge</h2>
+        <p class="body-2 txt-ink">We built resource libraries in Notion with easy access for designers, promoting collaboration and continuous learning — and keeping the design library transparent and aligned with each component's development stage.</p>
+      </section>
+
+      <section class="case-card wide reveal" style="align-items:center;">
+        <div class="card-caption">
+          <p style="font-weight:500;">Knowledge Base</p>
+          <p class="dim">Click any screen to enlarge.</p>
+        </div>
+        <div class="knowledge-grid">
+          <div class="k-cell">
+            <div class="k-img"><img src="../assets/penny-page/imgPhoto20240502152400.png" alt="" class="lb" /></div>
+            <p class="k-label">Knowledge center</p>
+          </div>
+          <div class="k-cell">
+            <div class="k-img"><img src="../assets/penny-page/imgFrame734093818.png" alt="" class="lb" /></div>
+            <p class="k-label">Penny DS - Resources</p>
+          </div>
+          <div class="k-cell">
+            <div class="k-img"><img src="../assets/penny-page/imgPhoto20240501211913.png" alt="" class="lb" /></div>
+            <p class="k-label">Components tutorials</p>
+          </div>
+          <div class="k-cell">
+            <div class="k-img"><img src="../assets/penny-page/imgFrame734093819.png" alt="" class="lb" /></div>
+            <p class="k-label">Libraries Contents Overview</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Execution/04 workflows -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/04</p>
+        <h2 class="h2-med">Workflows instead of DMs</h2>
+        <p class="body-2 txt-ink">To streamline collaboration, we established structured workflows for component requests, updates, and asset introduction — backed by dedicated feedback channels and regular cross-team kick-offs for continuous alignment and support through every planning and development stage.</p>
+      </section>
+
+      <section class="case-card wide reveal" style="align-items:center;">
+        <div class="card-caption">
+          <p style="font-weight:500;">Slack Channels</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+        <div style="display:flex; gap:var(--ml); width:100%; align-items:flex-start;">
+          <div style="flex:1; border:1px solid var(--line); border-radius:var(--radius-xs); overflow:hidden;"><img src="../assets/penny-page/imgPhoto20240512120426.png" alt="" class="lb" /></div>
+          <div style="flex:1; border:1px solid var(--line); border-radius:var(--radius-xs); overflow:hidden;"><img src="../assets/penny-page/imgPhoto202405121204262.png" alt="" class="lb" /></div>
+        </div>
+      </section>
+
+      <!-- What we accomplished -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">What we accomplished</p>
+        <h2 class="h2-med">Trust, restored</h2>
+        <p class="body-2 txt-ink">We boosted efficiency, collaboration, and autonomy — contributing to the product's success and to the company's growth as a standalone offering for partners.</p>
+        <div class="cs-list gap-8">
+          <div class="cs-bullet"><p class="marker">•</p><p>Dramatic improvement in designers' and developers' work times.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Fewer components detached by designers.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Fewer inquiries, thanks to clear and accessible knowledge.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p>Increased use of atomic components for independent team work.</p></div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials reveal" style="padding-bottom:var(--max);">
+        <div class="t-col">
+          <div class="t-item">
+            <img src="../assets/penny-page/imgMaylee1.png" alt="" class="lb" />
+            <p class="t-cap"><b>Maylee Nissanov</b> · Product Designer</p>
+          </div>
+        </div>
+        <div class="t-col">
+          <div class="t-item">
+            <img src="../assets/penny-page/imgAdi1.png" alt="" class="lb" />
+            <p class="t-cap"><b>Adi Aloni</b> · Product Design Manager</p>
+          </div>
+          <div class="t-item bordered">
+            <img src="../assets/penny-page/imgMoran1.png" alt="" class="lb" />
+            <p class="t-cap"><b>Moran Baraki</b> · Senior Product Designer</p>
+          </div>
+        </div>
+        <div class="t-col">
+          <div class="t-item bordered">
+            <img src="../assets/penny-page/imgReut1.png" alt="" class="lb" />
+            <p class="t-cap"><b>Reut Savir</b> · Engineering Team Lead</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Back to top -->
+      <a class="btn back-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back To Top<span class="btn-icon arrow-nudge"><img src="../assets/shared/icon-arrow-right.svg" alt="" style="transform:rotate(-90deg);" /></span></a>
+
+      <!-- Discover more -->
+      <section class="discover reveal">
+        <h2 class="h3-med">Discover More</h2>
+        <div class="cards">
+          <a class="project-card" href="wixel.html">
+            <div class="cover"></div>
+            <div class="card-body">
+              <p class="label-serif">WIX · Mobile App · 2025</p>
+              <h3 class="h3-med">Wixel — AI image editing</h3>
+              <p class="body-3 desc">The full mobile flow for AI background replacement — 64 screens, one design sprint.</p>
+              <span class="link-btn">Read case study<span class="icon"><img src="../assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+            </div>
+          </a>
+          <a class="project-card" href="melio-redesign.html">
+            <div class="cover"></div>
+            <div class="card-body">
+              <p class="label-serif">MELIO · 2021–2024</p>
+              <h3 class="h3-med">Melio — Mobile web redesign</h3>
+              <p class="body-3 desc">A complete mobile experience strategy that lifted conversion from 6% to 14%.</p>
+              <span class="link-btn">Read case study<span class="icon"><img src="../assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <div class="footer-margin cs-footer-margin">
+        <footer class="footer">
+          <div class="footer-inner">
+            <p>Naama Abitbol — Product Builder</p>
+            <p>Melio · Penny Design System</p>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox"><img src="" alt="" /></div>
+
+  <script src="../js/cs-hero.js"></script>
+  <script src="../js/site.js"></script>
+  <script>
+    // spring slide of the screens band when it enters the viewport
+    (() => {
+      const band = document.getElementById('screens-band');
+      if (!band) return;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      new IntersectionObserver((es, io) => {
+        if (es[0].isIntersecting) { band.classList.add('slid'); io.disconnect(); }
+      }, { threshold: 0.25 }).observe(band);
+    })();
+
+    // video slots — drop MP4s named assets/penny-page/<name>.mp4 to activate
+    document.querySelectorAll('.media-video[data-video]').forEach((slot) => {
+      const src = `../assets/penny-page/${slot.dataset.video}.mp4`;
+      fetch(src, { method: 'HEAD' }).then((r) => {
+        if (!r.ok) return;
+        const v = document.createElement('video');
+        v.src = src; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+        slot.replaceChildren(v);
+      }).catch(() => {});
+    });
+
+    (() => {
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = lightbox.querySelector('img');
+      document.querySelectorAll('.lb').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => { lbImg.src = img.src; lightbox.classList.add('open'); });
+      });
+      lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+    })();
+  </script>
+</body>
+</html>
