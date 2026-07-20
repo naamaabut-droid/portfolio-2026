@@ -92,7 +92,22 @@
       "Bash(curl -s -o finals-bills.png \"https://www.figma.com/api/mcp/asset/20b02908-c9dd-4871-bf52-372532507b47\")",
       "Bash(curl -s -o finals-vendors.png \"https://www.figma.com/api/mcp/asset/e1fac307-4b76-4f14-931d-34b16ad80dc2\")",
       "Bash(file finals-*.png)",
-      "Bash(curl -sL -o /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/melio-hero-figma.png https://www.figma.com/api/mcp/asset/ac6f6a98-b672-4eef-ac6f-c31ee4ade045)"
+      "Bash(curl -sL -o /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/melio-hero-figma.png https://www.figma.com/api/mcp/asset/ac6f6a98-b672-4eef-ac6f-c31ee4ade045)",
+      "Bash(jq -r .[0].text /Users/naamaabitbol/.claude/projects/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/tool-results/mcp-44c37364-dfd3-4eb8-ab75-c8fac9fe32b8-get_design_context-1784574123588.txt)",
+      "Bash(python3 digest.py finaloop.jsx)",
+      "Bash(awk -F: '{ if \\($1+0 >= 656\\) print }' finaloop-digest.txt)",
+      "mcp__44c37364-dfd3-4eb8-ab75-c8fac9fe32b8__export_video",
+      "Bash(curl -s -o video-step1.png \"https://www.figma.com/api/mcp/asset/d4821501-e0cb-47ef-a25f-62ae684306ec\")",
+      "Bash(curl -s -o video-step2.png \"https://www.figma.com/api/mcp/asset/6f46ca0e-c0d1-4cae-a274-37313e973e83\")",
+      "Bash(curl -s -o video-step3.png \"https://www.figma.com/api/mcp/asset/ac96c0fd-32e9-4045-9117-84f42c7d68df\")",
+      "Bash(awk '{print $9, $5}')",
+      "Bash(curl -s -o video-fullflow.png \"https://www.figma.com/api/mcp/asset/c19e4dbb-bac8-442f-98b3-ab966b50d441\")",
+      "Bash(curl -s -o video-duplicated.png \"https://www.figma.com/api/mcp/asset/66dc8325-e6f7-4093-b4c9-3d3a9a8c037e\")",
+      "Bash(curl -s -o video-errors.png \"https://www.figma.com/api/mcp/asset/0b601e1f-7887-4b2a-b272-e05fad01c256\")",
+      "Bash(curl -s -o video-bulkedit.png \"https://www.figma.com/api/mcp/asset/f8b5260a-9e45-4730-94da-88bf54b39d39\")",
+      "Bash(curl -s -o video-addinvoices.png \"https://www.figma.com/api/mcp/asset/396338bf-0c5b-47be-8c14-fa78d3ca0142\")",
+      "Bash(curl -s -o video-lineitem.png \"https://www.figma.com/api/mcp/asset/452bc222-7734-4b55-bbbd-306670706b66\")",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -q -m 'Finaloop Bulk Invoice Upload page 1:1 from Figma 210:32983 \\(video posters, MP4 slots ready\\) *)"
     ]
   }
 }

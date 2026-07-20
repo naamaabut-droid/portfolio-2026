@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finaloop — Bulk Invoice Upload — Naama Abitbol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
+  <link rel="stylesheet" href="../css/site.css?v=1" />
+  <link rel="stylesheet" href="../css/case-study.css?v=1" />
+  <style>
+    .fin-art { position: relative; width: 609px; max-width: 100%; height: 100%; align-self: stretch; justify-self: start; }
+    .fin-art .shot-a {
+      position: absolute; left: 0; top: 45.8px;
+      width: 468px; height: 266.5px;
+      border: 0.75px solid var(--line);
+      border-radius: var(--radius-xs);
+      overflow: hidden; background: #fff;
+    }
+    .fin-art .shot-b {
+      position: absolute; left: 171px; bottom: 31px;
+      width: 468px; height: 266.5px;
+      border: 0.75px solid var(--line);
+      border-radius: var(--radius-xs);
+      box-shadow: 0 34px 60px rgba(30, 25, 60, 0.25), 0 6px 14px rgba(30, 25, 60, 0.10);
+      overflow: hidden; background: #fff;
+    }
+    .fin-art img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* pattern inspirations composite */
+    .patterns-stage { position: relative; width: 886px; max-width: 100%; aspect-ratio: 886 / 555; margin: 0 auto; }
+    .patterns-stage .pimg { position: absolute; border: 0.75px solid var(--line); border-radius: var(--radius-xs); overflow: hidden; background: #fff; }
+    .patterns-stage .pimg img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* video slots (posters until the original MP4s are provided) */
+    .media-video { width: 100%; border: 1px solid var(--line); overflow: hidden; background: #fff; }
+    .media-video img, .media-video video { width: 100%; height: auto; display: block; }
+
+    .edge-pair { display: flex; gap: var(--sm); align-items: flex-start; width: 100%; }
+    .edge-pair .col { flex: 1 1 0; min-width: 1px; display: flex; flex-direction: column; gap: var(--s); }
+    .edge-pair .cap14 { font-size: 14px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
+
+    .features-row { display: flex; gap: var(--sm); align-items: flex-start; width: 100%; overflow-x: auto; }
+    .features-row .col { flex: none; width: 520px; display: flex; flex-direction: column; gap: var(--s); }
+
+    .insight-row { display: flex; gap: var(--sm); align-items: stretch; width: 100%; }
+    .insight-card {
+      flex: 1 1 0; min-width: 1px;
+      background: var(--card); border-radius: var(--radius-s);
+      padding: var(--m) var(--ml);
+      display: flex; flex-direction: column; gap: var(--xxs); align-items: flex-start;
+      transition: transform 0.25s ease;
+    }
+    .insight-card:hover { transform: translateY(-2px); }
+    .insight-card.r-md { border-radius: var(--radius-md); }
+    .insight-card h4 { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink); }
+    .insight-card p.b { font-size: 16px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--body); }
+
+    @media (max-width: 1100px) {
+      .fin-art { display: none; }
+      .insight-row, .edge-pair { flex-direction: column; }
+      .features-row .col { width: 80%; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="page-nav" href="../case-studies.html">
+    <span class="btn-icon-40"><img src="../assets/finaloop-page/imgIcon.svg" alt="" /></span>
+    <span class="tab-label tab">Back to Projects</span>
+  </a>
+
+  <!-- Header -->
+  <header class="cs-hero">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="cs-hero-grid">
+      <div class="cs-hero-copy" style="width:480px;">
+        <h1 class="h1">Finaloop<br />Bulk Invoice Upload</h1>
+        <p class="h3 subtitle">Turning manual invoice entry into an AI-powered self-serve flow</p>
+        <div class="cs-hero-tags">
+          <span class="tag">Finaloop</span>
+          <span class="tag">Product Designer</span>
+          <span class="tag">Project owner</span>
+          <span class="tag">AI Automation</span>
+          <span class="tag">Web SaaS</span>
+          <span class="tag">2024</span>
+        </div>
+      </div>
+      <div class="cs-hero-art fin-art">
+        <div class="shot-a rise-1"><img src="../assets/finaloop-page/img04FinishEditing1.png" alt="" /></div>
+        <div class="shot-b rise-3"><div class="float-a" style="height:100%;"><img src="../assets/finaloop-page/img06ImportedSuccessfully1.png" alt="" /></div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="cs-container">
+    <div class="cs-inner" style="padding-bottom:0;">
+
+      <!-- TL;DR -->
+      <section class="tldr narrow reveal">
+        <h2 class="h2-med">TL;DR</h2>
+        <div class="tldr-bullets">
+          <div class="tldr-bullet">
+            <p class="label-serif">The problem</p>
+            <p class="txt">Invoices were entered one by one — a model that couldn't scale, blocking high-volume brands and burning ~25 Ops hours a month.</p>
+          </div>
+          <div class="tldr-bullet">
+            <p class="label-serif">The Goals</p>
+            <p class="txt">~80% less Ops workload, +5% onboarding boost for high-volume accounts, and 60% bulk adoption for recurring invoices.</p>
+          </div>
+          <div class="tldr-bullet">
+            <p class="label-serif">The work</p>
+            <p class="txt">An AI-powered bulk flow: drag-and-drop import, AI product matching, and a review grid with validation flags and bulk editing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Overview</p>
+        <p class="body-2 txt-ink">Finaloop is a real-time accounting platform for e-commerce merchants — automating up to 90% of bookkeeping by connecting directly to sales channels and banks. In this project I designed the platform's AI-powered bulk invoice upload: a self-serve flow for importing, matching, and reviewing large invoice datasets.</p>
+      </section>
+
+      <!-- Pain points -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--xxl);">
+        <p class="label-serif" style="width:100%;">Pain points</p>
+        <p class="body-2 txt-ink">Originally, invoices were entered manually one by one. This single-entry model failed to scale upmarket, blocking high-tier conversion — across three key areas:</p>
+        <div class="cs-list">
+          <div class="cs-bullet"><p class="marker">•</p><p><span class="med-ink">User friction: </span>active users spent hours on manual entry, driving 30+ CSV-upload feature requests in a single month.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p><span class="med-ink">Market expansion: </span>high-volume B2B brands couldn't migrate historical invoice data — EDI-dependent brands couldn't onboard at all.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p><span class="med-ink">Industry risk:</span> manual entry at scale is error-prone, with benchmarks showing a 39% error rate (Ardent Partners, 2024).</p></div>
+        </div>
+      </section>
+
+      <!-- Highlight -->
+      <section class="narrow reveal" style="padding:var(--ml) 0 var(--max); display:flex; align-items:center; justify-content:center;">
+        <p class="h1" style="width:100%;">Ops was processing invoices by hand, just to keep accounts active.</p>
+      </section>
+
+      <!-- The cost -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--max);">
+        <p class="label-serif" style="width:100%;">The cost</p>
+        <p class="body-2 txt-ink">~30 managed accounts, 1,000 invoices and ~25 hours of manual Ops work every month — on 3 employees.</p>
+      </section>
+
+      <!-- Discovery -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+        <div class="sec sec-gap-16" style="width:100%;">
+          <p class="label-serif" style="width:100%;">Discovery</p>
+          <p class="body-2 txt-ink">I mapped how e-commerce operators manage large data volumes today, how automation earns trust in financial workflows, and how to move high-volume users from internal support to a self-serve flow they actually want to use.</p>
+        </div>
+        <div style="width:100%; display:flex; flex-direction:column; gap:var(--sm);">
+          <div class="insight-row">
+            <div class="insight-card">
+              <p class="label-serif">01</p>
+              <h4>Delegation is a product failure</h4>
+              <p class="b">When users hand off to an internal Ops team, the product has given them no other option.</p>
+            </div>
+            <div class="insight-card">
+              <p class="label-serif">02</p>
+              <h4>From data input to data verification</h4>
+              <p class="b">AI extraction shifts the job to auditing — a scannable grid with inline editing, not a form.</p>
+            </div>
+          </div>
+          <div class="insight-card">
+            <p class="label-serif">03</p>
+            <h4>Volume changes the user's role</h4>
+            <p class="b">A form works at 5 invoices; at 50 it's the wrong tool. High volume turns data entry into data review — calling for a scannable grid where users filter, correct and confirm, instead of typing field by field.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- KPIs -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+        <p class="label-serif" style="width:100%;">KPIs</p>
+        <div class="insight-row">
+          <div class="insight-card r-md">
+            <p class="label-serif">01</p>
+            <h4>~80% less Ops work</h4>
+            <p class="b">Saving ~25 hours a month via self-service invoice entry.</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">02</p>
+            <h4>+5% onboarding boost</h4>
+            <p class="b">Unblocking registration for high-volume accounts.</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">03</p>
+            <h4>60% bulk adoption</h4>
+            <p class="b">Target workflow rate for recurring invoices.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Assumption -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max);">
+        <p class="label-serif" style="width:100%;">Core Assumption</p>
+        <p class="body-2 txt-ink">In financial workflows, trust comes from control and real-time validation — not promises of accuracy.</p>
+        <div class="sec" style="width:100%; gap:var(--xs);">
+          <p class="body-2 txt-ink">Design constraints:</p>
+          <div class="cs-list">
+            <div class="cs-bullet"><p class="marker">•</p><p>No financial impact until explicit user confirmation — validation issues are flagged for correction before anything posts to the books.</p></div>
+            <div class="cs-bullet"><p class="marker">•</p><p>The system must absorb AI extraction failures across large uploads without cognitive overload.</p></div>
+          </div>
+        </div>
+        <p class="body-2 txt-ink"><span class="med-ink">The objective:</span> an AI-powered bulk upload and review experience that lets users process large datasets independently — shifting Ops from manual work to high-level oversight.</p>
+      </section>
+
+      <!-- The Challenge -->
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+        <p class="label-serif" style="width:100%;">The Challenge</p>
+        <div class="insight-row">
+          <div class="insight-card r-md">
+            <p class="label-serif">01</p>
+            <h4>No precedent</h4>
+            <p class="b">No platform had solved this — I adapted patterns from unrelated industries.</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">02</p>
+            <h4>Zero-error accounting</h4>
+            <p class="b">A frictionless experience that strictly prevents critical financial mistakes.</p>
+          </div>
+          <div class="insight-card r-md">
+            <p class="label-serif">03</p>
+            <h4>Taming edge cases</h4>
+            <p class="b">Turning unmapped edge cases into structured, scalable system behaviors.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Execution intro -->
+      <section class="sec sec-gap-16 narrow reveal" style="padding-bottom:var(--xxl);">
+        <p class="label-serif" style="width:100%;">Execution</p>
+        <h2 class="h2-med">Three steps, full control</h2>
+        <p class="body-2 txt-ink">The flow breaks a high-stakes process into three controlled steps — import, match, review — each with clear feedback and a safe exit.</p>
+      </section>
+
+      <!-- Pattern inspirations -->
+      <section class="case-card wide reveal" style="align-items:center;">
+        <div class="patterns-stage">
+          <div class="pimg" style="left:5.8%; top:2.8%; width:61.6%; height:57.9%;"><img src="../assets/finaloop-page/imgImage.png" alt="" class="lb" /></div>
+          <div class="pimg" style="left:72.3%; top:0; width:19.3%; height:41.1%; box-shadow:-12px 32px 44px rgba(0,0,0,0.09);"><img src="../assets/finaloop-page/imgImage2.png" alt="" class="lb" /></div>
+          <div class="pimg" style="left:38.2%; top:46.5%; width:21.5%; height:43%; box-shadow:-12px 32px 44px rgba(0,0,0,0.09);"><img src="../assets/finaloop-page/imgImage1.png" alt="" class="lb" /></div>
+          <div class="pimg" style="left:72.3%; top:46.5%; width:24.8%; height:51.3%; box-shadow:-5px 14px 19px rgba(0,0,0,0.09);"><img src="../assets/finaloop-page/img1486B9A149334F01B5CbDa1022672Fbb1.png" alt="" class="lb" /></div>
+          <div class="pimg" style="left:88.8%; top:79.9%; width:11.2%; height:20.1%; box-shadow:-12px 32px 44px rgba(0,0,0,0.09);"><img src="../assets/finaloop-page/img1486B9A149334F01B5CbDa1022672Fbb1.png" alt="" class="lb" /></div>
+          <div class="pimg" style="left:0; top:69.7%; width:32.8%; height:30.3%; box-shadow:-5px 14px 19px rgba(0,0,0,0.09);"><img src="../assets/finaloop-page/imgImage3.png" alt="" class="lb" /></div>
+        </div>
+        <div class="card-caption">
+          <p style="font-weight:500;">Pattern inspirations</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+      </section>
+
+      <!-- Execution/01 -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/01</p>
+        <h2 class="h2-med">Import without friction</h2>
+        <p class="body-2 txt-ink">Drag-and-drop with instant parsing feedback. Users can add more invoices or leave mid-flow — parsed files auto-save to a dedicated dashboard tab.</p>
+      </section>
+      <section class="wide reveal">
+        <div class="media-video" data-video="finaloop-step1" style="border-radius:var(--radius-lg); aspect-ratio:2878/1634;">
+          <img src="../assets/finaloop-page/video-step1.png" alt="" class="lb" />
+        </div>
+      </section>
+
+      <!-- Execution/02 -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/02</p>
+        <h2 class="h2-med">AI does the matching</h2>
+        <p class="body-2 txt-ink">AI matches extracted products to existing SKUs, flags missing data, and filters line items that need attention.</p>
+      </section>
+      <section class="wide reveal">
+        <div class="media-video" data-video="finaloop-step2" style="border-radius:var(--radius-sm); aspect-ratio:2878/1634;">
+          <img src="../assets/finaloop-page/video-step2.png" alt="" class="lb" />
+        </div>
+      </section>
+
+      <!-- Execution/03 -->
+      <section class="sec sec-gap-16 narrow py-72 reveal">
+        <p class="label-serif" style="width:100%;">Execution/03</p>
+        <h2 class="h2-med">Review, then commit</h2>
+        <p class="body-2 txt-ink">A scannable review grid with validation flags, filtering, and bulk editing — line items open in a modal for quantity, price, discounts and shipping. Nothing posts to the books until explicit confirmation.</p>
+      </section>
+      <section class="wide reveal" style="padding-bottom:var(--max);">
+        <div class="media-video" data-video="finaloop-step3" style="border-radius:var(--radius-sm); aspect-ratio:2878/1634;">
+          <img src="../assets/finaloop-page/video-step3.png" alt="" class="lb" />
+        </div>
+      </section>
+
+      <!-- Full flow -->
+      <section class="case-card reveal" style="max-width:1160px; width:100%; align-items:center; gap:var(--ml);">
+        <div class="card-caption">
+          <p style="font-weight:500;">Full flow</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+        <div class="media-video" data-video="finaloop-fullflow" style="border-radius:var(--radius-sm); aspect-ratio:2882/1640;">
+          <img src="../assets/finaloop-page/video-fullflow.png" alt="" class="lb" />
+        </div>
+      </section>
+
+      <!-- Edge cases -->
+      <section class="case-card reveal" style="max-width:1160px; width:100%; align-items:center; gap:var(--ml); margin-top:var(--xxl);">
+        <div class="card-caption">
+          <p style="font-weight:500;">Edge Cases</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+        <div class="edge-pair">
+          <div class="col">
+            <div class="media-video" data-video="finaloop-duplicated" style="border-radius:var(--radius-sm); aspect-ratio:2880/1634;">
+              <img src="../assets/finaloop-page/video-duplicated.png" alt="" class="lb" />
+            </div>
+            <p class="cap14">Import duplicated invoice</p>
+          </div>
+          <div class="col">
+            <div class="media-video" data-video="finaloop-errors" style="border-radius:var(--radius-sm); aspect-ratio:2880/1634;">
+              <img src="../assets/finaloop-page/video-errors.png" alt="" class="lb" />
+            </div>
+            <p class="cap14">Error States - Missing Data</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- More features -->
+      <section class="case-card reveal" style="max-width:1160px; width:100%; gap:var(--ml); margin-top:var(--xxl);">
+        <div class="card-caption">
+          <p style="font-weight:500;">More Features</p>
+          <p class="dim">Click to enlarge.</p>
+        </div>
+        <div class="features-row">
+          <div class="col">
+            <div class="media-video" data-video="finaloop-bulkedit" style="border-radius:var(--radius-xs); aspect-ratio:2878/1634;">
+              <img src="../assets/finaloop-page/video-bulkedit.png" alt="" class="lb" />
+            </div>
+            <p class="cap14" style="font-size:14px; font-weight:500; color:var(--ink);">Bulk edit</p>
+          </div>
+          <div class="col">
+            <div class="media-video" data-video="finaloop-addinvoices" style="border-radius:var(--radius-xs); aspect-ratio:2878/1634;">
+              <img src="../assets/finaloop-page/video-addinvoices.png" alt="" class="lb" />
+            </div>
+            <p class="cap14" style="font-size:14px; font-weight:500; color:var(--ink);">Add invoices</p>
+          </div>
+          <div class="col">
+            <div class="media-video" data-video="finaloop-lineitem" style="border-radius:var(--radius-xs); aspect-ratio:2878/1634;">
+              <img src="../assets/finaloop-page/video-lineitem.png" alt="" class="lb" />
+            </div>
+            <p class="cap14" style="font-size:14px; font-weight:500; color:var(--ink);">Clickable Line item</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Learnings -->
+      <section class="sec sec-gap-16 narrow pt-48 pb-72 reveal" style="margin-top:var(--xxl);">
+        <p class="label-serif" style="width:100%;">Key Learnings</p>
+        <h2 class="h2-med">What the process taught me</h2>
+        <p class="body-2 txt-ink">We didn't ship in time to measure live impact — but the design process itself surfaced lasting takeaways:</p>
+        <div class="cs-list gap-8">
+          <div class="cs-bullet"><p class="marker">•</p><p><span class="med-ink">Safety enables speed: </span>the staging model eliminates manual errors — removing the fear of breaking the books is how we built user trust.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p><span class="med-ink">Questions are a design tool:</span> facing data gaps and asking the right questions aligned product scope and built strong collaboration with the PM.</p></div>
+          <div class="cs-bullet"><p class="marker">•</p><p><span class="med-ink">At scale, edge cases are the core experience:</span> duplicates and extraction failures are expected, not exceptions.</p></div>
+        </div>
+      </section>
+
+      <!-- Back to top -->
+      <a class="btn back-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back To Top<span class="btn-icon arrow-nudge"><img src="../assets/shared/icon-arrow-right.svg" alt="" style="transform:rotate(-90deg);" /></span></a>
+
+      <!-- Discover more -->
+      <section class="discover reveal">
+        <h2 class="h3-med">Discover More</h2>
+        <div class="cards">
+          <a class="project-card" href="wixel.html">
+            <div class="cover"></div>
+            <div class="card-body">
+              <p class="label-serif">WIX · Mobile App · 2025</p>
+              <h3 class="h3-med">Wixel — AI image editing</h3>
+              <p class="body-3 desc">The full mobile flow for AI background replacement — 64 screens, one design sprint.</p>
+              <span class="link-btn">Read case study<span class="icon"><img src="../assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+            </div>
+          </a>
+          <a class="project-card" href="melio-redesign.html">
+            <div class="cover"></div>
+            <div class="card-body">
+              <p class="label-serif">MELIO · 2021–2024</p>
+              <h3 class="h3-med">Melio — Mobile web redesign</h3>
+              <p class="body-3 desc">A complete mobile experience strategy that lifted conversion from 6% to 14%.</p>
+              <span class="link-btn">Read case study<span class="icon"><img src="../assets/shared/icon-arrow-right.svg" alt="" /></span></span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <div class="footer-margin cs-footer-margin">
+        <footer class="footer">
+          <div class="footer-inner">
+            <p>Naama Abitbol — Product Builder</p>
+            <p>Finaloop · Bulk Invoice Upload</p>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox"><img src="" alt="" /></div>
+
+  <script src="../js/cs-hero.js"></script>
+  <script src="../js/site.js"></script>
+  <script>
+    // Video slots: if an MP4 exists at assets/finaloop-page/<name>.mp4 it replaces
+    // the poster (autoplay, muted, loop). Until then the poster frame shows.
+    document.querySelectorAll('.media-video[data-video]').forEach((slot) => {
+      const name = slot.dataset.video;
+      const src = `../assets/finaloop-page/${name}.mp4`;
+      fetch(src, { method: 'HEAD' }).then((r) => {
+        if (!r.ok) return;
+        const v = document.createElement('video');
+        v.src = src;
+        v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+        slot.replaceChildren(v);
+      }).catch(() => {});
+    });
+
+    (() => {
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = lightbox.querySelector('img');
+      document.querySelectorAll('.lb').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => { lbImg.src = img.src; lightbox.classList.add('open'); });
+      });
+      lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+    })();
+  </script>
+</body>
+</html>
