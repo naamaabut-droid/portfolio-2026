@@ -79,7 +79,12 @@
       "Bash(curl -s -o li-bg.svg \"https://www.figma.com/api/mcp/asset/2f5cdf60-5091-40d3-98bd-4860d145c530\")",
       "Bash(curl -s -o li-in.svg \"https://www.figma.com/api/mcp/asset/598cbd0a-7f39-4fd8-8f5b-6d62877aa5a5\")",
       "Bash(file *.svg)",
-      "Bash(mdls -name kMDItemFSCreationDate melio/\"Hero 1.png\")"
+      "Bash(mdls -name kMDItemFSCreationDate melio/\"Hero 1.png\")",
+      "Bash(awk -F: '{ if \\($1+0 >= 396\\) print }' /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/wixel-digest.txt)",
+      "Bash(awk -F: '{ if \\($1+0 >= 817\\) print }' /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/wixel-digest.txt)",
+      "Bash(awk -F: '{ if \\($1+0 >= 1306\\) print }' /private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/wixel-digest.txt)",
+      "Bash(git add *)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -q -m 'Wixel project page 1:1 from Figma 191:39802 + case-study template CSS *)"
     ]
   }
 }
