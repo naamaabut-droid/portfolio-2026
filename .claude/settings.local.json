@@ -129,7 +129,14 @@
       "Bash(curl -s -o bugs-row-3.png \"https://www.figma.com/api/mcp/asset/8da6e30e-3335-44d4-893a-bae88c890e21\")",
       "Bash(curl -s -o bugs-row-4.png \"https://www.figma.com/api/mcp/asset/e1bb9df4-70b8-45ff-9bfa-fefc5c984ffb\")",
       "Bash(curl -s -o bugs-row-5.png \"https://www.figma.com/api/mcp/asset/970b7f1d-5806-45e5-b25a-7dfd3b4bc80f\")",
-      "Bash(sips -g pixelWidth -g pixelHeight bugs-row-1.png)"
+      "Bash(sips -g pixelWidth -g pixelHeight bugs-row-1.png)",
+      "Bash(git config *)",
+      "Bash(security find-internet-password *)",
+      "Bash(ssh -T git@github.com -o StrictHostKeyChecking=accept-new -o BatchMode=yes)",
+      "Bash(git credential *)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -q -m 'Fix Penny jpg asset extensions; all local refs verified *)"
     ]
   }
 }
