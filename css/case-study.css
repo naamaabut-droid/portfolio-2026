@@ -251,8 +251,8 @@
   scrollbar-width: thin;
   padding-bottom: 4px;
 }
-.figure { flex: none; display: flex; flex-direction: column; gap: var(--s); }
-.figcaption { display: flex; gap: var(--xs); align-items: flex-start; width: 100%; }
+.figure { flex: none; display: flex; flex-direction: column; gap: var(--s); width: min-content; margin: 0; }
+.figcaption { display: flex; gap: var(--xs); align-items: flex-start; width: 100%; min-width: 0; }
 .figcaption.tall { min-height: 40px; }
 .counter {
   flex: none;
@@ -347,7 +347,7 @@
 .comparison-table .row p { flex: 1 1 0; min-width: 1px; }
 
 /* ---------- Back to top ---------- */
-.back-top { margin: 0 auto; }
+.cs-inner > .back-top, .back-top { width: fit-content; align-self: center; margin: 0 auto; flex: none; }
 
 /* ---------- Discover more ---------- */
 .discover {
