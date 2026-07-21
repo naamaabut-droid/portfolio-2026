@@ -8,8 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
-  <link rel="stylesheet" href="../css/site.css?v=3" />
-  <link rel="stylesheet" href="../css/case-study.css?v=3" />
+  <link rel="stylesheet" href="../css/tokens.css?v=1" />
+  <link rel="stylesheet" href="../css/site.css?v=4" />
+  <link rel="stylesheet" href="../css/case-study.css?v=4" />
   <style>
     .mo-art { position: relative; width: 528px; height: 512px; }
     .mo-art .ph {
@@ -18,7 +19,7 @@
       border-radius: var(--radius-s);
       overflow: hidden; background: #fff;
     }
-    .mo-art .ph img { height: 100%; width: auto; display: block; }
+    .mo-art .ph img { height: 100%; width: auto; max-width: none; display: block; }
     .mo-art .ph-1 { left: calc(50% - 181px); transform: translate(-50%, -50%); box-shadow: var(--shadow-shot); }
     .mo-art .ph-3 { left: calc(50% + 181px); transform: translate(-50%, -50%); box-shadow: var(--shadow-shot); }
     .mo-art .ph-2 { left: 50%; transform: translate(-50%, -50%); box-shadow: var(--shadow-float); z-index: 2; }
@@ -34,7 +35,7 @@
     .insight-card:hover { transform: translateY(-2px); }
     .insight-card h4 { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink); }
     .insight-card p.b { font-size: 16px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--body); }
-    .insight-card .big { font-size: 56px; font-weight: 600; line-height: 1.2; letter-spacing: -0.03em; color: var(--ink); }
+    .insight-card .big { font-size: 56px; font-weight: 500; line-height: 1.2; letter-spacing: -0.03em; color: var(--ink); }
     .insight-card .k12 { font-size: 12px; font-weight: 500; line-height: 1.4; color: var(--body); }
 
     .num-bullets { display: flex; flex-direction: column; gap: var(--s); width: 100%; }

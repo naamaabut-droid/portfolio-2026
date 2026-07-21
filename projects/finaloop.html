@@ -8,8 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
-  <link rel="stylesheet" href="../css/site.css?v=3" />
-  <link rel="stylesheet" href="../css/case-study.css?v=3" />
+  <link rel="stylesheet" href="../css/tokens.css?v=1" />
+  <link rel="stylesheet" href="../css/site.css?v=4" />
+  <link rel="stylesheet" href="../css/case-study.css?v=4" />
   <style>
     .fin-art { position: relative; width: 609px; max-width: 100%; height: 100%; align-self: stretch; justify-self: start; }
     .fin-art .shot-a {
@@ -65,7 +66,7 @@
     }
   </style>
 </head>
-<body>
+<body data-video-root="finaloop-page">
 
   <a class="page-nav" href="../case-studies.html">
     <span class="btn-icon-40"><img src="../assets/finaloop-page/imgIcon.svg" alt="" /></span>
@@ -408,21 +409,8 @@
 
   <script src="../js/cs-hero.js"></script>
   <script src="../js/site.js"></script>
+  <script src="../js/video-slots.js"></script>
   <script>
-    // Video slots: if an MP4 exists at assets/finaloop-page/<name>.mp4 it replaces
-    // the poster (autoplay, muted, loop). Until then the poster frame shows.
-    document.querySelectorAll('.media-video[data-video]').forEach((slot) => {
-      const name = slot.dataset.video;
-      const src = `../assets/finaloop-page/${name}.mp4`;
-      fetch(src, { method: 'HEAD' }).then((r) => {
-        if (!r.ok) return;
-        const v = document.createElement('video');
-        v.src = src;
-        v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
-        slot.replaceChildren(v);
-      }).catch(() => {});
-    });
-
     (() => {
       const lightbox = document.getElementById('lightbox');
       const lbImg = lightbox.querySelector('img');

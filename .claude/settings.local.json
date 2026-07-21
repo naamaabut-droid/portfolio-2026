@@ -158,7 +158,22 @@
       "Bash(git fetch *)",
       "Bash(git ls-tree *)",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" merge origin/main --allow-unrelated-histories -m \"Merge GitHub initial commit \\(README\\)\")",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Update local Claude permission allowlist *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Update local Claude permission allowlist *)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'My Role: fold bullets into a single paragraph \\(Melio optimization\\) *)",
+      "Bash(brew install *)",
+      "Bash(ls /opt/homebrew/bin/brew /usr/local/bin/brew 2>&1; uname -m)",
+      "Bash(curl -sL \"https://api.github.com/repos/cli/cli/releases/latest\")",
+      "Bash(mkdir -p ~/.local/bin)",
+      "Bash(curl -sL -o gh.zip \"https://github.com/cli/cli/releases/download/v2.96.0/gh_2.96.0_macOS_arm64.zip\")",
+      "Bash(unzip -oq gh.zip)",
+      "Bash(cp gh_2.96.0_macOS_arm64/bin/gh ~/.local/bin/gh)",
+      "Bash(chmod +x ~/.local/bin/gh)",
+      "Bash(~/.local/bin/gh auth *)",
+      "Read(//tmp/**)",
+      "Bash(grep -v \"^--$\")",
+      "Bash(grep -n -i -A6 'safari\\\\|browser' __TRACKED_VAR__/melio-redesign-digest.txt)",
+      "Skill(code-review)",
+      "Skill(code-review:*)"
     ]
   }
 }

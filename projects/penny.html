@@ -8,8 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
-  <link rel="stylesheet" href="../css/site.css?v=3" />
-  <link rel="stylesheet" href="../css/case-study.css?v=3" />
+  <link rel="stylesheet" href="../css/tokens.css?v=1" />
+  <link rel="stylesheet" href="../css/site.css?v=4" />
+  <link rel="stylesheet" href="../css/case-study.css?v=4" />
   <style>
     .penny-art { position: relative; height: 100%; width: 638px; max-width: none; align-self: stretch; justify-self: end; font-family: "DM Sans", sans-serif; }
     .penny-art .layer { position: absolute; inset: 0; }
@@ -134,7 +135,7 @@
     }
   </style>
 </head>
-<body>
+<body data-video-root="penny-page">
 
   <a class="page-nav" href="../case-studies.html">
     <span class="btn-icon-40"><img src="../assets/penny-page/imgIcon.svg" alt="" /></span>
@@ -626,6 +627,7 @@
 
   <script src="../js/cs-hero.js"></script>
   <script src="../js/site.js"></script>
+  <script src="../js/video-slots.js"></script>
   <script>
     // spring slide of the screens band when it enters the viewport
     (() => {
@@ -636,17 +638,6 @@
         if (es[0].isIntersecting) { band.classList.add('slid'); io.disconnect(); }
       }, { threshold: 0.25 }).observe(band);
     })();
-
-    // video slots — drop MP4s named assets/penny-page/<name>.mp4 to activate
-    document.querySelectorAll('.media-video[data-video]').forEach((slot) => {
-      const src = `../assets/penny-page/${slot.dataset.video}.mp4`;
-      fetch(src, { method: 'HEAD' }).then((r) => {
-        if (!r.ok) return;
-        const v = document.createElement('video');
-        v.src = src; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
-        slot.replaceChildren(v);
-      }).catch(() => {});
-    });
 
     (() => {
       const lightbox = document.getElementById('lightbox');

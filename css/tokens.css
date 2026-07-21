@@ -1,0 +1,84 @@
+/* ============================================================
+   Portfolio 2026 — tokens.css
+   1:1 mirror of the Figma file variables (Portfolio-2026,
+   hWWzCSASzzsT63rYOD2FqD). Single source of truth — every
+   value below traces to a named Figma variable or text style.
+   Do not restyle by hand; sync from Figma.
+   ============================================================ */
+
+:root {
+  /* color */
+  --accent: #5B5BF0;          /* accent */
+  --ink: #111113;             /* ink */
+  --body: #54545B;            /* body */
+  --card: #F5F4F1;            /* card */
+  --line: #CCCBC5;            /* line */
+  --pill: #FFFFFF;            /* pill */
+  --ground: #FFFFFF;          /* ground */
+  --white: #FFFFFF;           /* Basic/White */
+  --primary-500: #7547FF;     /* Primary/Primary 500 (Penny DS) */
+  --alpha-25: rgba(255, 255, 255, 0.25);  /* Alpha/25% */
+  --alpha-45: rgba(255, 255, 255, 0.45);  /* Alpha/45% */
+
+  /* spacing */
+  --3xs: 2px;
+  --xxs: 4px;
+  --xs: 8px;
+  --s: 12px;
+  --sm: 16px;
+  --m: 20px;
+  --ml: 24px;
+  --l: 32px;
+  --xl: 40px;
+  --xxl: 48px;
+  --max: 72px;
+
+  /* radius */
+  --radius-xxs: 4px;
+  --radius-xs: 8px;
+  --radius-s: 12px;
+  --radius-sm: 16px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 999px;
+
+  /* effects */
+  --shadow-card: 0 1px 2px rgba(17, 17, 19, 0.04), 0 12px 40px rgba(17, 17, 19, 0.06);   /* Shadow/Card */
+  --shadow-float: 0 6px 16px rgba(30, 25, 60, 0.12), 0 40px 90px rgba(30, 25, 60, 0.28); /* Shadow/Float */
+  --shadow-shot: 0 2px 6px rgba(17, 17, 19, 0.08), 0 18px 50px rgba(17, 17, 19, 0.14);   /* Shadow/Shot */
+  --shadow-nav: 0 2px 6px rgba(17, 17, 19, 0.08);
+
+  /* hero / contact gradient fills */
+  --grad-top: #f3f1fe;
+  --grad-bottom: #eceafb;
+}
+
+/* ---------- Type ramp (Desktop/*) ---------- */
+.display   { font-size: 120px; font-weight: 500; line-height: 1.05; letter-spacing: -0.04em; } /* Desktop/Display */
+.h1        { font-size: 76px;  font-weight: 500; line-height: 1.05; letter-spacing: -0.03em; } /* Desktop/Heading/H1 */
+.h2        { font-size: 48px;  font-weight: 400; line-height: 1.1;  letter-spacing: -0.01em; } /* Desktop/Heading/H2 */
+.h2-med    { font-size: 48px;  font-weight: 500; line-height: 1.1;  letter-spacing: -0.03em; } /* Desktop/Heading/H2 Medium */
+.h3        { font-size: 32px;  font-weight: 400; line-height: 1.1;  letter-spacing: -0.02em; } /* Desktop/Heading/H3 */
+.h3-med    { font-size: 32px;  font-weight: 500; line-height: 1.1;  letter-spacing: -0.02em; } /* Desktop/Heading/H3 · Medium */
+.number    { font-size: 56px;  font-weight: 500; line-height: 1.2;  letter-spacing: -0.03em; } /* Desktop/Number */
+.body-1    { font-size: 24px;  font-weight: 300; line-height: 1.4;  letter-spacing: -0.02em; } /* Desktop/Body/Body 1 */
+.body-2    { font-size: 20px;  font-weight: 300; line-height: 1.4;  letter-spacing: -0.02em; } /* Desktop/Body/Body 2 */
+.body-2-med{ font-size: 20px;  font-weight: 500; line-height: 1.4;  letter-spacing: -0.03em; } /* Desktop/Body/Body 2 Medium */
+.body-2-italic { font-size: 20px; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: -0.02em; } /* Desktop/Body/Body 2 Italic */
+.body-3    { font-size: 16px;  font-weight: 300; line-height: 1.4;  letter-spacing: -0.02em; } /* Desktop/Body/Body 3 */
+.body-3-med{ font-size: 16px;  font-weight: 500; line-height: 1.4;  letter-spacing: -0.02em; } /* Desktop/Body/Body 3 Medium */
+.label-med { font-size: 14px;  font-weight: 500; line-height: 1.2;  letter-spacing: -0.01em; } /* Desktop/Label/Medium */
+.label-reg { font-size: 14px;  font-weight: 300; line-height: 1.4;  letter-spacing: -0.01em; } /* Desktop/Label/Regular */
+.caption   { font-size: 12px;  font-weight: 400; line-height: 1.4;  letter-spacing: 0; }       /* Desktop/Label/Caption */
+.caption-med { font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: 0; }       /* Desktop/Label/Caption Medium */
+.label-serif {                                                                                  /* Desktop/Label/Serif */
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+}

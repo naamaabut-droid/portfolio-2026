@@ -1,53 +1,8 @@
 /* ============================================================
    Portfolio 2026 — site.css
-   Tokens + type ramp mirror the Figma file "Portfolio 2026"
-   (variables read from the file; do not restyle by hand).
+   Layout + shared components. Tokens and the type ramp live in
+   tokens.css (1:1 from the Figma variables) — link it first.
    ============================================================ */
-
-/* ---------- Tokens ---------- */
-:root {
-  /* color */
-  --accent: #5B5BF0;
-  --ink: #111113;
-  --body: #54545B;
-  --card: #F5F4F1;
-  --line: #CCCBC5;
-  --pill: #FFFFFF;
-  --ground: #FFFFFF;
-
-  /* spacing */
-  --3xs: 2px;
-  --xxs: 4px;
-  --xs: 8px;
-  --s: 12px;
-  --sm: 16px;
-  --m: 20px;
-  --ml: 24px;
-  --l: 32px;
-  --xl: 40px;
-  --xxl: 48px;
-  --max: 72px;
-
-  /* radius */
-  --radius-xxs: 4px;
-  --radius-xs: 8px;
-  --radius-s: 12px;
-  --radius-sm: 16px;
-  --radius-md: 20px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --radius-full: 999px;
-
-  /* effects */
-  --shadow-card: 0 1px 2px rgba(17, 17, 19, 0.04), 0 12px 40px rgba(17, 17, 19, 0.06);
-  --shadow-float: 0 6px 16px rgba(30, 25, 60, 0.12), 0 40px 90px rgba(30, 25, 60, 0.28);
-  --shadow-shot: 0 2px 6px rgba(17, 17, 19, 0.08), 0 18px 50px rgba(17, 17, 19, 0.14);
-  --shadow-nav: 0 2px 3px rgba(17, 17, 19, 0.08);
-
-  /* hero gradient */
-  --grad-top: #f3f1fe;
-  --grad-bottom: #eceafb;
-}
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -70,35 +25,6 @@ p { margin: 0; }
 h1, h2, h3, h4 { margin: 0; font-weight: inherit; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer; color: inherit; }
-
-/* ---------- Type ramp (Desktop/*) ---------- */
-.display   { font-size: 120px; font-weight: 500; line-height: 1.05; letter-spacing: -0.06em; }
-.h1        { font-size: 76px;  font-weight: 500; line-height: 1.05; letter-spacing: -0.04em; }
-.h2        { font-size: 48px;  font-weight: 400; line-height: 1.1;  letter-spacing: -0.01em; }
-.h2-med    { font-size: 48px;  font-weight: 500; line-height: 1.1;  letter-spacing: -0.04em; }
-.h3        { font-size: 32px;  font-weight: 400; line-height: 1.1;  letter-spacing: -0.02em; }
-.h3-med    { font-size: 32px;  font-weight: 500; line-height: 1.1;  letter-spacing: -0.02em; }
-.number    { font-size: 56px;  font-weight: 600; line-height: 1.2;  letter-spacing: -0.03em; }
-.body-1    { font-size: 24px;  font-weight: 300; line-height: 1.4;  letter-spacing: -0.02em; }
-.body-2    { font-size: 20px;  font-weight: 300; line-height: 1.4;  letter-spacing: -0.02em; }
-.body-2-med{ font-size: 20px;  font-weight: 500; line-height: 1.4;  letter-spacing: -0.03em; }
-.body-2-italic { font-size: 20px; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: -0.02em; }
-.body-3    { font-size: 16px;  font-weight: 300; line-height: 1.4;  letter-spacing: -0.02em; }
-.body-3-med{ font-size: 16px;  font-weight: 500; line-height: 1.4;  letter-spacing: -0.02em; }
-.label-med { font-size: 14px;  font-weight: 500; line-height: 1.2;  letter-spacing: -0.01em; }
-.label-reg { font-size: 14px;  font-weight: 300; line-height: 1.4;  letter-spacing: -0.01em; }
-.caption   { font-size: 12px;  font-weight: 400; line-height: 1.4;  letter-spacing: 0; }
-.caption-med { font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: 0; }
-.label-serif {
-  font-family: "Fraunces", serif;
-  font-style: italic;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  font-variation-settings: "SOFT" 0, "WONK" 1;
-}
 
 /* ---------- Navigation pill ---------- */
 .nav-wrap {
@@ -159,7 +85,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 .btn .btn-icon { width: 16px; height: 16px; display: grid; place-items: center; flex: none; }
 .btn .btn-icon img { width: 100%; height: 100%; }
 .btn .btn-icon-20 { width: 20px; height: 20px; display: grid; place-items: center; flex: none; }
-.btn .btn-icon-20 img { width: 100%; height: 100%; }
+.btn .btn-icon-20 img { width: 100%; height: 100%; object-fit: contain; }
 .btn:hover .arrow-nudge { transform: translateX(2px); }
 .arrow-nudge { transition: transform 0.2s ease; }
 
