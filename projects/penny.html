@@ -8,19 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
-  <link rel="stylesheet" href="../css/tokens.css?v=1" />
-  <link rel="stylesheet" href="../css/site.css?v=4" />
-  <link rel="stylesheet" href="../css/case-study.css?v=4" />
+  <link rel="stylesheet" href="../css/tokens.css?v=2" />
+  <link rel="stylesheet" href="../css/site.css?v=6" />
+  <link rel="stylesheet" href="../css/case-study.css?v=5" />
   <style>
     .penny-art { position: relative; height: 100%; width: 638px; max-width: none; align-self: stretch; justify-self: end; font-family: "DM Sans", sans-serif; }
     .penny-art .layer { position: absolute; inset: 0; }
-    /* split button */
-    .p-split { position: absolute; left: 140px; top: 108px; display: flex; gap: 1px; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 24px rgba(120, 73, 255, 0.35); }
-    .p-split .main { background: #7849ff; color: #fff; display: flex; align-items: center; gap: 8px; padding: 12px 16px 12px 12px; font-size: 16px; font-weight: 600; }
-    .p-split .main .plus { width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.2); display: grid; place-items: center; font-weight: 400; font-size: 18px; line-height: 1; }
-    .p-split .caret { background: #7849ff; color: #fff; display: grid; place-items: center; padding: 8px 12px; }
-    .p-split .caret span { width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.2); display: grid; place-items: center; font-size: 10px; }
-    .p-guide { position: absolute; font-size: 7px; color: #7849ff; letter-spacing: 0; }
     /* avatar panel */
     .p-avatar { position: absolute; left: 373px; top: 42px; width: 220px; display: flex; flex-direction: column; gap: 10px; }
     .p-avatar h4 { font-size: 26px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
@@ -40,15 +33,6 @@
     /* color chips */
     .p-chip { position: absolute; display: inline-flex; align-items: center; gap: 6px; background: #fff; border-radius: 6px; box-shadow: 0 2px 6px rgba(17,17,19,0.08); padding: 5px 10px 5px 5px; font-size: 11px; color: var(--ink); white-space: nowrap; }
     .p-chip .sw { width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgba(17,17,19,0.08); }
-    /* radius circles */
-    .p-radii { position: absolute; right: 45px; bottom: 62px; display: flex; gap: 12px; }
-    .p-radii .r {
-      width: 48px; height: 48px;
-      background: rgba(255, 255, 255, 0.35);
-      display: grid; place-items: center;
-      font-size: 12px; font-weight: 500; color: var(--body);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
-    }
 
     .insight-row { display: flex; gap: var(--sm); align-items: stretch; width: 100%; }
     .insight-card {
@@ -171,26 +155,12 @@
             <span class="p-chip" style="left:398px; top:292px;"><span class="sw" style="background:#f5a623;"></span>colors/warning/700</span>
             <span class="p-chip" style="left:428px; top:326px;"><span class="sw" style="background:#6a35ff;"></span>colors/action/primary/rest</span>
             <span class="p-chip" style="left:404px; top:360px;"><span class="sw" style="background:#fff;"></span>colors/text/inverse</span>
-            <div class="p-radii">
-              <span class="r" style="border-radius:8px;">s</span>
-              <span class="r" style="border-radius:16px;">m</span>
-              <span class="r" style="border-radius:20px;">ml</span>
-              <span class="r" style="border-radius:999px;">full</span>
-            </div>
+            <img src="../assets/penny-page/hero-radius.png" alt="" style="position:absolute; right:10px; bottom:47px; width:216px; height:48px;" />
           </div>
         </div>
         <div class="layer rise-1">
           <div class="float-a" style="position:absolute; inset:0;">
-            <div class="p-split">
-              <span class="main"><span class="plus">+</span>Label</span>
-              <span class="caret"><span>▾</span></span>
-            </div>
-            <span class="p-guide" style="left:142px; top:94px;">xs</span>
-            <span class="p-guide" style="left:178px; top:94px;">xs</span>
-            <span class="p-guide" style="left:236px; top:94px;">s</span>
-            <span class="p-guide" style="left:258px; top:88px; text-align:right;">Fixed size:<br />48px</span>
-            <span class="p-guide" style="left:305px; top:126px;">Fixed size:<br />48px</span>
-            <span class="p-guide" style="left:148px; top:158px;">xxs</span>
+            <img src="../assets/penny-page/hero-button.png" alt="" style="position:absolute; left:68px; top:82px; width:196px; height:96px;" />
             <div class="p-specimens">
               <div class="p-spec"><span class="aa-1">Aa</span><span class="meta"><span class="l1">Text Style</span><span class="l2">Heading 1 Semi</span></span></div>
               <div class="p-spec"><span class="aa-2">Aa</span><span class="meta"><span class="l1">Text Style</span><span class="l2">Body 1 Regular</span></span></div>
@@ -207,7 +177,6 @@
 
       <!-- TL;DR -->
       <section class="tldr narrow reveal">
-        <h2 class="h2-med">TL;DR</h2>
         <div class="tldr-bullets">
           <div class="tldr-bullet">
             <p class="label-serif">The problem</p>
@@ -225,7 +194,7 @@
       </section>
 
       <!-- Overview -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Overview</p>
         <p class="body-2 txt-ink">Melio is an accounts payable platform for small businesses, processing $20B annually. Behind that scale sits Penny — Melio's design system. We made it the single source of truth for design and development — fixing usability issues and system bugs, refining guidelines, and unifying the component library across Figma and Storybook. The result: faster work, fewer detached components, more team autonomy — and a system strong enough to ship to partners as a standalone product.</p>
       </section>
@@ -370,19 +339,19 @@
         <p class="body-3-med" style="color:var(--ink);">Color contrast</p>
         <img src="../assets/penny-page/imgContrast1.png" alt="" style="width:100%; aspect-ratio:3241/1592; object-fit:cover;" class="lb" />
         <div style="display:flex; gap:var(--ml); width:100%;">
-          <div style="flex:1; display:flex; flex-direction:column; gap:var(--s);">
-            <p class="body-3-med" style="color:var(--ink);">Old</p>
+          <div style="flex:1; display:flex; flex-direction:column; gap:var(--s); align-items:center;">
             <img src="../assets/penny-page/imgOld1.png" alt="" style="width:100%; aspect-ratio:1496/1022; object-fit:cover;" class="lb" />
+            <p class="label-reg" style="color:var(--body);">Old</p>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; gap:var(--s);">
-            <p class="body-3-med" style="color:var(--ink);">New</p>
+          <div style="flex:1; display:flex; flex-direction:column; gap:var(--s); align-items:center;">
             <img src="../assets/penny-page/imgNew1.png" alt="" style="width:100%; aspect-ratio:1496/1022; object-fit:cover;" class="lb" />
+            <p class="label-reg" style="color:var(--body);">New</p>
           </div>
         </div>
       </section>
 
       <!-- Execution: Atoms -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Execution</p>
         <h2 class="h2-med">Atoms before organisms</h2>
         <p class="body-2 txt-ink">We audited existing components to build reusable atoms, mapping all edge cases and zero states. This established consistent patterns, eliminated duplication, and secured a strong groundwork for the system.</p>
@@ -403,7 +372,7 @@
       </section>
 
       <!-- Execution: Storybook -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Execution</p>
         <h2 class="h2-med">One truth, in Figma and Storybook</h2>
         <p class="body-2 txt-ink">We developed a Storybook library mirroring the design system's capabilities in Figma to ensure alignment with production, with detailed documentation for each component — explicit guidelines, definitions, and best practices for designers and developers.</p>
@@ -433,7 +402,7 @@
       </section>
 
       <!-- Execution/01 responsive -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Execution/01</p>
         <h2 class="h2-med">Every screen size, one system</h2>
         <p class="body-2 txt-ink">We created mobile-optimized component versions and defined responsive behavior for seamless compatibility across screen sizes and devices.</p>
@@ -448,7 +417,7 @@
       </section>
 
       <!-- Execution/02 page components -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Execution/02</p>
         <h2 class="h2-med">A flow from scratch, in minutes</h2>
         <p class="body-2 txt-ink">We set up a library of page components and flow screens to streamline the design process — enabling designers to spin up a flow from scratch quickly and efficiently.</p>
@@ -525,7 +494,7 @@
       </section>
 
       <!-- Execution/04 workflows -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Execution/04</p>
         <h2 class="h2-med">Workflows instead of DMs</h2>
         <p class="body-2 txt-ink">To streamline collaboration, we established structured workflows for component requests, updates, and asset introduction — backed by dedicated feedback channels and regular cross-team kick-offs for continuous alignment and support through every planning and development stage.</p>
@@ -543,7 +512,7 @@
       </section>
 
       <!-- What we accomplished -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">What we accomplished</p>
         <h2 class="h2-med">Trust, restored</h2>
         <p class="body-2 txt-ink">We boosted efficiency, collaboration, and autonomy — contributing to the product's success and to the company's growth as a standalone offering for partners.</p>

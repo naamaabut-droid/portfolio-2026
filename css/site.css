@@ -163,7 +163,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 var(--xl);
+  padding: var(--xxl) var(--xl);
 }
 .contact-section {
   position: relative;
@@ -355,8 +355,8 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--max);
-  padding: var(--max) 0;
+  gap: var(--xxl);
+  padding: var(--max) 0 0;
 }
 .home-bio {
   max-width: 800px;
@@ -371,8 +371,9 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--xxl);
+  gap: var(--ml);
 }
+.work-content .btn { margin-top: var(--ml); }
 .work-header {
   width: 100%;
   max-width: 1080px;
@@ -396,7 +397,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: var(--max) 0 var(--ml);
+  padding: 120px 0 var(--xxl);
   display: flex;
   flex-direction: column;
   gap: var(--ml);
@@ -416,7 +417,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 var(--xl) var(--max);
+  padding: var(--xxl) var(--xl);
   display: flex;
   flex-direction: column;
   gap: var(--ml);
@@ -450,7 +451,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: var(--max) 0;
+  padding: var(--xxl) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -480,7 +481,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: var(--max) 0;
+  padding: 120px 0 var(--xxl);
   display: flex;
   flex-direction: column;
   gap: var(--ml);
@@ -491,7 +492,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 var(--xl) var(--max);
+  padding: var(--xxl) var(--xl);
   display: flex;
   flex-direction: column;
   align-items: center;

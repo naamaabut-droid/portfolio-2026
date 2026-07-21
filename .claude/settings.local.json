@@ -173,7 +173,20 @@
       "Bash(grep -v \"^--$\")",
       "Bash(grep -n -i -A6 'safari\\\\|browser' __TRACKED_VAR__/melio-redesign-digest.txt)",
       "Skill(code-review)",
-      "Skill(code-review:*)"
+      "Skill(code-review:*)",
+      "Bash(sed -i '' 's|<section class=\"contact-anchor\" id=\"contact\" style=\"padding-top: var\\(--xxl\\); padding-bottom: var\\(--xxl\\);\">|<section class=\"contact-anchor\" id=\"contact\">|' case-studies.html)",
+      "Bash(sed -i '' 's|<div class=\"footer-margin\" style=\"max-width: 1080px;\">|<div class=\"footer-margin\" style=\"max-width: 1080px; padding-top: var\\(--xxl\\);\">|' index.html about.html)",
+      "Bash(python3 digest.py wixel-v3.jsx)",
+      "Bash(awk 'length\\($0\\)<150')",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/ffa90961-4c90-4a50-ae57-39f2e8349ad1\" -o assets/melio-opt/payment-paper-checks.tmp)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/fe7430df-ccbe-469e-b10e-8812f32a07a2\" -o assets/melio-opt/payment-bank-transfer.tmp)",
+      "Bash(file assets/melio-opt/payment-*.tmp)",
+      "Bash(mv assets/melio-opt/payment-paper-checks.tmp assets/melio-opt/payment-paper-checks.png)",
+      "Bash(mv assets/melio-opt/payment-bank-transfer.tmp assets/melio-opt/payment-bank-transfer.png)",
+      "Bash(grep -n -B3 -A3 \"TXT: s$\\\\|TXT: m$\" penny-v2-digest.txt)",
+      "Bash(awk '/Hero|hero/{p=1} p&&/TXT:|radius|radii|Radius/{print NR\": \"$0} NR>320{exit}' penny-v2-digest.txt)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/36eaa483-ebd4-4109-857b-1fbebc108fbe\" -o assets/penny-page/hero-button.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/2f1ded0d-5231-415c-84b2-6cc0de8b7e40\" -o assets/penny-page/hero-radius.png)"
     ]
   }
 }

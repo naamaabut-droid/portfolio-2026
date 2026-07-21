@@ -162,6 +162,7 @@
 .pb-72 { padding-bottom: var(--max); }
 .pt-72 { padding-top: var(--max); }
 .py-72 { padding-top: var(--max); padding-bottom: var(--max); }
+.py-48 { padding-top: var(--xxl); padding-bottom: var(--xxl); }
 
 /* ---------- TL;DR ---------- */
 .tldr {
@@ -169,15 +170,15 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--xl);
-  padding: var(--xxl) 0 var(--max);
+  padding: var(--xxl) 0;
 }
-.tldr-bullets { display: flex; gap: var(--xxl); width: 100%; }
+.tldr-bullets { display: flex; gap: var(--xl); width: 100%; }
 .tldr-bullet { flex: 1 1 0; min-width: 1px; display: flex; flex-direction: column; gap: var(--sm); }
 .tldr-bullet .label-serif { width: 100%; }
 .tldr-bullet .txt { font-size: 14px; font-weight: 300; line-height: 1.4; letter-spacing: -0.01em; color: var(--ink); }
 
 /* ---------- Stat cards (KPIs / results) ---------- */
-.kpi-block { display: flex; flex-direction: column; gap: var(--ml); align-items: flex-start; }
+.kpi-block { display: flex; flex-direction: column; gap: var(--ml); align-items: flex-start; padding: var(--xxl) 0; }
 .stats { display: flex; gap: var(--sm); width: 100%; align-items: stretch; }
 .stat-card {
   flex: 1 1 0;
@@ -192,7 +193,7 @@
 }
 .stat-card:hover { transform: translateY(-2px); }
 .stat-card .k-label { font-size: 12px; font-weight: 500; line-height: 1.4; color: var(--body); }
-.stat-card .k-number { font-size: 56px; font-weight: 600; line-height: 1.2; letter-spacing: -0.03em; color: var(--ink); }
+.stat-card .k-number { font-size: 56px; font-weight: 500; line-height: 1.2; letter-spacing: -0.03em; color: var(--ink); }
 .stat-card .k-desc { font-size: 14px; font-weight: 300; line-height: 1.4; letter-spacing: -0.01em; color: var(--body); }
 
 /* ---------- Section text blocks ---------- */
@@ -206,7 +207,7 @@
 .it-ink { font-style: italic; color: #111113; }
 
 /* highlight statement */
-.cs-highlight { padding: var(--xxl) 0 var(--max); display: flex; align-items: center; justify-content: center; }
+.cs-highlight { padding: var(--xxl) 0; display: flex; align-items: center; justify-content: center; }
 .cs-highlight p { width: 100%; }
 
 /* bullet / numbered lists */
@@ -217,6 +218,7 @@
 .cs-bullet p:last-child { flex: 1; min-width: 1px; }
 
 /* ---------- Media cards ---------- */
+.cs-inner > .case-card { margin-top: var(--xxl); margin-bottom: var(--xxl); }
 .case-card {
   background: var(--card);
   border-radius: var(--radius-xl);
@@ -266,8 +268,24 @@
   font-weight: 600;
   line-height: 18px;
 }
+/* figure captions use a serif number instead of the circle */
+.figcaption .counter {
+  width: auto; height: auto;
+  border-radius: 0;
+  background: none;
+  display: block;
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
 .figcaption .cap { flex: 1; min-width: 1px; font-size: 14px; font-weight: 300; line-height: 1.4; letter-spacing: -0.01em; color: var(--body); }
 .shot { border: 1px solid var(--line); border-radius: var(--radius-s); overflow: hidden; background: #fff; }
+.shot-desktop { border-radius: var(--radius-xs); }
 .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .shot-desktop { width: 300px; height: 190px; border-radius: var(--radius-xs); }
 .shot-phone { width: 225px; height: 487px; }
@@ -311,6 +329,7 @@
 }
 .mini-card:hover { transform: translateY(-2px); }
 .mini-card h4 { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink); }
+.mini-card .num-serif { font-family: "Fraunces", serif; font-style: italic; font-size: 14px; color: var(--accent); font-variation-settings: "SOFT" 0, "WONK" 1; letter-spacing: 0.04em; }
 .mini-card .body-3 { color: var(--body); }
 
 /* ---------- Comparison table ---------- */
@@ -353,7 +372,7 @@
 .discover {
   width: 100%;
   max-width: 1080px;
-  padding-top: var(--max);
+  padding: var(--xxl) 0;
   display: flex;
   flex-direction: column;
   gap: var(--ml);

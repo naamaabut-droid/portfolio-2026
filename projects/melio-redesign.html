@@ -8,9 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
-  <link rel="stylesheet" href="../css/tokens.css?v=1" />
-  <link rel="stylesheet" href="../css/site.css?v=4" />
-  <link rel="stylesheet" href="../css/case-study.css?v=4" />
+  <link rel="stylesheet" href="../css/tokens.css?v=2" />
+  <link rel="stylesheet" href="../css/site.css?v=6" />
+  <link rel="stylesheet" href="../css/case-study.css?v=5" />
   <style>
     /* page-specific: Melio hero art (Safari window + phone) */
     .melio-art { position: relative; height: 412px; align-self: center; }
@@ -93,10 +93,12 @@
     }
     .explore-grid img { width: 100%; height: 195px; object-fit: contain; }
     .finals { display: flex; flex-direction: column; gap: var(--sm); align-items: center; padding-top: var(--ml); width: 100%; }
-    .finals-row { display: flex; gap: 19px; align-items: flex-start; justify-content: center; }
+    .explore-cell { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .layout-lbl { font-family: "Fraunces", serif; font-style: italic; font-size: 14px; color: var(--body); font-variation-settings: "SOFT" 0, "WONK" 1; letter-spacing: 0.04em; }
+    .finals-row { display: flex; gap: var(--ml); align-items: flex-start; justify-content: center; }
     .finals-cell { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
     .finals-cell .lbl { font-size: 12px; color: var(--body); line-height: 1.4; }
-    .finals-cell img { width: 303.5px; }
+    .finals-cell img { width: 303.5px; border-radius: var(--radius-xxs); }
 
     /* A/B/C grid */
     .abc-grid {
@@ -206,7 +208,6 @@
 
       <!-- TL;DR -->
       <section class="tldr narrow reveal">
-        <h2 class="h2-med">TL;DR</h2>
         <div class="tldr-bullets">
           <div class="tldr-bullet">
             <p class="label-serif">The problem</p>
@@ -224,7 +225,7 @@
       </section>
 
       <!-- Overview -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Overview</p>
         <p class="body-2 txt-ink">Melio is an accounts payable tool for small businesses, processing $20B annually — letting them pay vendors, suppliers, and contractors flexibly to optimize cash flow. This project adapted the desktop dashboard redesign into a mobile-first experience — pivoting to a task-optimized card structure, with dedicated mobile components, revamped navigation for partner-embedded contexts, and key data fields prioritized for on-the-go scannability.</p>
       </section>
@@ -307,7 +308,7 @@
       </section>
 
       <!-- Execution/01 -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Execution/01</p>
         <h2 class="h2-med">Sketching the navigation</h2>
         <p class="body-2 txt-ink">Early concepting explored how far navigation could be simplified for small screens and partner-embedded contexts.</p>
@@ -322,7 +323,7 @@
       </section>
 
       <!-- Execution/02 -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Execution/02</p>
         <h2 class="h2-med">Cards that know their job</h2>
         <p class="body-2 txt-ink">A multi-column desktop table can't scale down without destroying readability. I broke the tables into modular mobile cards — the hierarchy inside each card shifts with the tab's user goal: Bills for tap-to-pay, Payments for tracking, Vendors for ad-hoc payment. Secondary data nests inside a card dropdown, keeping the layout scan-ready.</p>
@@ -360,7 +361,7 @@
       </section>
 
       <!-- Tab strips -->
-      <section class="wide py-72 reveal" style="display:flex; flex-direction:column; gap:var(--xl); align-items:center;">
+      <section class="wide py-48 reveal" style="display:flex; flex-direction:column; gap:var(--xl); align-items:center;">
         <div class="tab-strip">
           <div class="strip"><img src="../assets/melio-redesign/imgBills1.png" alt="" class="lb" /></div>
           <p class="strip-label">Bills Tab</p>
@@ -376,7 +377,7 @@
       </section>
 
       <!-- Execution/03 -->
-      <section class="sec sec-gap-16 narrow py-72 reveal">
+      <section class="sec sec-gap-16 narrow py-48 reveal">
         <p class="label-serif" style="width:100%;">Execution/03</p>
         <h2 class="h2-med">Analyzed &amp; Iterated</h2>
         <p class="body-2 txt-ink">Layout explorations ran against real constraints — testing card styles and navigation patterns across the Melio standalone and partner dashboards.</p>
@@ -384,37 +385,39 @@
 
       <!-- Explorations card -->
       <section class="case-card wide reveal" style="gap:var(--xl); align-items:center;">
-        <div class="card-caption">
-          <p style="font-weight:500;">Card layout sketching</p>
-          <p class="dim">Click to enlarge.</p>
+        <div style="display:flex; flex-direction:column; gap:var(--sm); align-items:center; width:100%;">
+          <div class="explore-grid">
+            <div class="explore-cell"><p class="layout-lbl">Layout A</p><img src="../assets/melio-redesign/imgFrame1261152750.png" alt="" class="lb" /></div>
+            <div class="explore-cell"><p class="layout-lbl">Layout B</p><img src="../assets/melio-redesign/imgB.png" alt="" class="lb" /></div>
+            <div class="explore-cell"><p class="layout-lbl">Layout C</p><img src="../assets/melio-redesign/imgC.png" alt="" class="lb" /></div>
+            <div class="explore-cell"><p class="layout-lbl">Layout D</p><img src="../assets/melio-redesign/imgD.png" alt="" class="lb" /></div>
+          </div>
+          <div class="card-caption">
+            <p style="font-weight:500;">Card layout sketching</p>
+            <p class="dim">Click to enlarge.</p>
+          </div>
         </div>
-        <div class="explore-grid">
-          <img src="../assets/melio-redesign/imgFrame1261152750.png" alt="" class="lb" />
-          <img src="../assets/melio-redesign/imgB.png" alt="" class="lb" />
-          <img src="../assets/melio-redesign/imgC.png" alt="" class="lb" />
-          <img src="../assets/melio-redesign/imgD.png" alt="" class="lb" />
-        </div>
-        <div class="finals">
-          <p class="strip-label">Finals</p>
+        <div style="display:flex; flex-direction:column; gap:var(--sm); align-items:center; width:100%; padding-top:var(--ml);">
           <div class="finals-row">
             <div class="finals-cell">
-              <p class="lbl">Payments tabs</p>
-              <img src="../assets/melio-redesign/finals-payments.png" alt="" />
+              <p class="lbl">Payments</p>
+              <img src="../assets/melio-redesign/finals-payments-item.png" alt="" class="lb" />
             </div>
             <div class="finals-cell">
               <p class="lbl">Bills</p>
-              <img src="../assets/melio-redesign/finals-bills.png" alt="" />
+              <img src="../assets/melio-redesign/finals-bills-item.png" alt="" class="lb" />
             </div>
             <div class="finals-cell">
               <p class="lbl">Vendors</p>
-              <img src="../assets/melio-redesign/finals-vendors.png" alt="" />
+              <img src="../assets/melio-redesign/finals-vendor-item.png" alt="" class="lb" />
             </div>
           </div>
+          <p class="lbl" style="font-size:12px; color:var(--body);">Finals</p>
         </div>
       </section>
 
       <!-- Validation -->
-      <section class="sec sec-gap-24 narrow py-72 reveal" style="align-items:center;">
+      <section class="sec sec-gap-24 narrow py-48 reveal" style="align-items:center;">
         <div class="sec sec-gap-16" style="width:100%;">
           <p class="label-serif" style="width:100%;">Validation</p>
           <p class="body-2 txt-ink">A/B testing infrastructure wasn't fully integrated for this mobile web release, so validation relied on upfront usability testing — which surfaced the exact failures:</p>
@@ -454,7 +457,7 @@
       </section>
 
       <!-- Key decisions -->
-      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--max); align-items:center;">
+      <section class="sec sec-gap-24 narrow reveal" style="padding-bottom:var(--xxl); align-items:center;">
         <p class="label-serif" style="width:100%;">Key decisions</p>
         <div class="insight-row">
           <div class="insight-card r-md">
