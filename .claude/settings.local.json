@@ -213,7 +213,18 @@
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Glass effect on nav + back pills: Alpha/25 bg + inner white rim glow per Figma 108:1006/1007 *)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Footer matched to Figma 274:7895: border + labels share the 1080px centered box, no inner padding *)",
       "Bash(perl -pi -e 's{<section class=\"num-bullets narrow reveal\" style=\"padding:var\\\\\\(--xxl\\\\\\) 0;\">}{<section class=\"num-bullets narrow reveal\" style=\"padding:0 0 var\\(--xxl\\);\">}' projects/melio-optimization.html)",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Section padding sweep: Wixel Act rows get py-48, melio-opt bullet rows follow Container.margins rhythm \\(294:8209\\) *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Section padding sweep: Wixel Act rows get py-48, melio-opt bullet rows follow Container.margins rhythm \\(294:8209\\) *)",
+      "Bash(jq -r .[0].text /Users/naamaabitbol/.claude/projects/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/tool-results/mcp-44c37364-dfd3-4eb8-ab75-c8fac9fe32b8-get_metadata-1784742825952.txt)",
+      "Bash(jq -r .[1].text /Users/naamaabitbol/.claude/projects/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/tool-results/mcp-44c37364-dfd3-4eb8-ab75-c8fac9fe32b8-get_metadata-1784742825952.txt)",
+      "Bash(curl -sL -o row1-test.png \"https://www.figma.com/api/mcp/asset/f2056d63-2904-4eb6-adcf-4a090765132d\")",
+      "Bash(sips -g pixelWidth -g pixelHeight row1-test.png)",
+      "Bash(curl -sL -o tile-hidden.png \"https://www.figma.com/api/mcp/asset/e8b1b502-ac30-4f7d-a20b-3e6d961c54fa\")",
+      "Bash(sips -g pixelWidth -g pixelHeight tile-hidden.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight bugs-row-5.png)",
+      "Bash(awk '{print $5}')",
+      "Bash(curl -sL -o row5-full.png \"https://www.figma.com/api/mcp/asset/41e92a12-6358-49bf-a8d4-31dd18596a84\")",
+      "Bash(sips -g pixelWidth row5-thumb.png)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Bugs band re-synced from Figma 294:8211: full-width scrollable rows, one-time alternating slide-in \\(no loop\\) *)"
     ]
   }
 }

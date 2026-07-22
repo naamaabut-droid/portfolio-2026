@@ -50,20 +50,25 @@
     .ba-col .imgs { display: flex; gap: var(--sm); width: 100%; }
     .ba-col .imgs .shot { flex: 1 1 0; min-width: 1px; aspect-ratio: 330/714; border-radius: var(--radius-md); }
 
-    /* marquee rows */
-    .bugs-band { width: 100%; overflow: hidden; display: flex; flex-direction: column; gap: var(--sm); align-items: center; }
-    .bugs-band img.row {
-      width: 1440px; max-width: none; flex: none;
-      animation: bugs-drift 2s ease-in-out infinite alternate;
+    /* Figma 294:8211 "Bugs screens Grid" — 5 scrollable rows, one-time slide-in, alternating directions */
+    .bugs-band { width: 100%; display: flex; flex-direction: column; gap: var(--sm); }
+    .bugs-row { width: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .bugs-row::-webkit-scrollbar { display: none; }
+    .bugs-row img { height: 277.4px; width: auto; max-width: none; display: block; }
+    .bugs-row { opacity: 0; transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+    .bugs-row.from-right { transform: translateX(160px); }
+    .bugs-row.from-left { transform: translateX(-160px); }
+    .bugs-row:nth-child(2) { transition-delay: 0.08s; }
+    .bugs-row:nth-child(3) { transition-delay: 0.16s; }
+    .bugs-row:nth-child(4) { transition-delay: 0.24s; }
+    .bugs-row:nth-child(5) { transition-delay: 0.32s; }
+    .bugs-band.band-in .bugs-row { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .bugs-row { opacity: 1; transform: none; transition: none; }
     }
-    .bugs-band img.row.rev { animation-name: bugs-drift-rev; }
-    .bugs-band img.row:nth-child(2) { animation-delay: 0.2s; }
-    .bugs-band img.row:nth-child(3) { animation-delay: 0.4s; }
-    .bugs-band img.row:nth-child(4) { animation-delay: 0.6s; }
-    .bugs-band img.row:nth-child(5) { animation-delay: 0.8s; }
-    @keyframes bugs-drift { from { transform: translateX(0); } to { transform: translateX(-200px); } }
-    @keyframes bugs-drift-rev { from { transform: translateX(0); } to { transform: translateX(200px); } }
-    @media (prefers-reduced-motion: reduce) { .bugs-band img.row { animation: none; } }
+    @media (max-width: 480px) {
+      .bugs-row img { height: 200px; }
+    }
 
     .flows-cols { display: flex; gap: var(--max); align-items: flex-start; justify-content: center; width: 100%; }
     .flows-cols .fc { display: flex; flex-direction: column; gap: 42px; }
@@ -376,11 +381,11 @@
 
       <p class="cap-block t" style="font-weight:500;">System bugs and inconsistency mapping</p>
       <div class="bugs-band">
-        <img class="row" src="../assets/melio-opt/bugs-row-1.png" alt="" />
-        <img class="row rev" src="../assets/melio-opt/bugs-row-2.png" alt="" />
-        <img class="row" src="../assets/melio-opt/bugs-row-3.png" alt="" />
-        <img class="row rev" src="../assets/melio-opt/bugs-row-4.png" alt="" />
-        <img class="row" src="../assets/melio-opt/bugs-row-5.png" alt="" />
+        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-1.png" alt="" /></div>
+        <div class="bugs-row from-left" data-anchor="end"><img src="../assets/melio-opt/bugs-row-2.png" alt="" /></div>
+        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-3.png" alt="" /></div>
+        <div class="bugs-row from-left" data-anchor="end"><img src="../assets/melio-opt/bugs-row-4.png" alt="" /></div>
+        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-5.png" alt="" /></div>
       </div>
 
       <p class="cap-block t" style="font-weight:500;">Responsive Layouts Guidelines</p>
@@ -529,6 +534,24 @@
           });
         }, { threshold: 0.25 });
         io.observe(strip);
+      }
+
+      // Bugs band: rows 2/4 start scrolled to their end (content extends left in Figma),
+      // then the whole band slides in once — alternating directions per row
+      const band = document.querySelector('.bugs-band');
+      if (band) {
+        band.querySelectorAll('.bugs-row[data-anchor="end"]').forEach((row) => {
+          const img = row.querySelector('img');
+          const anchor = () => { row.scrollLeft = row.scrollWidth; };
+          if (img.complete && img.naturalWidth > 0) anchor();
+          else img.addEventListener('load', anchor);
+        });
+        const bandIo = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) { band.classList.add('band-in'); bandIo.disconnect(); }
+          });
+        }, { threshold: 0.15 });
+        bandIo.observe(band);
       }
     })();
   </script>
