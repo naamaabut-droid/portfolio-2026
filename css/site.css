@@ -374,6 +374,8 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   gap: var(--ml);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  /* keep snap points inside the 48px padding (otherwise the first card snaps flush to the edge) */
+  scroll-padding: 0 var(--xxl);
   -webkit-overflow-scrolling: touch;
 }
 .reviews::-webkit-scrollbar { height: 8px; }
@@ -494,7 +496,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   .home-bio p { text-align: left; }
   .selected-work { padding-top: var(--xxl); }
   .work-cards { flex-direction: column; }
-  .reviews { padding: var(--sm); gap: var(--sm); }
+  .reviews { padding: var(--sm); gap: var(--sm); scroll-padding: 0 var(--sm); }
   .reviews .review { max-width: 88vw; }
   .recs { padding: var(--l) var(--sm); }
   .contact-anchor { padding: var(--l) var(--sm); }
