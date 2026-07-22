@@ -193,7 +193,13 @@
       "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/14d3de36-e2f8-4cc7-b2d1-5dc31310b420\" -o logo-linkedin.svg)",
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud *)",
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study.css?v=9/case-study.css?v=10/' projects/*.html && echo bumped)",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Melio-opt hero: stagger phones per Figma 210:5426 \\(166×359.5 at y 72/122/30\\) *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Melio-opt hero: stagger phones per Figma 210:5426 \\(166×359.5 at y 72/122/30\\) *)",
+      "Bash(curl -s -o full-screen-2.png \"https://www.figma.com/api/mcp/asset/072bda4e-c3ff-4623-ba87-b0c47ca90ef6\")",
+      "Bash(curl -s -o 6-columns-2.png \"https://www.figma.com/api/mcp/asset/48830303-2dd1-4f93-90f6-7bb9281f6476\")",
+      "Bash(curl -s -o split-screen-1-2.png \"https://www.figma.com/api/mcp/asset/520febc7-bf5a-4352-a5cc-0ec037c3b75b\")",
+      "Bash(curl -s -o external-layout-1-2.png \"https://www.figma.com/api/mcp/asset/96a2f8c6-036e-4d19-85a1-7f8e3663ef6b\")",
+      "Bash(sips -g pixelWidth -g pixelHeight full-screen-2.png 6-columns-2.png split-screen-1-2.png external-layout-1-2.png)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Responsive guidelines screens strip re-synced from Figma 307:1903 \\(new screens, full-bleed row\\) *)"
     ]
   }
 }

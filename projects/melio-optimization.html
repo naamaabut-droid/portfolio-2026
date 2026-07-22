@@ -70,8 +70,9 @@
     .flows-cols img { display: block; }
 
     .layouts-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: var(--max); width: 100%; max-width: 1080px; }
-    .layouts-screens { display: flex; gap: var(--xxl); justify-content: center; align-items: flex-start; width: 100%; flex-wrap: wrap; }
-    .layouts-screens img { height: 388px; width: auto; }
+    /* Figma 307:1903 — full-bleed strip from the left edge, last screen clipped at the right */
+    .layouts-screens { display: flex; gap: var(--sm); justify-content: flex-start; align-items: flex-start; width: 100%; overflow: hidden; }
+    .layouts-screens img { height: 388px; width: auto; max-width: none; flex-shrink: 0; }
 
     .examples-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--ml); width: 100%; }
     .ex-pair { display: flex; gap: var(--s); }
@@ -100,6 +101,9 @@
       .insight-row, .flows-cols, .annot-pair { flex-direction: column; }
       .before-after, .examples-grid, .layouts-grid { grid-template-columns: 1fr; }
       .annot-pair { align-items: center; padding: 0; }
+    }
+    @media (max-width: 480px) {
+      .layouts-screens img { height: 240px; }
     }
   </style>
 </head>
@@ -373,10 +377,10 @@
           <img src="../assets/melio-opt/imgExternalLayout1.png" alt="" style="width:100%;" class="lb" />
         </div>
         <div class="layouts-screens">
-          <img src="../assets/melio-opt/imgSplitScreen11.png" alt="" class="lb" />
-          <img src="../assets/melio-opt/img6Columns1.png" alt="" class="lb" />
-          <img src="../assets/melio-opt/imgExternalLayout11.png" alt="" class="lb" />
-          <img src="../assets/melio-opt/imgFullScreen1.png" alt="" class="lb" />
+          <img src="../assets/melio-opt/full-screen-2.png" alt="" class="lb" />
+          <img src="../assets/melio-opt/6-columns-2.png" alt="" class="lb" />
+          <img src="../assets/melio-opt/split-screen-1-2.png" alt="" class="lb" />
+          <img src="../assets/melio-opt/external-layout-1-2.png" alt="" class="lb" />
         </div>
       </div>
     </div>
