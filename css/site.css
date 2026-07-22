@@ -176,7 +176,10 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
    ============================================================ */
 .hero {
   position: relative;
-  height: 700px;
+  /* full fold at every viewport (svh = stable height under mobile browser chrome) */
+  height: 100vh;
+  height: 100svh;
+  min-height: 480px;
   overflow: hidden;
   background: linear-gradient(to bottom, var(--grad-top), var(--grad-bottom));
 }
@@ -455,7 +458,6 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   .h2, .h2-med { font-size: 36px; }
   .body-1 { font-size: 20px; }
 
-  .hero { height: 620px; }
   .work-cards, .cs-row { flex-direction: column; }
   .home-bio, .about-intro, .experience, .cs-header { padding-left: var(--ml); padding-right: var(--ml); }
   .footer { width: calc(100% - 48px); margin: 0 auto; }
@@ -474,7 +476,6 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   .h2, .h2-med { font-size: 32px; }
   .h3, .h3-med { font-size: 24px; }
   .body-1 { font-size: 20px; }
-  .hero { height: 600px; }
   .hero-profile { width: 96px; height: 96px; }
   .nav a { padding: var(--s) var(--sm); }
   .contact-section { height: auto; padding: var(--max) 0; }
