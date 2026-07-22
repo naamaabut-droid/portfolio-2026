@@ -211,7 +211,9 @@
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'LinkButton pressed state per Figma 178:956: accent arrow via currentColor mask + kept underline *)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Remove browser focus ring on project-card click \\(keep keyboard focus\\) *)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Glass effect on nav + back pills: Alpha/25 bg + inner white rim glow per Figma 108:1006/1007 *)",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Footer matched to Figma 274:7895: border + labels share the 1080px centered box, no inner padding *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Footer matched to Figma 274:7895: border + labels share the 1080px centered box, no inner padding *)",
+      "Bash(perl -pi -e 's{<section class=\"num-bullets narrow reveal\" style=\"padding:var\\\\\\(--xxl\\\\\\) 0;\">}{<section class=\"num-bullets narrow reveal\" style=\"padding:0 0 var\\(--xxl\\);\">}' projects/melio-optimization.html)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Section padding sweep: Wixel Act rows get py-48, melio-opt bullet rows follow Container.margins rhythm \\(294:8209\\) *)"
     ]
   }
 }
