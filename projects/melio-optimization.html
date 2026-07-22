@@ -55,6 +55,9 @@
     .bugs-row { width: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .bugs-row::-webkit-scrollbar { display: none; }
     .bugs-row img { height: 277.4px; width: auto; max-width: none; display: block; }
+    /* the 24px lead from Figma (exports start at the first tile) */
+    .bugs-row.from-right img { margin-left: var(--ml); }
+    .bugs-row.from-left img { margin-right: var(--ml); }
     .bugs-row { opacity: 0; transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
     .bugs-row.from-right { transform: translateX(160px); }
     .bugs-row.from-left { transform: translateX(-160px); }
@@ -381,11 +384,11 @@
 
       <p class="cap-block t" style="font-weight:500;">System bugs and inconsistency mapping</p>
       <div class="bugs-band">
-        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-1.png" alt="" /></div>
-        <div class="bugs-row from-left" data-anchor="end"><img src="../assets/melio-opt/bugs-row-2.png" alt="" /></div>
-        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-3.png" alt="" /></div>
-        <div class="bugs-row from-left" data-anchor="end"><img src="../assets/melio-opt/bugs-row-4.png" alt="" /></div>
-        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-5.png" alt="" /></div>
+        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-1.png?v=2" alt="" /></div>
+        <div class="bugs-row from-left" data-anchor="end"><img src="../assets/melio-opt/bugs-row-2.png?v=2" alt="" /></div>
+        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-3.png?v=2" alt="" /></div>
+        <div class="bugs-row from-left" data-anchor="end"><img src="../assets/melio-opt/bugs-row-4.png?v=2" alt="" /></div>
+        <div class="bugs-row from-right"><img src="../assets/melio-opt/bugs-row-5.png?v=2" alt="" /></div>
       </div>
 
       <p class="cap-block t" style="font-weight:500;">Responsive Layouts Guidelines</p>

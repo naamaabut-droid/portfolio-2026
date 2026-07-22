@@ -230,7 +230,14 @@
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Glass effect on contact buttons \\(180:1785\\) + Navigation bg updated to Alpha/10 \\(108:1008\\); shared --glass-glow token *)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Home hero full-fold: 100svh at every viewport \\(min 480px\\) *)",
       "Bash(sips -g pixelWidth -g pixelHeight assets/about/Container-1.png)",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Fix reviews strip: scroll-snap swallowed the 48px padding \\(scroll-padding added\\) *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Fix reviews strip: scroll-snap swallowed the 48px padding \\(scroll-padding added\\) *)",
+      "Bash(curl -sL -o bugs-row-1.png \"https://www.figma.com/api/mcp/asset/1b64598c-890a-45f6-8a7f-0301a3da9d88\")",
+      "Bash(curl -sL -o bugs-row-2.png \"https://www.figma.com/api/mcp/asset/c19c17d9-0872-4dd2-9fbc-a5a2934f6e6b\")",
+      "Bash(curl -sL -o bugs-row-3.png \"https://www.figma.com/api/mcp/asset/0205e82a-fcb5-48d8-a6ae-31886e2434fe\")",
+      "Bash(curl -sL -o bugs-row-4.png \"https://www.figma.com/api/mcp/asset/d0fc234d-a621-422f-abae-a9abaa355014\")",
+      "Bash(curl -sL -o bugs-row-5-new.png \"https://www.figma.com/api/mcp/asset/90b08a63-c130-4aa7-86c0-1d11ecd87cdd\")",
+      "Bash(perl -pi -e 's{\\(assets/melio-opt/bugs-row-\\\\d\\\\.png\\)\\(\\\\?v=\\\\d+\\)?}{$1?v=2}g' projects/melio-optimization.html)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Fix gray background in bug rows: re-export with white bg + restore full-width content, whiten gap bands *)"
     ]
   }
 }
