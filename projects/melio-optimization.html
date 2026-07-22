@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
   <link rel="stylesheet" href="../css/tokens.css?v=2" />
   <link rel="stylesheet" href="../css/site.css?v=8" />
-  <link rel="stylesheet" href="../css/case-study.css?v=10" />
+  <link rel="stylesheet" href="../css/case-study.css?v=11" />
   <link rel="stylesheet" href="../css/components.css?v=1" />
   <style>
     /* geometry 1:1 from Figma hero image 210:5426 (528×512):
@@ -70,12 +70,25 @@
     .flows-cols img { display: block; }
 
     .layouts-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: var(--max); width: 100%; max-width: 1080px; }
-    /* Figma 307:1903 — full-bleed strip from the left edge, last screen clipped at the right */
-    .layouts-screens { display: flex; gap: var(--sm); justify-content: flex-start; align-items: flex-start; width: 100%; overflow: hidden; }
-    .layouts-screens img { height: 388px; width: auto; max-width: none; flex-shrink: 0; }
+    /* Figma 307:1903 — full-bleed strip from the left edge, scrollable sideways */
+    .layouts-screens { display: flex; gap: var(--sm); justify-content: flex-start; align-items: flex-start; width: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .layouts-screens::-webkit-scrollbar { display: none; }
+    .layouts-screens img {
+      height: 388px; width: auto; max-width: none; flex-shrink: 0;
+      opacity: 0; transform: translateX(120px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .layouts-screens img:nth-child(2) { transition-delay: 0.09s; }
+    .layouts-screens img:nth-child(3) { transition-delay: 0.18s; }
+    .layouts-screens img:nth-child(4) { transition-delay: 0.27s; }
+    .layouts-screens.strip-in img { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .layouts-screens img { opacity: 1; transform: none; transition: none; }
+    }
 
-    .examples-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--ml); width: 100%; }
-    .ex-pair { display: flex; gap: var(--s); }
+    /* Figma 191:41229 — 3×3, gap 72; 18.5px between the before/after phones */
+    .examples-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--max); width: 100%; }
+    .ex-pair { display: flex; gap: 18.5px; }
     .ex-pair img { flex: 1 1 0; min-width: 1px; border-radius: var(--radius-xs); }
     .ex-pair img.before { opacity: 0.8; }
     .ex-pair img.after { border: 0.75px solid var(--line); }
@@ -100,6 +113,7 @@
       .mo-art { display: none; }
       .insight-row, .flows-cols, .annot-pair { flex-direction: column; }
       .before-after, .examples-grid, .layouts-grid { grid-template-columns: 1fr; }
+      .examples-grid { gap: var(--ml); }
       .annot-pair { align-items: center; padding: 0; }
     }
     @media (max-width: 480px) {
@@ -110,7 +124,7 @@
 <body>
 
   <a class="page-nav" href="../case-studies.html">
-    <span class="btn-icon-40"><img src="../assets/melio-opt/imgIcon.svg" alt="" /></span>
+    <span class="btn-icon-40"><img src="../assets/shared/icons/arrow-left-s.svg" alt="" /></span>
     <span class="tab-label tab">Back to Projects</span>
   </a>
 
@@ -505,6 +519,17 @@
       });
       lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+
+      // Responsive-guidelines strip: slide screens in from the side on first view
+      const strip = document.querySelector('.layouts-screens');
+      if (strip) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) { strip.classList.add('strip-in'); io.disconnect(); }
+          });
+        }, { threshold: 0.25 });
+        io.observe(strip);
+      }
     })();
   </script>
 </body>

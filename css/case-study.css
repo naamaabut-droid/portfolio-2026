@@ -111,21 +111,15 @@
   gap: var(--xxs);
   padding: var(--xs);
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--alpha-25); /* Figma Navigation-Page 108:1007 */
   box-shadow: 0 2px 6px rgba(17, 17, 19, 0.08);
   color: var(--ink);
-  transition: background-color 0.2s ease;
 }
-.page-nav:hover { background: rgba(255, 255, 255, 0.7); }
 .page-nav .btn-icon-40 {
   width: 40px; height: 40px;
   display: grid; place-items: center;
   border-radius: var(--radius-full);
-  transition: transform 0.2s ease;
 }
-.page-nav:hover .btn-icon-40 { transform: translateX(-2px); }
 .page-nav .btn-icon-40 img { width: 16px; height: 16px; }
 .page-nav .tab {
   padding: var(--s) var(--m) var(--s) var(--s);
