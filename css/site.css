@@ -61,6 +61,8 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   transform: translateY(-6px);
   box-shadow: 0 2px 6px rgba(17, 17, 19, 0.05), 0 24px 60px rgba(17, 17, 19, 0.10);
 }
+/* no browser focus ring on click — keyboard tabbing still gets the default ring */
+.project-card:focus:not(:focus-visible) { outline: none; }
 .project-card .cover {
   height: 300px;
   background: linear-gradient(to bottom, var(--grad-top), var(--grad-bottom));
