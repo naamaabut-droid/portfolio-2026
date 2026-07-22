@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
   <link rel="stylesheet" href="../css/tokens.css?v=3" />
   <link rel="stylesheet" href="../css/site.css?v=14" />
-  <link rel="stylesheet" href="../css/case-study.css?v=15" />
+  <link rel="stylesheet" href="../css/case-study.css?v=16" />
   <link rel="stylesheet" href="../css/components.css?v=3" />
   <style>
     .fin-art { position: relative; width: 609px; max-width: 100%; height: 100%; align-self: stretch; justify-self: start; }
@@ -42,10 +42,9 @@
 
     .edge-pair { display: flex; gap: var(--sm); align-items: flex-start; width: 100%; }
     .edge-pair .col { flex: 1 1 0; min-width: 1px; display: flex; flex-direction: column; gap: var(--s); }
-    .edge-pair .cap14 { font-size: 14px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
 
     .features-row { display: flex; gap: var(--sm); align-items: flex-start; width: 100%; overflow-x: auto; }
-    .features-row .col { flex: none; width: 520px; display: flex; flex-direction: column; gap: var(--s); }
+    .features-row .col { flex: none; width: 520px; display: flex; flex-direction: column; gap: var(--sm); }
 
     .insight-row { display: flex; gap: var(--sm); align-items: stretch; width: 100%; }
     .insight-card {
@@ -143,7 +142,7 @@
       <!-- The cost -->
       <section class="sec sec-gap-16 narrow reveal" style="padding:var(--xxl) 0;">
         <p class="label-serif" style="width:100%;">The cost</p>
-        <p class="body-2 txt-ink">~30 managed accounts, 1,000 invoices and ~25 hours of manual Ops work every month — on 3 employees.</p>
+        <h2 class="h2-med">~30 managed accounts, 1,000 invoices and ~25 hours of manual Ops work every month — on 3 employees.</h2>
       </section>
 
       <!-- Discovery -->
@@ -196,9 +195,9 @@
       </section>
 
       <!-- Core Assumption -->
-      <section class="sec sec-gap-24 narrow reveal" style="padding:var(--xxl) 0;">
+      <section class="sec sec-gap-16 narrow reveal" style="padding:var(--xxl) 0;">
         <p class="label-serif" style="width:100%;">Core Assumption</p>
-        <p class="body-2 txt-ink">In financial workflows, trust comes from control and real-time validation — not promises of accuracy.</p>
+        <h2 class="h2-med">In financial workflows, trust comes from control and real-time validation — not promises of accuracy.</h2>
         <div class="sec" style="width:100%; gap:var(--xs);">
           <p class="body-2 txt-ink">Design constraints:</p>
           <div class="cs-list">
@@ -312,13 +311,13 @@
             <div class="media-video" data-video="finaloop-duplicated" style="border-radius:var(--radius-sm); aspect-ratio:2880/1634;">
               <img src="../assets/finaloop-page/video-duplicated.png" alt="" class="lb" />
             </div>
-            <p class="cap14">Import duplicated invoice</p>
+            <p class="img-caption">Import duplicated invoice</p>
           </div>
           <div class="col">
             <div class="media-video" data-video="finaloop-errors" style="border-radius:var(--radius-sm); aspect-ratio:2880/1634;">
               <img src="../assets/finaloop-page/video-errors.png" alt="" class="lb" />
             </div>
-            <p class="cap14">Error States - Missing Data</p>
+            <p class="img-caption">Error States - Missing Data</p>
           </div>
         </div>
       </section>
@@ -334,19 +333,19 @@
             <div class="media-video" data-video="finaloop-bulkedit" style="border-radius:var(--radius-xs); aspect-ratio:2878/1634;">
               <img src="../assets/finaloop-page/video-bulkedit.png" alt="" class="lb" />
             </div>
-            <p class="cap14" style="font-size:14px; font-weight:500; color:var(--ink);">Bulk edit</p>
+            <p class="img-caption">Bulk edit</p>
           </div>
           <div class="col">
             <div class="media-video" data-video="finaloop-addinvoices" style="border-radius:var(--radius-xs); aspect-ratio:2878/1634;">
               <img src="../assets/finaloop-page/video-addinvoices.png" alt="" class="lb" />
             </div>
-            <p class="cap14" style="font-size:14px; font-weight:500; color:var(--ink);">Add invoices</p>
+            <p class="img-caption">Add invoices</p>
           </div>
           <div class="col">
             <div class="media-video" data-video="finaloop-lineitem" style="border-radius:var(--radius-xs); aspect-ratio:2878/1634;">
               <img src="../assets/finaloop-page/video-lineitem.png" alt="" class="lb" />
             </div>
-            <p class="cap14" style="font-size:14px; font-weight:500; color:var(--ink);">Clickable Line item</p>
+            <p class="img-caption">Clickable Line item</p>
           </div>
         </div>
       </section>

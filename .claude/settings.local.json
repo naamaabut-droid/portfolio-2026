@@ -237,7 +237,8 @@
       "Bash(curl -sL -o bugs-row-4.png \"https://www.figma.com/api/mcp/asset/d0fc234d-a621-422f-abae-a9abaa355014\")",
       "Bash(curl -sL -o bugs-row-5-new.png \"https://www.figma.com/api/mcp/asset/90b08a63-c130-4aa7-86c0-1d11ecd87cdd\")",
       "Bash(perl -pi -e 's{\\(assets/melio-opt/bugs-row-\\\\d\\\\.png\\)\\(\\\\?v=\\\\d+\\)?}{$1?v=2}g' projects/melio-optimization.html)",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Fix gray background in bug rows: re-export with white bg + restore full-width content, whiten gap bands *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Fix gray background in bug rows: re-export with white bg + restore full-width content, whiten gap bands *)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Finaloop statements to H2-48 per Figma 210:33090/33127 + site-wide image captions normalized to Label/Caption \\(12/400 body, centered\\) *)"
     ]
   }
 }
