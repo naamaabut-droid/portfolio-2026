@@ -202,7 +202,12 @@
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Responsive guidelines screens strip re-synced from Figma 307:1903 \\(new screens, full-bleed row\\) *)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Guidelines strip scroll + slide-in, examples grid 72px per Figma, Back pill matched to component 108:1007 *)",
       "Bash(perl -pi -e 's{css/case-study\\\\.css\\\\?v=11}{css/case-study.css?v=12}g' projects/*.html)",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Restore arrow micro-nudge on Back pill hover *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Restore arrow micro-nudge on Back pill hover *)",
+      "Bash(curl -s -o /tmp/figma-arrow.svg \"https://www.figma.com/api/mcp/asset/44883e11-0552-4845-85de-43f0c6052992\")",
+      "Bash(curl -sL -o nav-4x.png \"https://www.figma.com/api/mcp/asset/3119a0fa-065a-4f35-bba7-6309501c7fb8\")",
+      "Bash(sips -g pixelWidth -g pixelHeight nav-4x.png)",
+      "Bash(perl -pi -e 's{src=\"\\\\.\\\\./assets/shared/icons/arrow-left-s\\\\.svg\"}{src=\"../assets/shared/icons/arrow-left-16.svg\"}g; s{css/case-study\\\\.css\\\\?v=12}{css/case-study.css?v=13}g' projects/*.html)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Back pill 1:1: true 16px component arrow \\(stroke 1.6, 20.83% inset\\) + embossed icon circle *)"
     ]
   }
 }

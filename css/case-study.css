@@ -119,6 +119,9 @@
   width: 40px; height: 40px;
   display: grid; place-items: center;
   border-radius: var(--radius-full);
+  /* embossed circle per Figma component render (soft inner shading, top-left) */
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 2px 2px 5px rgba(17, 17, 19, 0.08);
   transition: transform 0.2s ease;
 }
 .page-nav:hover .btn-icon-40 { transform: translateX(-2px); }
