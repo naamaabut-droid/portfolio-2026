@@ -187,7 +187,10 @@
       "Bash(awk '/Hero|hero/{p=1} p&&/TXT:|radius|radii|Radius/{print NR\": \"$0} NR>320{exit}' penny-v2-digest.txt)",
       "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/36eaa483-ebd4-4109-857b-1fbebc108fbe\" -o assets/penny-page/hero-button.png)",
       "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/2f1ded0d-5231-415c-84b2-6cc0de8b7e40\" -o assets/penny-page/hero-radius.png)",
-      "Bash(~/.local/bin/gh api *)"
+      "Bash(~/.local/bin/gh api *)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/a1796636-3abb-4e43-aec1-72e3f9246d9b\" -o logo-gmail.svg)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/882be3d8-650c-48a4-8bb0-a228c75ab0ae\" -o logo-whatsapp.svg)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/14d3de36-e2f8-4cc7-b2d1-5dc31310b420\" -o logo-linkedin.svg)"
     ]
   }
 }
