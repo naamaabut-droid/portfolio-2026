@@ -13,17 +13,19 @@
   <link rel="stylesheet" href="../css/case-study.css?v=10" />
   <link rel="stylesheet" href="../css/components.css?v=1" />
   <style>
+    /* geometry 1:1 from Figma hero image 210:5426 (528×512):
+       phones 166×359.5 at y 72 / 122 / 30 — staggered, center lowest */
     .mo-art { position: relative; width: 528px; height: 512px; }
     .mo-art .ph {
-      position: absolute; top: 50%; height: 354px;
+      position: absolute; width: 166px; height: 359.5px;
       border: 0.75px solid var(--line);
       border-radius: var(--radius-s);
       overflow: hidden; background: #fff;
     }
-    .mo-art .ph img { height: 100%; width: auto; max-width: none; display: block; }
-    .mo-art .ph-1 { left: calc(50% - 181px); transform: translate(-50%, -50%); box-shadow: var(--shadow-shot); }
-    .mo-art .ph-3 { left: calc(50% + 181px); transform: translate(-50%, -50%); box-shadow: var(--shadow-shot); }
-    .mo-art .ph-2 { left: 50%; transform: translate(-50%, -50%); box-shadow: var(--shadow-float); z-index: 2; }
+    .mo-art .ph img { width: 100%; height: auto; display: block; }
+    .mo-art .ph-1 { left: 0; top: 72px; box-shadow: var(--shadow-shot); }
+    .mo-art .ph-2 { left: 181px; top: 122px; box-shadow: var(--shadow-float); z-index: 2; }
+    .mo-art .ph-3 { left: 362px; top: 30px; box-shadow: var(--shadow-shot); }
 
     .insight-row { display: flex; gap: var(--sm); align-items: stretch; width: 100%; }
     .insight-card {
