@@ -57,7 +57,13 @@
 .btn .btn-icon img, .btn .btn-icon-20 img { transition: filter 0.2s ease; }
 .btn:active { transform: scale(0.97); }
 /* Type=Glass: transparent → pill-white fill on hover; brand icons stay colored */
-.btn.btn-plain { background: rgba(0, 0, 0, 0); border: none; color: var(--ink); }
+/* Glass (180:1785): glass pill — Alpha/10 fill + inner rim glow, like the Navigation pills */
+.btn.btn-plain {
+  background: var(--alpha-10);
+  border: none;
+  color: var(--ink);
+  box-shadow: var(--shadow-nav), var(--glass-glow);
+}
 .btn.btn-plain .btn-fill { background: var(--pill); }
 .btn.btn-plain:hover { color: var(--ink); }
 .btn.btn-plain:hover .btn-icon img,

@@ -111,13 +111,8 @@
   gap: var(--xxs);
   padding: var(--xs);
   border-radius: var(--radius-full);
-  background: var(--alpha-25); /* Figma Navigation-Page 108:1007 */
-  /* glass: white rim glowing in from the top-left + soft inner shade at the bottom */
-  box-shadow:
-    0 2px 6px rgba(17, 17, 19, 0.08),
-    inset 10px 10px 20px -6px rgba(255, 255, 255, 0.95),
-    inset 30px 30px 60px -10px rgba(255, 255, 255, 0.55),
-    inset -4px -8px 16px -6px rgba(17, 17, 19, 0.06);
+  background: var(--alpha-10); /* Figma Navigation 108:1008 (updated: Alpha/10) */
+  box-shadow: var(--shadow-nav), var(--glass-glow);
   color: var(--ink);
 }
 .page-nav .btn-icon-40 {
