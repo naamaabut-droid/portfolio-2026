@@ -1,0 +1,162 @@
+/* ============================================================
+   Portfolio 2026 — components.css
+   Component library, 1:1 from the Figma "Components" section
+   (158:237). Every state below maps to a Figma variant:
+   - Button        180:1618  Size=Small/Large · Type=Default/Glass · State=Default/Hover
+   - .Tabs         105:1587  State=Default/Hover/selected
+   - LinkButton    178:959   State=Default/Hover/Pressed
+   - ButtonIcon    107:1702  State=Default/hover/pressed
+   - Tag           103:17773 · Coaunter 106:1606
+   Hover fill animation (cursor-origin clip-path) — js/fill-button.js.
+   ============================================================ */
+
+/* ---------- Button (pill) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--xs);
+  padding: var(--s) var(--m);
+  border-radius: var(--radius-full);
+  background: var(--pill);
+  border: 1px solid var(--line);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.18s cubic-bezier(0.2, 0.7, 0.3, 1.2);
+}
+/* Size=Large */
+.btn.btn-lg { padding: var(--s) var(--ml); gap: var(--s); font-size: 24px; }
+/* cursor-origin fill layer (js/fill-button.js) */
+.btn .btn-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--ink);
+  clip-path: circle(0px at 50% 50%);
+  pointer-events: none;
+  will-change: clip-path;
+}
+.btn .btn-label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+}
+/* State=Hover (Type=Default): ink fill, ground label */
+.btn:hover { color: var(--ground); }
+.btn:hover .btn-icon img,
+.btn:hover .btn-icon-20 img { filter: invert(1); }
+.btn .btn-icon img, .btn .btn-icon-20 img { transition: filter 0.2s ease; }
+.btn:active { transform: scale(0.97); }
+/* Type=Glass: transparent → pill-white fill on hover; brand icons stay colored */
+.btn.btn-plain { background: rgba(0, 0, 0, 0); border: none; color: var(--ink); }
+.btn.btn-plain .btn-fill { background: var(--pill); }
+.btn.btn-plain:hover { color: var(--ink); }
+.btn.btn-plain:hover .btn-icon img,
+.btn.btn-plain:hover .btn-icon-20 img { filter: none; }
+/* fallback when JS didn't attach the fill layer */
+.btn:not(.has-fill):hover { background: var(--ink); }
+.btn.btn-plain:not(.has-fill):hover { background: var(--pill); }
+
+.btn .btn-icon { width: 16px; height: 16px; display: grid; place-items: center; flex: none; }
+.btn .btn-icon img { width: 100%; height: 100%; }
+.btn .btn-icon-20 { width: 20px; height: 20px; display: grid; place-items: center; flex: none; }
+.btn .btn-icon-20 img { width: 100%; height: 100%; object-fit: contain; }
+.btn:hover .arrow-nudge { transform: translateX(2px); }
+.arrow-nudge { transition: transform 0.2s ease; }
+
+/* ---------- .Tabs (navigation items) ---------- */
+.nav a {
+  display: block;
+  padding: var(--s) var(--m);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--body);
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+}
+/* State=Hover: ink text (no background, per 184:2236) */
+.nav a:hover { color: var(--ink); }
+.nav a:active { transform: scale(0.96); }
+/* State=selected */
+.nav a.active { background: var(--alpha-45); color: var(--accent); }
+
+/* ---------- LinkButton (Read case study) ---------- */
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--xxs);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+.link-btn .icon { width: 16px; height: 16px; display: grid; place-items: center; transition: transform 0.2s ease; }
+.link-btn .icon img { width: 10.83px; height: 10.83px; }
+/* State=Hover: underline + arrow nudge */
+.link-btn:hover, .project-card:hover .link-btn { text-decoration: underline; text-underline-position: from-font; }
+.link-btn:hover .icon, .project-card:hover .link-btn .icon { transform: translateX(3px); }
+/* State=Pressed: accent */
+.link-btn:active, .project-card:active .link-btn { color: var(--accent); }
+
+/* ---------- ButtonIcon (40px circle, back arrow) ---------- */
+.btn-icon-40 {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-full);
+  display: grid;
+  place-items: center;
+  flex: none;
+  background: rgba(0, 0, 0, 0);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.page-nav:hover .btn-icon-40, .btn-icon-40:hover { background: var(--alpha-45); }
+.page-nav:active .btn-icon-40, .btn-icon-40:active { background: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Tag ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 33px;
+  padding: var(--xs) var(--s);
+  border-radius: var(--radius-full);
+  background: var(--alpha-45);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--body);
+  white-space: nowrap;
+}
+
+/* ---------- Coaunter (22px accent circle) ---------- */
+.coaunter {
+  flex: none;
+  width: 22px; height: 22px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: var(--pill);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn .btn-fill { display: none; }
+  .btn:hover { background: var(--ink); }
+  .btn.btn-plain:hover { background: var(--pill); }
+}

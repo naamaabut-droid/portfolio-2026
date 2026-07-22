@@ -41,72 +41,9 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   border-radius: var(--radius-full);
   filter: drop-shadow(var(--shadow-nav));
 }
-.nav a {
-  display: block;
-  padding: var(--s) var(--m);
-  border-radius: var(--radius-full);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: var(--body);
-  transition: color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
-}
-.nav a:hover { color: var(--ink); background: rgba(17, 17, 19, 0.04); }
-.nav a:active { transform: scale(0.96); }
-.nav a.active {
-  background: rgba(255, 255, 255, 0.45);
-  color: var(--accent);
-}
+/* .nav a states live in components.css (.Tabs 105:1587) */
 
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--xs);
-  padding: var(--s) var(--m);
-  border-radius: var(--radius-full);
-  background: var(--pill);
-  border: 1px solid var(--line);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.3, 1.2),
-              box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-}
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(17, 17, 19, 0.10);
-  border-color: #b9b8b2;
-}
-.btn:active { transform: translateY(0) scale(0.97); box-shadow: none; }
-.btn .btn-icon { width: 16px; height: 16px; display: grid; place-items: center; flex: none; }
-.btn .btn-icon img { width: 100%; height: 100%; }
-.btn .btn-icon-20 { width: 20px; height: 20px; display: grid; place-items: center; flex: none; }
-.btn .btn-icon-20 img { width: 100%; height: 100%; object-fit: contain; }
-.btn:hover .arrow-nudge { transform: translateX(2px); }
-.arrow-nudge { transition: transform 0.2s ease; }
-
-/* white pill button on gradient (contact) — no border */
-.btn.btn-plain { border: none; box-shadow: 0 1px 3px rgba(17, 17, 19, 0.06); }
-.btn.btn-plain:hover { box-shadow: 0 6px 18px rgba(17, 17, 19, 0.12); }
-
-/* text link button (Read case study) */
-.link-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--xxs);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-.link-btn .icon { width: 16px; height: 16px; display: grid; place-items: center; transition: transform 0.2s ease; }
-.link-btn .icon img { width: 10.83px; height: 10.83px; }
-.link-btn:hover .icon { transform: translateX(3px); }
+/* Buttons + LinkButton live in components.css (180:1618, 178:959) */
 
 /* ---------- Project Card ---------- */
 .project-card {

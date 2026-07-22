@@ -186,7 +186,8 @@
       "Bash(grep -n -B3 -A3 \"TXT: s$\\\\|TXT: m$\" penny-v2-digest.txt)",
       "Bash(awk '/Hero|hero/{p=1} p&&/TXT:|radius|radii|Radius/{print NR\": \"$0} NR>320{exit}' penny-v2-digest.txt)",
       "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/36eaa483-ebd4-4109-857b-1fbebc108fbe\" -o assets/penny-page/hero-button.png)",
-      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/2f1ded0d-5231-415c-84b2-6cc0de8b7e40\" -o assets/penny-page/hero-radius.png)"
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/2f1ded0d-5231-415c-84b2-6cc0de8b7e40\" -o assets/penny-page/hero-radius.png)",
+      "Bash(~/.local/bin/gh api *)"
     ]
   }
 }
