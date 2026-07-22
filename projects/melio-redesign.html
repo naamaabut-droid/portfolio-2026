@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
   <link rel="stylesheet" href="../css/tokens.css?v=2" />
-  <link rel="stylesheet" href="../css/site.css?v=6" />
-  <link rel="stylesheet" href="../css/case-study.css?v=5" />
+  <link rel="stylesheet" href="../css/site.css?v=8" />
+  <link rel="stylesheet" href="../css/case-study.css?v=10" />
   <link rel="stylesheet" href="../css/components.css?v=1" />
   <style>
     /* page-specific: Melio hero art (Safari window + phone) */
@@ -155,6 +155,14 @@
     .phone-col .p-img { border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; height: 605px; }
     .phone-col .p-img img { height: 100%; width: auto; }
 
+    @media (max-width: 480px) {
+      .ia-collage { flex-wrap: wrap; gap: var(--sm) !important; }
+      .area-cards-row { flex-direction: column; }
+      .ia-collage img { height: 200px !important; width: auto !important; max-width: 100%; }
+      .area-card { width: 100%; }
+      .tile .t-img img { width: 104px; }
+      .melio-phone, .melio-safari { display: none; }
+    }
     @media (max-width: 1100px) {
       .finals-row, .tile-row { flex-wrap: wrap; }
       .abc-grid { grid-template-columns: 1fr; }
@@ -263,14 +271,14 @@
       <section class="wide reveal" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--ml);">
         <div style="display:flex; flex-direction:column; gap:var(--sm); align-items:center;">
           <div class="shot" style="width:100%; aspect-ratio:3240/1965;"><img src="../assets/melio-redesign/imgFull1.png" alt="" /></div>
-          <div class="card-caption" style="padding:0 var(--max);">
+          <div class="card-caption" style="">
             <p style="font-weight:500;">Old dashboard</p>
             <p>Desktop-first, urgency-ordered inbox.</p>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:var(--sm); align-items:center;">
           <div class="shot" style="width:100%; aspect-ratio:3240/1965;"><img src="../assets/melio-redesign/imgEmpty1.png" alt="" /></div>
-          <div class="card-caption" style="padding:0 var(--max);">
+          <div class="card-caption" style="">
             <p style="font-weight:500;">Current view</p>
             <p>The Inbox — empty 80% of the time.</p>
           </div>
@@ -300,7 +308,7 @@
 
       <!-- IA collage card -->
       <section class="case-card wide reveal" style="align-items:center;">
-        <div style="display:flex; gap:27px; align-items:flex-start; width:100%; justify-content:center;">
+        <div class="ia-collage" style="display:flex; gap:27px; align-items:flex-start; width:100%; justify-content:center;">
           <img src="../assets/melio-redesign/imgImg1490.png" alt="" style="height:339px; width:auto; border-radius:var(--radius-xs);" />
           <img src="../assets/melio-redesign/imgImg1489.png" alt="" style="height:339px; width:auto; border-radius:var(--radius-xs);" />
           <img src="../assets/melio-redesign/imgImg1491.png" alt="" style="height:339px; width:159px; object-fit:cover; border-radius:var(--radius-xs);" />
@@ -317,7 +325,7 @@
 
       <section class="wide reveal" style="display:flex; flex-direction:column; gap:var(--xl); align-items:center;">
         <img src="../assets/melio-redesign/imgNavigationSketching1.png" alt="" style="width:100%; aspect-ratio:3257/1781; object-fit:cover;" class="lb" />
-        <div class="card-caption" style="padding:0 var(--max); color:var(--body); font-size:12px; text-align:center; display:flex; flex-direction:column; gap:var(--3xs); align-items:center;">
+        <div class="card-caption" style=" color:var(--body); font-size:12px; text-align:center; display:flex; flex-direction:column; gap:var(--3xs); align-items:center;">
           <p style="font-weight:500;">Navigation sketching</p>
           <p style="opacity:0.65;">Click to enlarge.</p>
         </div>
@@ -500,7 +508,7 @@
             </div>
           </div>
 
-          <div style="display:flex; gap:var(--xxl); align-items:stretch;">
+          <div class="area-cards-row" style="display:flex; gap:var(--xxl); align-items:stretch;">
             <div class="area-card" style="flex:1;">
               <div class="area-headers"><h3 class="h3-med">Header</h3><span class="divider"></span></div>
               <div class="tile-row">

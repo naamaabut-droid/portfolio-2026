@@ -404,9 +404,18 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
-  .cs-hero-grid { grid-template-columns: 1fr; height: auto; }
+  .cs-hero-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    position: static;
+    transform: none;
+    width: 100%;
+    padding: 0;
+    justify-items: center;
+  }
   .cs-hero { height: auto; padding: 120px 0 60px; }
   .cs-hero-art { display: none; }
+  .cs-hero-copy { width: 100% !important; max-width: 480px; padding: 0 var(--ml); }
 }
 @media (max-width: 900px) {
   .cs-inner { padding-left: var(--ml); padding-right: var(--ml); }
@@ -419,4 +428,31 @@
   .consent-pair .shot { height: auto; aspect-ratio: 330 / 714; }
   .comparison-table .row { flex-direction: column; gap: var(--xs); }
   .discover .cards { flex-direction: column; }
+}
+
+/* ---------- Small phones (iPhone 13+, Android 360-430) ---------- */
+@media (max-width: 480px) {
+  .cs-hero { padding: 104px 0 40px; }
+  .cs-hero-copy .h1 { font-size: 40px; }
+  .cs-hero-copy .subtitle { font-size: 20px; }
+  .tag { height: 29px; padding: 6px 10px; font-size: 13px; }
+  .page-nav .tab-label { display: none; }
+  .page-nav { padding-right: var(--xs); }
+
+  .cs-inner { padding-left: var(--sm); padding-right: var(--sm); }
+  .py-48 { padding-top: var(--l); padding-bottom: var(--l); }
+  .tldr { padding: var(--l) 0; }
+  .kpi-block { padding: var(--l) 0; }
+  .cs-highlight { padding: var(--l) 0; }
+  .cs-inner > .case-card { margin-top: var(--l); margin-bottom: var(--l); }
+  .case-card { padding: var(--sm); border-radius: var(--radius-lg); }
+  .card-caption, .case-card .card-caption { padding: 0; }
+
+  .stat-card { flex: 1 1 100%; }
+  .stat-card .k-number { font-size: 40px; }
+  .number { font-size: 40px; }
+  .shot-desktop { width: 260px; height: auto; aspect-ratio: 300 / 190; }
+  .comparison-table .row p:first-child, .comparison-table .row p { font-size: 14px; }
+  .discover { padding: var(--l) 0; }
+  .cs-footer-margin, .footer-margin { padding-top: var(--l) !important; }
 }

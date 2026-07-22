@@ -467,11 +467,38 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   .exp-row .years { width: auto; }
 }
 @media (max-width: 540px) {
-  .display { font-size: 48px; }
+  .display { font-size: 48px; letter-spacing: -0.03em; }
   .h1 { font-size: 40px; }
   .h2, .h2-med { font-size: 32px; }
-  .hero { height: 560px; }
+  .h3, .h3-med { font-size: 24px; }
+  .body-1 { font-size: 20px; }
+  .hero { height: 600px; }
+  .hero-profile { width: 96px; height: 96px; }
   .nav a { padding: var(--s) var(--sm); }
   .contact-section { height: auto; padding: var(--max) 0; }
-  .contact-content { position: relative; inset: auto; }
+  .contact-content { position: relative; inset: auto; padding: 0 var(--sm); }
+  .contact-actions { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ---------- Small phones (iPhone 13+, Android 360-430) ---------- */
+@media (max-width: 400px) {
+  .nav { gap: 0; padding: 6px; }
+  .nav a { padding: 10px 12px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .about-intro { padding-top: 96px; }
+  .cs-header { padding-top: 96px; }
+  .home-bio p { text-align: left; }
+  .selected-work { padding-top: var(--xxl); }
+  .work-cards { flex-direction: column; }
+  .reviews { padding: var(--sm); gap: var(--sm); }
+  .reviews .review { max-width: 88vw; }
+  .recs { padding: var(--l) var(--sm); }
+  .contact-anchor { padding: var(--l) var(--sm); }
+  .footer { padding: var(--ml) var(--sm) var(--l); }
+  .footer-inner { padding: 0; }
+  .footer-margin { padding-top: var(--l) !important; }
+  .exp-row { font-size: 15px; }
+  .cs-grid { padding: var(--l) var(--sm); }
+  .cs-row { flex-direction: column; }
 }
