@@ -200,7 +200,9 @@
       "Bash(curl -s -o external-layout-1-2.png \"https://www.figma.com/api/mcp/asset/96a2f8c6-036e-4d19-85a1-7f8e3663ef6b\")",
       "Bash(sips -g pixelWidth -g pixelHeight full-screen-2.png 6-columns-2.png split-screen-1-2.png external-layout-1-2.png)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Responsive guidelines screens strip re-synced from Figma 307:1903 \\(new screens, full-bleed row\\) *)",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Guidelines strip scroll + slide-in, examples grid 72px per Figma, Back pill matched to component 108:1007 *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Guidelines strip scroll + slide-in, examples grid 72px per Figma, Back pill matched to component 108:1007 *)",
+      "Bash(perl -pi -e 's{css/case-study\\\\.css\\\\?v=11}{css/case-study.css?v=12}g' projects/*.html)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Restore arrow micro-nudge on Back pill hover *)"
     ]
   }
 }

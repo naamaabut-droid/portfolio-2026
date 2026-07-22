@@ -119,7 +119,9 @@
   width: 40px; height: 40px;
   display: grid; place-items: center;
   border-radius: var(--radius-full);
+  transition: transform 0.2s ease;
 }
+.page-nav:hover .btn-icon-40 { transform: translateX(-2px); }
 .page-nav .btn-icon-40 img { width: 16px; height: 16px; }
 .page-nav .tab {
   padding: var(--s) var(--m) var(--s) var(--s);
