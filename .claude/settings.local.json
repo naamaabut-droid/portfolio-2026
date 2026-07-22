@@ -192,7 +192,8 @@
       "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/882be3d8-650c-48a4-8bb0-a228c75ab0ae\" -o logo-whatsapp.svg)",
       "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/14d3de36-e2f8-4cc7-b2d1-5dc31310b420\" -o logo-linkedin.svg)",
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud *)",
-      "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study.css?v=9/case-study.css?v=10/' projects/*.html && echo bumped)"
+      "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study.css?v=9/case-study.css?v=10/' projects/*.html && echo bumped)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Melio-opt hero: stagger phones per Figma 210:5426 \\(166×359.5 at y 72/122/30\\) *)"
     ]
   }
 }
