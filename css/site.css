@@ -328,8 +328,12 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   max-width: 800px;
   width: 100%;
   padding: var(--xxl) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--xxl);
 }
-.home-bio p { color: var(--ink); text-align: left; } /* Figma 190:1072 */
+.home-bio p { color: var(--ink); text-align: left; width: 100%; } /* Figma 190:1072 */
 .work-content {
   width: 100%;
   max-width: 1160px;
