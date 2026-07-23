@@ -255,6 +255,8 @@
   color: var(--body);
 }
 .case-card .card-caption { padding: 0 var(--max); }
+/* Figma 191:40064 — flow cards: caption row sits at the TOP of the card */
+.case-card:has(.flow) > .card-caption { order: -1; }
 .card-caption .dim { opacity: 0.65; }
 .img-caption {
   font-size: 12px;
@@ -277,7 +279,8 @@
   padding-bottom: 4px;
 }
 .figure { flex: none; display: flex; flex-direction: column; gap: var(--s); width: min-content; margin: 0; }
-.figcaption { display: flex; gap: var(--xs); align-items: flex-start; width: 100%; min-width: 0; }
+/* Figma 191:40064 — number + label sit BELOW each screen */
+.figcaption { display: flex; gap: var(--xs); align-items: flex-start; width: 100%; min-width: 0; order: 1; }
 .figcaption.tall { min-height: 40px; }
 .counter {
   flex: none;
