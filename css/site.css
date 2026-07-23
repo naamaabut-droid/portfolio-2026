@@ -357,12 +357,12 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 }
 .about-intro .heading-block { display: flex; flex-direction: column; gap: var(--sm); }
 .about-intro p.para { color: var(--ink); }
-.about-intro .body-2-med { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--body); }
+.about-intro .body-2-med { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink); }
 
 .numbered-list { display: flex; flex-direction: column; gap: var(--xs); }
 .numbered-list .list-item { display: flex; gap: var(--xs); align-items: flex-start; }
 .numbered-list .num { font-size: 20px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; }
-.numbered-list .text { flex: 1; font-size: 20px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--body); }
+.numbered-list .text { flex: 1; font-size: 20px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink); }
 .numbered-list .text strong { font-weight: 500; letter-spacing: -0.03em; }
 
 /* Recommendations strip */

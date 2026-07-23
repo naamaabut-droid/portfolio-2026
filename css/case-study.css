@@ -111,8 +111,11 @@
   gap: var(--xxs);
   padding: var(--xs);
   border-radius: var(--radius-full);
-  background: var(--alpha-10); /* Figma Navigation 108:1008 (updated: Alpha/10) */
-  box-shadow: var(--shadow-nav), var(--glass-glow);
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-border-color);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   color: var(--ink);
 }
 .page-nav .btn-icon-40 {
