@@ -44,9 +44,15 @@
     .num-bullets { display: flex; flex-direction: column; gap: var(--s); width: 100%; }
     .num-bullet { display: flex; gap: var(--s); align-items: center; font-size: 20px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink); }
 
-    .before-after { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--ml); width: 100%; }
+    /* fixes list — Figma 298:1011 (accent • dots, body text, 4px row gap, 12px dot-text gap) */
+    .fix-list { display: flex; flex-direction: column; gap: var(--xxs); width: 100%; }
+    .fix-bullet { display: flex; gap: var(--s); align-items: center; }
+    .fix-bullet .marker { flex: none; color: var(--accent); line-height: 1.4; }
+    .fix-bullet p { flex: 1; min-width: 1px; font-size: 20px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--body); }
+
+    .before-after { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--max); width: 100%; }
     .ba-col { display: flex; flex-direction: column; gap: var(--sm); align-items: center; }
-    .ba-col .ba-label { font-size: 14px; font-weight: 500; line-height: 1.2; color: var(--ink); }
+    .ba-col .ba-label { font-size: 12px; font-weight: 400; line-height: 1.4; color: var(--body); }
     .ba-col .imgs { display: flex; gap: var(--sm); width: 100%; }
     .ba-col .imgs .shot { flex: 1 1 0; min-width: 1px; aspect-ratio: 330/714; border-radius: var(--radius-md); }
 
@@ -121,7 +127,7 @@
       .mo-art { display: none; }
       .insight-row, .flows-cols, .annot-pair { flex-direction: column; }
       .before-after, .examples-grid, .layouts-grid { grid-template-columns: 1fr; }
-      .examples-grid { gap: var(--ml); }
+      .before-after, .examples-grid { gap: var(--ml); }
       .annot-pair { align-items: center; padding: 0; }
     }
     @media (max-width: 480px) {
@@ -331,7 +337,7 @@
       <!-- Before / After -->
       <section class="case-card wide reveal" style="align-items:center;">
         <div class="cap-block" style="width:100%;">
-          <p class="t">Screens Comparison: Before and after</p>
+          <p class="t">Screens Comparison: <span style="font-weight:400;">Before and after</span></p>
           <p class="dim">Click to enlarge.</p>
         </div>
         <div class="before-after">
@@ -352,11 +358,11 @@
         </div>
       </section>
 
-      <!-- numbered fixes -->
-      <section class="num-bullets narrow reveal" style="padding:0 0 var(--xxl);">
-        <div class="num-bullet"><span class="counter">1</span><p>Main navigation — ‘Back’ added to the top bar.</p></div>
-        <div class="num-bullet"><span class="counter">2</span><p>Content — a consistent grid layout across all screens.</p></div>
-        <div class="num-bullet"><span class="counter">3</span><p>CTA — fixed position across all screens, with consistent UI.</p></div>
+      <!-- fixes (bullet list, Figma 298:1011) -->
+      <section class="fix-list narrow reveal" style="padding:0 0 var(--xxl);">
+        <div class="fix-bullet"><span class="marker">•</span><p>Main navigation — ‘Back’ added to the top bar.</p></div>
+        <div class="fix-bullet"><span class="marker">•</span><p>Content — a consistent grid layout across all screens.</p></div>
+        <div class="fix-bullet"><span class="marker">•</span><p>CTA — fixed position across all screens, with consistent UI.</p></div>
       </section>
     </div>
 
