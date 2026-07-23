@@ -477,6 +477,9 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   align-items: stretch;
   gap: var(--xxl);
 }
+/* last row with a single card keeps half width, left-aligned */
+.cs-row.single { justify-content: flex-start; }
+.cs-row.single .project-card { flex: 0 1 calc((100% - var(--xxl)) / 2); }
 
 /* ============================================================
    Responsive — mobile adaptation from the same tokens
