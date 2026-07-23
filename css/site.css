@@ -33,6 +33,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   z-index: 100;
   display: flex;
   justify-content: center;
+  align-items: flex-start; /* nav keeps its natural height even in the 0-height overlay variant */
   padding: 32px 0 24px;
   pointer-events: none;
 }

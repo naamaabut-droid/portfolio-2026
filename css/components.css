@@ -95,7 +95,7 @@
 .nav a:hover { color: var(--ink); }
 .nav a:active { transform: scale(0.96); }
 /* State=selected */
-.nav a.active { background: var(--alpha-45); color: var(--accent); }
+.nav a.active { background: var(--alpha-60); color: var(--accent); }
 
 /* ---------- LinkButton (Read case study) ---------- */
 .link-btn {

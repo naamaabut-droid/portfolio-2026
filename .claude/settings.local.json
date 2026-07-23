@@ -240,7 +240,8 @@
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Fix gray background in bug rows: re-export with white bg + restore full-width content, whiten gap bands *)",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Finaloop statements to H2-48 per Figma 210:33090/33127 + site-wide image captions normalized to Label/Caption \\(12/400 body, centered\\) *)",
       "mcp__plugin_figma_figma__get_design_context",
-      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Sticky nav on every page + scroll arrows on sideways galleries; running-text color to ink + About/Home copy synced \\(190:1072, 162:280\\) *)"
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Sticky nav on every page + scroll arrows on sideways galleries; running-text color to ink + About/Home copy synced \\(190:1072, 162:280\\) *)",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Fix broken nav: overlay wrap collapsed nav height \\(flex stretch\\) → active pill bulged out; align-items flex-start. Active tab bg Alpha/45→60 per 108:1006\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
