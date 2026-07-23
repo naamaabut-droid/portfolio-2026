@@ -302,7 +302,8 @@
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"melio-redesign Cards drill-in: update 2nd tile to Universal Logistics 'Delete vendor' screen \\(264:12283\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
       "Bash(cp \"/private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/penny-top.png\" assets/penny-page/imgContrast1.png)",
       "Bash(sed -i '' 's|imgContrast1.png\" alt=\"\" style=\"width:100%; aspect-ratio:3241/1592|imgContrast1.png\" alt=\"\" style=\"width:100%; aspect-ratio:2160/1166|' projects/penny.html)",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"penny: update Color contrast top image \\(298:2027\\) + aspect 2160/1166\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"penny: update Color contrast top image \\(298:2027\\) + aspect 2160/1166\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"penny: media-video posters fill their container \\(object-fit cover, height 100%\\) — no white gaps\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
