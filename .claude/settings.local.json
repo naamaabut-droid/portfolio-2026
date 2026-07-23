@@ -293,7 +293,9 @@
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Image syncs from Figma: finaloop pattern slot 4 → new Height CSV-mapping screen \\(210:33161\\); melio-opt bugs-band rows 1/3/5 → fresh clean exports \\(191:40514/40923/41070, row5 cropped to strip\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/site\\\\.css?v=19/site.css?v=20/g' index.html about.html case-studies.html projects/*.html && grep -h \"site.css\" index.html | grep -o \"v=[0-9]*\")",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Home bio: left-align per Figma 190:1072 \\(was centered\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Add Tag Small component \\(329:1299\\): .tag-small pill \\(--chip bg, 2x8 padding, 12px medium body\\) + --chip token\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Add Tag Small component \\(329:1299\\): .tag-small pill \\(--chip bg, 2x8 padding, 12px medium body\\) + --chip token\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/components\\\\.css?v=9/components.css?v=10/g' index.html about.html case-studies.html projects/*.html && grep -h \"components.css\" projects/wixel.html | grep -o \"v=[0-9]*\")",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"ButtonIcon \\(107:1702\\): add 'default' style variant \\(.style-default: border→chip hover→line pressed\\) alongside glass; add press-scale micro-feedback + border-color transition for both styles\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
