@@ -38,8 +38,8 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   pointer-events: none;
 }
 .nav-wrap .nav { pointer-events: auto; }
-/* overlay variant (Home): sticks without taking flow space, so the hero stays full-fold */
-.nav-wrap.nav-overlay { height: 0; padding: 32px 0 0; overflow: visible; }
+/* overlay variant (Home): fixed so it takes zero flow space — the hero stays full-fold behind it */
+.nav-wrap.nav-overlay { position: fixed; top: 0; left: 0; right: 0; height: auto; padding: 32px 0 0; overflow: visible; }
 .nav {
   display: flex;
   align-items: center;

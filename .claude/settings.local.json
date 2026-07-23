@@ -242,7 +242,9 @@
       "mcp__plugin_figma_figma__get_design_context",
       "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -m 'Sticky nav on every page + scroll arrows on sideways galleries; running-text color to ink + About/Home copy synced \\(190:1072, 162:280\\) *)",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Fix broken nav: overlay wrap collapsed nav height \\(flex stretch\\) → active pill bulged out; align-items flex-start. Active tab bg Alpha/45→60 per 108:1006\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"melio-opt Screens Comparison \\(294:8210\\) 1:1: fixes list numbered→accent • bullets \\(body text\\); grid pair gap 24→72; Before/After labels 12/400/body; caption 'Before and after' regular weight\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"melio-opt Screens Comparison \\(294:8210\\) 1:1: fixes list numbered→accent • bullets \\(body text\\); grid pair gap 24→72; Before/After labels 12/400/body; caption 'Before and after' regular weight\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/site\\\\.css?v=16/site.css?v=17/g' index.html about.html case-studies.html projects/*.html && grep -h \"site.css\" index.html | grep -o \"v=[0-9]*\")",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Fix white strip atop Home: overlay nav-wrap took 32px of flow \\(sticky, height:0 + padding-top\\) → make it position:fixed so hero fills full-fold from y=0\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
