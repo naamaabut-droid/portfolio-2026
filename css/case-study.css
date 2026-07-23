@@ -42,7 +42,7 @@
   flex-wrap: wrap;
   gap: var(--s);
   padding-top: var(--s);
-  max-width: 400px;
+  max-width: 350px;
 }
 .tag {
   display: inline-flex;
