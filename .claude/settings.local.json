@@ -254,7 +254,12 @@
       "Bash(sed -i '' 's/components\\\\.css?v=6/components.css?v=7/g' index.html about.html case-studies.html projects/*.html)",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"link-btn: remove underline in all states \\(hover/active/default\\) — arrow nudge + accent color only\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"melio-redesign: remove 'Mobile Web' hero chip; 'The Objective' + 'The intent gap' statements body-2→h2-med 48px per Figma 264-12063/264-12049\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"melio-redesign IA collage \\(264-12081\\): crop wide 2nd image + gap 27→24 so the row sits inside the 48px card padding \\(was bleeding to edges\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"melio-redesign IA collage \\(264-12081\\): crop wide 2nd image + gap 27→24 so the row sits inside the 48px card padding \\(was bleeding to edges\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(curl -sL -o imgFrame1261152750.png \"https://www.figma.com/api/mcp/asset/50c7f70a-4467-4e8c-b077-a3aad8e97c29\")",
+      "Bash(curl -sL -o imgB.png \"https://www.figma.com/api/mcp/asset/8801582d-c4c8-4c87-9648-4e606f5ae7ae\")",
+      "Bash(curl -sL -o imgC.png \"https://www.figma.com/api/mcp/asset/a03b3336-8f4d-48c9-91a1-c2538688335c\")",
+      "Bash(curl -sL -o imgD.png \"https://www.figma.com/api/mcp/asset/f846a101-2faa-404c-a3aa-1d87ff26d4f8\")",
+      "Bash(curl -sL -o finals-payments-item.png \"https://www.figma.com/api/mcp/asset/78afc845-0f8f-49bf-aeab-f7a524e8994f\")"
     ]
   }
 }
