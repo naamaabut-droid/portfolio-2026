@@ -106,11 +106,10 @@
     .t-cap { font-size: 12px; line-height: 1.4; color: var(--body); }
     .t-cap b { font-weight: 500; color: var(--ink); }
 
-    .knowledge-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--ml); width: 100%; max-width: 984px; }
+    .knowledge-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--l); width: 100%; max-width: 984px; align-items: start; }
     .k-cell { display: flex; flex-direction: column; gap: var(--sm); align-items: center; }
-    .k-cell .k-img { border: 1px solid var(--line); border-radius: var(--radius-xs); overflow: hidden; width: 100%; }
-    .k-cell .k-img img { width: 100%; display: block; }
-    .k-cell .k-label { font-size: 12px; color: var(--body); line-height: 1.4; }
+    .k-cell img { width: 100%; display: block; }
+    .k-cell .k-label { font-size: 12px; color: var(--body); line-height: 1.4; text-align: center; }
 
     @media (max-width: 1100px) {
       .penny-art { display: none; }
@@ -336,14 +335,13 @@
 
       <!-- Color contrast (white card) -->
       <section class="case-card wide reveal" style="background:var(--ground);">
-        <p class="body-3-med" style="color:var(--ink);">Color contrast</p>
         <img src="../assets/penny-page/imgContrast1.png" alt="" style="width:100%; aspect-ratio:2160/1166; object-fit:cover;" class="lb" />
         <div style="display:flex; gap:var(--ml); width:100%;">
-          <div style="flex:1; display:flex; flex-direction:column; gap:var(--s); align-items:center;">
+          <div style="flex:1; display:flex; flex-direction:column; gap:28px; align-items:center;">
             <img src="../assets/penny-page/imgOld1.png" alt="" style="width:100%; aspect-ratio:1496/1022; object-fit:cover;" class="lb" />
             <p class="label-reg" style="color:var(--body);">Old</p>
           </div>
-          <div style="flex:1; display:flex; flex-direction:column; gap:var(--s); align-items:center;">
+          <div style="flex:1; display:flex; flex-direction:column; gap:28px; align-items:center;">
             <img src="../assets/penny-page/imgNew1.png" alt="" style="width:100%; aspect-ratio:1496/1022; object-fit:cover;" class="lb" />
             <p class="label-reg" style="color:var(--body);">New</p>
           </div>
@@ -475,19 +473,19 @@
         </div>
         <div class="knowledge-grid">
           <div class="k-cell">
-            <div class="k-img"><img src="../assets/penny-page/imgPhoto20240502152400.jpg" alt="" class="lb" /></div>
+            <img src="../assets/penny-page/k-knowledge-center.png" alt="" class="lb" />
             <p class="k-label">Knowledge center</p>
           </div>
           <div class="k-cell">
-            <div class="k-img"><img src="../assets/penny-page/imgFrame734093818.jpg" alt="" class="lb" /></div>
+            <img src="../assets/penny-page/k-resources.png" alt="" class="lb" />
             <p class="k-label">Penny DS - Resources</p>
           </div>
           <div class="k-cell">
-            <div class="k-img"><img src="../assets/penny-page/imgPhoto20240501211913.jpg" alt="" class="lb" /></div>
+            <img src="../assets/penny-page/k-tutorials.png" alt="" class="lb" />
             <p class="k-label">Components tutorials</p>
           </div>
           <div class="k-cell">
-            <div class="k-img"><img src="../assets/penny-page/imgFrame734093819.jpg" alt="" class="lb" /></div>
+            <img src="../assets/penny-page/k-libraries.png" alt="" class="lb" />
             <p class="k-label">Libraries Contents Overview</p>
           </div>
         </div>
@@ -505,10 +503,7 @@
           <p style="font-weight:500;">Slack Channels</p>
           <p class="dim">Click to enlarge.</p>
         </div>
-        <div style="display:flex; gap:var(--ml); width:100%; align-items:flex-start;">
-          <div style="flex:1; border:1px solid var(--line); border-radius:var(--radius-xs); overflow:hidden;"><img src="../assets/penny-page/imgPhoto20240512120426.jpg" alt="" class="lb" /></div>
-          <div style="flex:1; border:1px solid var(--line); border-radius:var(--radius-xs); overflow:hidden;"><img src="../assets/penny-page/imgPhoto202405121204262.jpg" alt="" class="lb" /></div>
-        </div>
+        <img src="../assets/penny-page/slack-collage.png" alt="" style="width:100%; display:block;" class="lb" />
       </section>
 
       <!-- What we accomplished -->
