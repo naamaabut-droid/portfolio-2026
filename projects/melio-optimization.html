@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK@1,9..144,0,1&display=swap" />
   <link rel="stylesheet" href="../css/tokens.css?v=6" />
-  <link rel="stylesheet" href="../css/site.css?v=22" />
+  <link rel="stylesheet" href="../css/site.css?v=24" />
   <link rel="stylesheet" href="../css/case-study.css?v=23" />
   <link rel="stylesheet" href="../css/components.css?v=10" />
   <style>
@@ -57,7 +57,7 @@
     .ba-col .imgs .shot { flex: 1 1 0; min-width: 1px; aspect-ratio: 330/714; border-radius: var(--radius-md); }
 
     /* Figma 294:8211 "Bugs screens Grid" — 5 scrollable rows, one-time slide-in, alternating directions */
-    .bugs-band { width: 100%; display: flex; flex-direction: column; gap: var(--sm); }
+    .bugs-band { width: 100%; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--sm); }
     .bugs-row { width: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .bugs-row::-webkit-scrollbar { display: none; }
     .bugs-row img { height: 277.4px; width: auto; max-width: none; display: block; }
