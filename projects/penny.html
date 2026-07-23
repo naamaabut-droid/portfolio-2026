@@ -81,6 +81,13 @@
     .media-video { width: 100%; border: 1px solid var(--line); overflow: hidden; background: #fff; border-radius: var(--radius-s); }
     .media-video img, .media-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+    /* Slack section — 3 windows positioned 1:1 from Figma 210:10949 (empty space shows the card, not white) */
+    .slack-stage { position: relative; width: 100%; aspect-ratio: 984 / 529; }
+    .slack-stage img { position: absolute; display: block; box-sizing: border-box; border: 0.75px solid var(--line); border-radius: var(--radius-xs); }
+    .slack-stage .sl-2 { left: 0; top: 0; width: 68.42%; }
+    .slack-stage .sl-3 { left: 72.54%; top: 5.29%; width: 27.45%; }
+    .slack-stage .sl-1 { left: 31.58%; top: 36.48%; width: 68.42%; box-shadow: 0 18px 50px rgba(17,17,19,0.14), 0 2px 6px rgba(17,17,19,0.08); }
+
     /* screens rows with spring slide */
     .screens-band { width: 100%; overflow: hidden; padding: var(--max) 0; display: flex; flex-direction: column; gap: var(--ml); align-items: center; }
     .screens-row { display: flex; gap: var(--ml); justify-content: center; }
@@ -503,7 +510,11 @@
           <p style="font-weight:500;">Slack Channels</p>
           <p class="dim">Click to enlarge.</p>
         </div>
-        <img src="../assets/penny-page/slack-collage.png" alt="" style="width:calc(100% + var(--xxl) * 2); max-width:none; margin:0 0 calc(var(--xxl) * -1); display:block;" class="lb" />
+        <div class="slack-stage">
+          <img class="sl-2 lb" src="../assets/penny-page/slack-2.png" alt="" />
+          <img class="sl-3 lb" src="../assets/penny-page/slack-3.png" alt="" />
+          <img class="sl-1 lb" src="../assets/penny-page/slack-1.png" alt="" />
+        </div>
       </section>
 
       <!-- What we accomplished -->
