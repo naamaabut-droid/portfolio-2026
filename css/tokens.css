@@ -23,6 +23,11 @@
   --alpha-60: rgba(255, 255, 255, 0.60);  /* Alpha/60% */
   /* glass pills (Navigation 108:1008, Button/Glass 180:1785): inner white rim from top-left + soft inner shade */
   --glass-glow: inset 10px 10px 20px -6px rgba(255, 255, 255, 0.95), inset 30px 30px 60px -10px rgba(255, 255, 255, 0.55), inset -4px -8px 16px -6px rgba(17, 17, 19, 0.06);
+  /* frosted-glass recipe: crisp inner highlight + backdrop blur (nav + glass buttons) */
+  --glass-bg: rgba(255, 255, 255, 0.20);
+  --glass-border-color: rgba(255, 255, 255, 0.60);
+  --glass-shadow: inset 0 0 12px rgba(255, 255, 255, 0.3), 0 8px 32px rgba(0, 0, 0, 0.04);
+  --glass-blur: blur(12px);
 
   /* spacing */
   --3xs: 2px;
