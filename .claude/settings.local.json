@@ -277,7 +277,8 @@
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"finaloop Core Assumption bullet: lengthen slightly \\('any'/'clearly'/'is posted'\\) so the two lines balance\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study\\\\.css?v=21/case-study.css?v=22/g' projects/*.html && grep -h \"case-study.css\" projects/melio-redesign.html | grep -o \"v=[0-9]*\")",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Fixes: wixel Act2 intro spacing \\(drop double padding→96px rhythm\\); melio-redesign Cards drill-in add 2 missing tiles \\(Group51818/51819\\); finaloop move 'AI Automation' tag one earlier; all cs-bullet markers → accent \\(site-wide uniformity\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"finaloop patterns-stage: remove duplicate 5th tile \\(was reusing the 4th image\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"finaloop patterns-stage: remove duplicate 5th tile \\(was reusing the 4th image\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Scrollable galleries: soft edge fade \\(card-bg gradient\\) on overflow edges instead of a hard cut — toggled with the scroll-arrow logic \\(.can-prev/.can-next\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }

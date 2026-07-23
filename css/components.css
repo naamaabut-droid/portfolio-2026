@@ -129,7 +129,16 @@
 .link-btn:active, .project-card:active .link-btn { color: var(--accent); }
 
 /* ---------- Scroll arrows for sideways galleries ---------- */
-.scroll-wrap { position: relative; width: 100%; }
+.scroll-wrap { position: relative; width: 100%; --fade-bg: var(--card); }
+/* soft edge fade (in the card's bg color) so scrollable content doesn't cut off sharply */
+.scroll-wrap::before, .scroll-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 64px;
+  z-index: 4; pointer-events: none; opacity: 0; transition: opacity 0.25s ease;
+}
+.scroll-wrap::before { left: 0; background: linear-gradient(to right, var(--fade-bg), rgba(0,0,0,0)); }
+.scroll-wrap::after { right: 0; background: linear-gradient(to left, var(--fade-bg), rgba(0,0,0,0)); }
+.scroll-wrap.can-prev::before { opacity: 1; }
+.scroll-wrap.can-next::after { opacity: 1; }
 .scroll-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
   z-index: 5;

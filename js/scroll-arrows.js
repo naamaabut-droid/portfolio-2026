@@ -24,8 +24,12 @@
 
     const update = () => {
       const max = row.scrollWidth - row.clientWidth;
-      next.classList.toggle('show', max > 8 && row.scrollLeft < max - 8);
-      prev.classList.toggle('show', row.scrollLeft > 8);
+      const canNext = max > 8 && row.scrollLeft < max - 8;
+      const canPrev = row.scrollLeft > 8;
+      next.classList.toggle('show', canNext);
+      prev.classList.toggle('show', canPrev);
+      wrap.classList.toggle('can-next', canNext);
+      wrap.classList.toggle('can-prev', canPrev);
     };
     row.addEventListener('scroll', update, { passive: true });
     addEventListener('resize', update);
