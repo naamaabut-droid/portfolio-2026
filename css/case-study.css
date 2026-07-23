@@ -101,7 +101,7 @@
 
 /* ---------- Back to Projects pill ---------- */
 .page-nav {
-  position: absolute;
+  position: fixed;
   left: 50%;
   transform: translateX(-50%);
   top: 22px;

@@ -28,10 +28,17 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 
 /* ---------- Navigation pill ---------- */
 .nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: center;
   padding: 32px 0 24px;
+  pointer-events: none;
 }
+.nav-wrap .nav { pointer-events: auto; }
+/* overlay variant (Home): sticks without taking flow space, so the hero stays full-fold */
+.nav-wrap.nav-overlay { height: 0; padding: 32px 0 0; overflow: visible; }
 .nav {
   display: flex;
   align-items: center;
@@ -194,7 +201,6 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 .glow-lilac       { left: -11.1%; top: 40%;   width: 47.2%; height: 85.7%; background: rgba(220, 217, 255, 0.9); }
 .glow-periwinkle  { left: 68.1%; top: 60%;    width: 38.9%; height: 62.9%; background: rgba(185, 185, 250, 0.9); }
 
-.hero .nav-wrap { position: absolute; top: 0; left: 0; right: 0; z-index: 30; padding-top: 32px; }
 
 .hero-intro {
   position: absolute;
@@ -306,7 +312,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   width: 100%;
   padding: var(--xxl) 0;
 }
-.home-bio p { color: var(--body); text-align: justify; }
+.home-bio p { color: var(--ink); text-align: center; } /* Figma 190:1072 */
 .work-content {
   width: 100%;
   max-width: 1160px;
@@ -346,7 +352,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   gap: var(--ml);
 }
 .about-intro .heading-block { display: flex; flex-direction: column; gap: var(--sm); }
-.about-intro p.para { color: var(--body); }
+.about-intro p.para { color: var(--ink); }
 .about-intro .body-2-med { font-size: 20px; font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; color: var(--body); }
 
 .numbered-list { display: flex; flex-direction: column; gap: var(--xs); }
