@@ -271,7 +271,8 @@
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study\\\\.css?v=19/case-study.css?v=20/g' projects/*.html && grep -h \"case-study.css\" projects/finaloop.html | grep -o \"v=[0-9]*\")",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"TL;DR opening band redesign \\(325:1182\\) across all project pages: wrap bullets in a card \\(--card bg, 48px pad, 32px radius\\), 2/3-col auto-fit grid gap 32, bottom-margin only; drop 'narrow' cap\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study\\\\.css?v=20/case-study.css?v=21/g' projects/*.html && grep -h \"case-study.css\" projects/wixel.html | grep -o \"v=[0-9]*\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"wixel flow cards \\(191:40064 etc.\\): move card caption to top of card, move each screen's number+label below the screen \\(order flips\\), scoped to .case-card:has\\(.flow\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"wixel flow cards \\(191:40064 etc.\\): move card caption to top of card, move each screen's number+label below the screen \\(order flips\\), scoped to .case-card:has\\(.flow\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"wixel Act 2 section \\(191:39834\\): add missing 48px gap between subsections \\(was 0, Act 1 already had it\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
