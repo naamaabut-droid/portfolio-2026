@@ -167,15 +167,25 @@
 .py-48 { padding-top: var(--xxl); padding-bottom: var(--xxl); }
 
 /* ---------- TL;DR ---------- */
+/* TL;DR opening band — Figma 325:1182 (card, bottom margin only) */
 .tldr {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--xl);
-  padding: var(--xxl) 0;
+  align-items: stretch;
+  padding: 0 0 var(--xxl);
 }
-.tldr-bullets { display: flex; gap: var(--xl); width: 100%; }
-.tldr-bullet { flex: 1 1 0; min-width: 1px; display: flex; flex-direction: column; gap: var(--sm); }
+.tldr-bullets {
+  background: var(--card);
+  border-radius: var(--radius-xl);
+  padding: var(--xxl);
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--l);
+}
+.tldr-bullet { display: flex; flex-direction: column; gap: var(--sm); }
 .tldr-bullet .label-serif { width: 100%; }
 .tldr-bullet .txt { font-size: 14px; font-weight: 300; line-height: 1.4; letter-spacing: -0.01em; color: var(--ink); }
 
@@ -432,7 +442,7 @@
 }
 @media (max-width: 900px) {
   .cs-inner { padding-left: var(--ml); padding-right: var(--ml); }
-  .tldr-bullets { flex-direction: column; gap: var(--ml); }
+  .tldr-bullets { grid-template-columns: 1fr; gap: var(--ml); padding: var(--ml); }
   .stats { flex-wrap: wrap; }
   .stat-card { flex: 1 1 40%; }
   .grid-2x2, .drill-grid { grid-template-columns: 1fr; gap: var(--ml); }
@@ -454,7 +464,7 @@
 
   .cs-inner { padding-left: var(--sm); padding-right: var(--sm); }
   .py-48 { padding-top: var(--l); padding-bottom: var(--l); }
-  .tldr { padding: var(--l) 0; }
+  .tldr { padding: 0 0 var(--l); }
   .kpi-block { padding: var(--l) 0; }
   .cs-highlight { padding: var(--l) 0; }
   .cs-inner > .case-card { margin-top: var(--l); margin-bottom: var(--l); }

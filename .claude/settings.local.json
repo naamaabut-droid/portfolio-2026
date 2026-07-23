@@ -263,7 +263,13 @@
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"wixel: reorder Overview before KPIs\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study\\\\.css?v=18/case-study.css?v=19/g' projects/*.html && grep -h \"case-study.css\" projects/wixel.html | grep -o \"v=[0-9]*\")",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"cs-hero-tags: max-width 400→350px \\(all project page heroes\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Home bio + About intro paragraph → Body 1 \\(24px, was 20px\\) per Figma 190:1072 / 162:280; About: 48px gap before '4 reasons' \\(new two-group layout\\). case-studies 163:303 already matched\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Home bio + About intro paragraph → Body 1 \\(24px, was 20px\\) per Figma 190:1072 / 162:280; About: 48px gap before '4 reasons' \\(new two-group layout\\). case-studies 163:303 already matched\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(sed -n '/\\\\.tldr {/,/^}/p' css/case-study.css)",
+      "Bash(sed -n '/\\\\.tldr-bullets/,/^}/p' css/case-study.css)",
+      "Bash(sed -n '/\\\\.tldr-bullet /,/^}/p' css/case-study.css)",
+      "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/<section class=\"tldr narrow reveal\">/<section class=\"tldr reveal\">/' projects/*.html && echo \"=== confirm ===\" && grep -c 'class=\"tldr reveal\"' projects/*.html)",
+      "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study\\\\.css?v=19/case-study.css?v=20/g' projects/*.html && grep -h \"case-study.css\" projects/finaloop.html | grep -o \"v=[0-9]*\")",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"TL;DR opening band redesign \\(325:1182\\) across all project pages: wrap bullets in a card \\(--card bg, 48px pad, 32px radius\\), 2/3-col auto-fit grid gap 32, bottom-margin only; drop 'narrow' cap\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
