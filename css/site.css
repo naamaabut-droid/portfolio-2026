@@ -57,28 +57,24 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 /* Buttons + LinkButton live in components.css (180:1618, 178:959) */
 
 /* ---------- Project Card ---------- */
+/* Project Card — Figma 329:8184 (rest / hover / pressed) */
 .project-card {
   flex: 1 1 0;
   min-width: 1px;
   display: flex;
   flex-direction: column;
-  background: var(--card);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
 }
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 2px 6px rgba(17, 17, 19, 0.05), 0 24px 60px rgba(17, 17, 19, 0.10);
-}
-/* no browser focus ring on click — keyboard tabbing still gets the default ring */
 .project-card:focus:not(:focus-visible) { outline: none; }
+/* cover: rounded image; shadow lifts on hover, presses in on click */
 .project-card .cover {
   height: 300px;
+  border-radius: var(--radius-md);
   background: linear-gradient(to bottom, var(--grad-top), var(--grad-bottom));
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
+.project-card:hover .cover { box-shadow: 0 12px 40px rgba(17, 17, 19, 0.06), 0 1px 2px rgba(17, 17, 19, 0.04); }
+.project-card:active .cover { box-shadow: 0 2px 4px rgba(17, 17, 19, 0.08); }
 .project-card .cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .project-card:hover .cover img { transform: scale(1.03); }
 /* composed cover: project shot floating over the gradient */
@@ -97,16 +93,33 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 .project-card:hover .cover.cover-shot img { transform: translateX(-50%) translateY(-6px); }
 /* phone-style cover: tall portrait shots */
 .project-card .cover.cover-shot.cover-phone img { width: 38%; }
+/* body: no fill, top padding only */
 .project-card .card-body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--s);
-  padding: var(--l);
-  background: #fff;
-  flex: 1;
+  gap: var(--sm);
+  padding-top: var(--ml);
 }
+.project-card .card-head { display: flex; align-items: flex-start; gap: 10px; width: 100%; }
+.project-card .text-block { flex: 1 1 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: var(--xxs); }
 .project-card .card-body .desc { color: var(--body); }
+/* arrow button: hidden at rest, fades in (bordered) on hover, dark-filled on press */
+.project-card .card-arrow {
+  flex: none;
+  width: 40px; height: 40px;
+  border-radius: var(--radius-full);
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  background: transparent;
+  opacity: 0; transform: translateY(-2px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.project-card .card-arrow img { width: 16px; height: 16px; transition: filter 0.2s ease; }
+.project-card:hover .card-arrow { opacity: 1; transform: none; }
+.project-card:active .card-arrow { background: var(--ink); border-color: var(--ink); }
+.project-card:active .card-arrow img { filter: invert(1); }
+.project-card .card-tags { display: flex; gap: var(--xs); align-items: center; flex-wrap: wrap; }
 
 /* ---------- Contact section ---------- */
 .contact-anchor {
@@ -442,7 +455,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   gap: var(--ml);
 }
 .cs-header .heading-block { display: flex; flex-direction: column; gap: var(--sm); }
-.cs-header .sub { color: var(--body); }
+.cs-header .sub { color: var(--ink); }
 .cs-grid {
   width: 100%;
   max-width: 1160px;
