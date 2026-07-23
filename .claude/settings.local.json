@@ -259,7 +259,8 @@
       "Bash(curl -sL -o imgB.png \"https://www.figma.com/api/mcp/asset/8801582d-c4c8-4c87-9648-4e606f5ae7ae\")",
       "Bash(curl -sL -o imgC.png \"https://www.figma.com/api/mcp/asset/a03b3336-8f4d-48c9-91a1-c2538688335c\")",
       "Bash(curl -sL -o imgD.png \"https://www.figma.com/api/mcp/asset/f846a101-2faa-404c-a3aa-1d87ff26d4f8\")",
-      "Bash(curl -sL -o finals-payments-item.png \"https://www.figma.com/api/mcp/asset/78afc845-0f8f-49bf-aeab-f7a524e8994f\")"
+      "Bash(curl -sL -o finals-payments-item.png \"https://www.figma.com/api/mcp/asset/78afc845-0f8f-49bf-aeab-f7a524e8994f\")",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"wixel: reorder Overview before KPIs\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
