@@ -224,7 +224,7 @@
 
 /* bullet / numbered lists */
 .cs-list { display: flex; flex-direction: column; gap: var(--xxs); width: 100%; }
-.cs-list.gap-8 { gap: var(--xs); }
+.cs-list.gap-8 { gap: var(--xxs); }
 .cs-bullet { display: flex; gap: var(--xs); align-items: flex-start; font-size: 20px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink); }
 .cs-bullet .marker { flex: none; white-space: nowrap; color: var(--accent); }
 .cs-bullet p:last-child { flex: 1; min-width: 1px; }

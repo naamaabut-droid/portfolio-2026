@@ -303,7 +303,20 @@
       "Bash(cp \"/private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/penny-top.png\" assets/penny-page/imgContrast1.png)",
       "Bash(sed -i '' 's|imgContrast1.png\" alt=\"\" style=\"width:100%; aspect-ratio:3241/1592|imgContrast1.png\" alt=\"\" style=\"width:100%; aspect-ratio:2160/1166|' projects/penny.html)",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"penny: update Color contrast top image \\(298:2027\\) + aspect 2160/1166\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"penny: media-video posters fill their container \\(object-fit cover, height 100%\\) — no white gaps\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"penny: media-video posters fill their container \\(object-fit cover, height 100%\\) — no white gaps\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -q -m 'Penny: '\\\\''The result'\\\\'' → H2-48 statement \\(210:10650\\) + quotes redesigned to 2×3 staggered bubbles \\(210:10680\\) *)",
+      "Bash(curl -sL -o assets/finaloop-page/pattern-inspirations.png \"https://www.figma.com/api/mcp/asset/947039f6-3286-40c9-be74-15aacf440e62\")",
+      "Bash(sips -g pixelWidth -g pixelHeight assets/finaloop-page/pattern-inspirations.png)",
+      "Bash(awk '/pixel/{print $2}')",
+      "Bash(curl -sL -o __TRACKED_VAR__/bugs294.png https://www.figma.com/api/mcp/asset/4ed41217-be50-454b-b290-2de29fe3d7b6)",
+      "Bash(curl -sL -o __TRACKED_VAR__/mr-new.png https://www.figma.com/api/mcp/asset/aa826dc8-a0cd-4d05-bacb-12cf98631049)",
+      "Bash(sips -g pixelWidth -g pixelHeight __TRACKED_VAR__/mr-new.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight assets/melio-redesign/imgGroup51818.png)",
+      "Bash(curl -sL -o imgGroup51818.png \"https://www.figma.com/api/mcp/asset/fa8752bb-33ea-48ec-8841-d3ec68444e16\")",
+      "Bash(sips -g pixelWidth -g pixelHeight imgGroup51818.png)",
+      "Bash(curl -sL -o imgGroup51818.png \"https://www.figma.com/api/mcp/asset/2580f320-4229-49a5-b447-6148d348aeb2\")",
+      "Bash(sed -i '' 's|site\\\\.css?v=21|site.css?v=22|g; s|case-study\\\\.css?v=22|case-study.css?v=23|g' *.html projects/*.html)",
+      "Bash(git -c 'user.name=Naama Abitbol' -c user.email=naamaabut@gmail.com commit -q -m 'Batch: Reflection lists→bullets \\(wixel+melio-opt\\); global bullet gap 4px; finaloop Pattern-inspirations rebuilt from Figma collage \\(210:33161\\); melio-redesign drill-in img replaced \\(264:12269\\); bugs rows 1/3/5 anchor-end like 2/4 \\(294:8211\\); project-card arrow vertically centered \\(329:8182\\) *)"
     ]
   }
 }
