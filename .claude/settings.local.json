@@ -299,7 +299,10 @@
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/site\\\\.css?v=20/site.css?v=21/g' index.html about.html case-studies.html projects/*.html && ls assets/shared/icons/arrow-right-16.svg && grep -h \"site.css\" index.html | grep -o \"v=[0-9]*\")",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Project Card redesign \\(329:8184\\): rounded cover w/ hover shadow-lift + press shadow, 'Read case study' link → arrow ButtonIcon that fades in on hover \\(bordered\\) / dark-filled on press, Tag Small chips row; applied to Home + all 6 Case Studies cards. cs-header sub → ink\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Remove 'AI Automation' tag \\(finaloop hero + finaloop card\\) as requested\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"melio-redesign Cards drill-in: update 2nd tile to Universal Logistics 'Delete vendor' screen \\(264:12283\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"melio-redesign Cards drill-in: update 2nd tile to Universal Logistics 'Delete vendor' screen \\(264:12283\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(cp \"/private/tmp/claude-501/-Users-naamaabitbol-Documents-Cloud-code-UX-projects-Portfolio/847021eb-9c45-4dd5-ae20-2ec260296e97/scratchpad/penny-top.png\" assets/penny-page/imgContrast1.png)",
+      "Bash(sed -i '' 's|imgContrast1.png\" alt=\"\" style=\"width:100%; aspect-ratio:3241/1592|imgContrast1.png\" alt=\"\" style=\"width:100%; aspect-ratio:2160/1166|' projects/penny.html)",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"penny: update Color contrast top image \\(298:2027\\) + aspect 2160/1166\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
