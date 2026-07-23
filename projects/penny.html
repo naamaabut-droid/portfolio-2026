@@ -49,11 +49,11 @@
     .insight-card p.b { font-size: 16px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--body); }
 
     /* quote bubbles */
-    .quotes { width: 100%; max-width: 1080px; display: flex; flex-direction: column; gap: var(--ml); }
-    .quote-row { display: flex; gap: var(--ml); align-items: center; width: 100%; }
+    .quotes { width: 100%; max-width: 1080px; display: flex; flex-direction: column; gap: var(--xxl); }
+    .quote-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--ml); align-items: stretch; }
     .bubble {
       position: relative;
-      flex: 1 1 0; min-width: 1px;
+      align-self: end;
       background: var(--ink);
       color: var(--pill);
       border-radius: 15px;
@@ -65,6 +65,7 @@
       letter-spacing: -0.02em;
       text-align: center;
     }
+    .bubble.top { align-self: start; }
     .bubble::after {
       content: '';
       position: absolute;
@@ -72,9 +73,9 @@
       background: var(--ink);
       transform: rotate(45deg);
       bottom: -8px;
-      left: 64%;
+      left: var(--tx, 50%);
+      margin-left: -10px;
     }
-    .bubble.tail-left::after { left: 18%; }
     .bubble.tail-up::after { bottom: auto; top: -8px; }
 
     .media-video { width: 100%; border: 1px solid var(--line); overflow: hidden; background: #fff; border-radius: var(--radius-s); }
@@ -113,8 +114,8 @@
 
     @media (max-width: 1100px) {
       .penny-art { display: none; }
-      .insight-row, .quote-row, .testimonials { flex-direction: column; }
-      .quote-row .bubble { width: 100%; }
+      .insight-row, .testimonials { flex-direction: column; }
+      .quote-row { grid-template-columns: 1fr; }
       .knowledge-grid { grid-template-columns: 1fr; }
       .screens-row { flex-wrap: wrap; }
     }
@@ -222,7 +223,7 @@
       <!-- The result -->
       <section class="sec sec-gap-16 narrow reveal" style="padding:var(--xxl) 0;">
         <p class="label-serif" style="width:100%;">The result</p>
-        <p class="body-2 txt-ink">Inconsistent designs across teams, friction in collaboration with developers, and a slower workflow.</p>
+        <h2 class="h2-med" style="width:100%;">inconsistent designs across teams, friction in collaboration with developers, and a slower workflow.</h2>
       </section>
 
       <!-- Research -->
@@ -260,18 +261,16 @@
       </section>
 
       <!-- Quotes -->
-      <section class="quotes reveal" style="padding:var(--xxl) 0;">
+      <section class="quotes reveal" style="padding:var(--xxl) 0 var(--max);">
         <div class="quote-row">
-          <p class="bubble">“I’m not sure which components are available”</p>
-          <p class="bubble tail-left">“I can’t be independent in the process, don’t want to reach the team for every question”</p>
+          <p class="bubble" style="--tx:64%;">“I’m not sure which components are available”</p>
+          <p class="bubble top" style="--tx:48%;">“I can’t be independent in the process, don’t want to reach the team for every question”</p>
+          <p class="bubble" style="--tx:36%;">”The components are not consistent with production”</p>
         </div>
         <div class="quote-row">
-          <p class="bubble tail-up">”The components are not consistent with production”</p>
-          <p class="bubble">“Some components are missing edge cases”</p>
-        </div>
-        <div class="quote-row">
-          <p class="bubble tail-left">“The old libraries are still available and i’m not sure if i’m selecting the right option”</p>
-          <p class="bubble tail-up">“It’s hard to understand how to use the components”</p>
+          <p class="bubble tail-up" style="--tx:56%;">“Some components are missing edge cases”</p>
+          <p class="bubble top tail-up" style="--tx:40%;">“The old libraries are still available and i’m not sure if i’m selecting the right option”</p>
+          <p class="bubble tail-up" style="--tx:48%;">“It’s hard to understand how to use the components”</p>
         </div>
       </section>
 
