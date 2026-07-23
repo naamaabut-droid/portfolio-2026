@@ -197,6 +197,22 @@
   white-space: nowrap;
 }
 
+/* ---------- Tag Small (329:1299): chip-bg pill, 12px medium ---------- */
+.tag-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--3xs) var(--xs);
+  background: var(--chip);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--body);
+  white-space: nowrap;
+}
+
 /* ---------- Coaunter (22px accent circle) ---------- */
 .coaunter {
   flex: none;
