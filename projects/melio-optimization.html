@@ -56,28 +56,18 @@
     .ba-col .imgs { display: flex; gap: var(--sm); width: 100%; }
     .ba-col .imgs .shot { flex: 1 1 0; min-width: 1px; aspect-ratio: 330/714; border-radius: var(--radius-md); }
 
-    /* Figma 294:8211 "Bugs screens Grid" — 5 scrollable rows, one-time slide-in, alternating directions */
-    .bugs-band { width: 100%; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--sm); }
-    .bugs-row { width: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-    .bugs-row::-webkit-scrollbar { display: none; }
-    .bugs-row img { height: 277.4px; width: auto; max-width: none; display: block; }
-    /* the 24px lead from Figma (exports start at the first tile) */
-    .bugs-row.from-right img { margin-left: var(--ml); }
-    .bugs-row.from-left img { margin-right: var(--ml); }
-    .bugs-row { opacity: 0; transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
-    .bugs-row.from-right { transform: translateX(160px); }
-    .bugs-row.from-left { transform: translateX(-160px); }
-    .bugs-row:nth-child(2) { transition-delay: 0.08s; }
-    .bugs-row:nth-child(3) { transition-delay: 0.16s; }
-    .bugs-row:nth-child(4) { transition-delay: 0.24s; }
-    .bugs-row:nth-child(5) { transition-delay: 0.32s; }
-    .bugs-band.band-in .bugs-row { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .bugs-row { opacity: 1; transform: none; transition: none; }
-    }
-    @media (max-width: 480px) {
-      .bugs-row img { height: 200px; }
-    }
+    /* Figma 294:8211 — full-bleed rows, continuous horizontal marquee, alternating direction per row */
+    .bugs-band { width: 100%; display: flex; flex-direction: column; gap: var(--sm); overflow: hidden; }
+    .bugs-row { width: 100%; overflow: hidden; }
+    .bugs-track { display: flex; width: max-content; will-change: transform; }
+    .bugs-track img { height: 277.4px; width: auto; max-width: none; display: block; flex: none; }
+    .bugs-row:nth-child(odd) .bugs-track { animation: bugs-marq-l 24s linear infinite; }
+    .bugs-row:nth-child(even) .bugs-track { animation: bugs-marq-r 53s linear infinite; }
+    @keyframes bugs-marq-l { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes bugs-marq-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    .bugs-row:hover .bugs-track { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { .bugs-track { animation: none; transform: none; } }
+    @media (max-width: 480px) { .bugs-track img { height: 200px; } }
 
     .flows-cols { display: flex; gap: var(--max); align-items: flex-start; justify-content: center; width: 100%; }
     .flows-cols .fc { display: flex; flex-direction: column; gap: 42px; }
@@ -390,11 +380,11 @@
 
       <p class="cap-block t" style="font-weight:500;">System bugs and inconsistency mapping</p>
       <div class="bugs-band">
-        <div class="bugs-row from-right" data-anchor="end"><img src="../assets/melio-opt/bugs-row-1.png?v=3" alt="" /></div>
-        <div class="bugs-row from-left" data-anchor="end"><img src="../assets/melio-opt/bugs-row-2.png?v=2" alt="" /></div>
-        <div class="bugs-row from-right" data-anchor="end"><img src="../assets/melio-opt/bugs-row-3.png?v=3" alt="" /></div>
-        <div class="bugs-row from-left" data-anchor="end"><img src="../assets/melio-opt/bugs-row-4.png?v=2" alt="" /></div>
-        <div class="bugs-row from-right" data-anchor="end"><img src="../assets/melio-opt/bugs-row-5.png?v=3" alt="" /></div>
+        <div class="bugs-row"><div class="bugs-track"><img src="../assets/melio-opt/bugs-row-1.png?v=3" alt="" /><img src="../assets/melio-opt/bugs-row-1.png?v=3" alt="" aria-hidden="true" /></div></div>
+        <div class="bugs-row"><div class="bugs-track"><img src="../assets/melio-opt/bugs-row-2.png?v=2" alt="" /><img src="../assets/melio-opt/bugs-row-2.png?v=2" alt="" aria-hidden="true" /></div></div>
+        <div class="bugs-row"><div class="bugs-track"><img src="../assets/melio-opt/bugs-row-3.png?v=3" alt="" /><img src="../assets/melio-opt/bugs-row-3.png?v=3" alt="" aria-hidden="true" /></div></div>
+        <div class="bugs-row"><div class="bugs-track"><img src="../assets/melio-opt/bugs-row-4.png?v=2" alt="" /><img src="../assets/melio-opt/bugs-row-4.png?v=2" alt="" aria-hidden="true" /></div></div>
+        <div class="bugs-row"><div class="bugs-track"><img src="../assets/melio-opt/bugs-row-5.png?v=3" alt="" /><img src="../assets/melio-opt/bugs-row-5.png?v=3" alt="" aria-hidden="true" /></div></div>
       </div>
 
       <p class="cap-block t" style="font-weight:500;">Responsive Layouts Guidelines</p>
@@ -543,24 +533,6 @@
           });
         }, { threshold: 0.25 });
         io.observe(strip);
-      }
-
-      // Bugs band: rows 2/4 start scrolled to their end (content extends left in Figma),
-      // then the whole band slides in once — alternating directions per row
-      const band = document.querySelector('.bugs-band');
-      if (band) {
-        band.querySelectorAll('.bugs-row[data-anchor="end"]').forEach((row) => {
-          const img = row.querySelector('img');
-          const anchor = () => { row.scrollLeft = row.scrollWidth; };
-          if (img.complete && img.naturalWidth > 0) anchor();
-          else img.addEventListener('load', anchor);
-        });
-        const bandIo = new IntersectionObserver((entries) => {
-          entries.forEach((en) => {
-            if (en.isIntersecting) { band.classList.add('band-in'); bandIo.disconnect(); }
-          });
-        }, { threshold: 0.15 });
-        bandIo.observe(band);
       }
     })();
   </script>
