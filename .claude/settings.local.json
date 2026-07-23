@@ -262,7 +262,8 @@
       "Bash(curl -sL -o finals-payments-item.png \"https://www.figma.com/api/mcp/asset/78afc845-0f8f-49bf-aeab-f7a524e8994f\")",
       "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"wixel: reorder Overview before KPIs\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
       "Bash(cd \"/Users/naamaabitbol/Documents/Cloud code/UX projects/Portfolio\" && sed -i '' 's/case-study\\\\.css?v=18/case-study.css?v=19/g' projects/*.html && grep -h \"case-study.css\" projects/wixel.html | grep -o \"v=[0-9]*\")",
-      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"cs-hero-tags: max-width 400→350px \\(all project page heroes\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"cs-hero-tags: max-width 400→350px \\(all project page heroes\\)\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(git -c user.name=\"Naama Abitbol\" -c user.email=\"naamaabut@gmail.com\" commit -q -m \"Home bio + About intro paragraph → Body 1 \\(24px, was 20px\\) per Figma 190:1072 / 162:280; About: 48px gap before '4 reasons' \\(new two-group layout\\). case-studies 163:303 already matched\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ]
   }
 }
