@@ -101,7 +101,8 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   gap: var(--sm);
   padding-top: var(--ml);
 }
-.project-card .card-head { display: flex; align-items: center; gap: 10px; width: 100%; }
+.project-card .card-head { display: flex; flex-direction: column; align-items: flex-start; gap: var(--xxs); width: 100%; }
+.project-card .card-title-row { display: flex; align-items: center; gap: 10px; width: 100%; }
 .project-card .text-block { flex: 1 1 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: var(--xxs); }
 .project-card .card-body .desc { color: var(--body); }
 /* arrow button: hidden at rest, fades in (bordered) on hover, dark-filled on press */
