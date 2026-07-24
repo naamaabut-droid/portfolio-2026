@@ -86,8 +86,13 @@
   }
 
   async function boot() {
+    // Don't let a slow webfont hold the chips back — cap the wait so they drop
+    // in almost immediately on entry (pills re-measure fine once the font lands).
+    const fontsReady = document.fonts
+      ? Promise.race([document.fonts.ready, new Promise((res) => setTimeout(res, 200))])
+      : Promise.resolve();
     await Promise.all([
-      document.fonts ? document.fonts.ready : Promise.resolve(),
+      fontsReady,
       ...CHIPS.map((c) => new Promise((res) => {
         c.img = new Image();
         c.img.onload = res;
@@ -148,7 +153,8 @@
       const metrics = chipMetrics(scale);
       bodiesInfo = metrics.map((m, i) => {
         const x = left + ((i + 0.5) / metrics.length) * width + (Math.random() - 0.5) * 32;
-        const y = -0.6 * H - Math.random() * 0.3 * H;
+        // spawn just above the top edge so they fall into view right away
+        const y = -0.22 * H - Math.random() * 0.16 * H;
         const body = Bodies.rectangle(x, y, m.w, m.h, {
           chamfer: { radius: m.h / 2 },
           restitution: 0.35,
@@ -276,9 +282,15 @@
       running: !!stepTimer,
     });
 
-    // rebuild on resize (debounced)
+    // rebuild on resize (debounced) — but only when the WIDTH actually changes.
+    // Mobile browsers fire resize on every scroll as the URL bar shows/hides
+    // (height-only change); rebuilding there re-dropped the chips endlessly,
+    // which read as the chips jittering "hysterically".
     let rt = null;
+    let lastW = hero.clientWidth;
     addEventListener('resize', () => {
+      if (hero.clientWidth === lastW) return;
+      lastW = hero.clientWidth;
       clearTimeout(rt);
       rt = setTimeout(build, 250);
     });
