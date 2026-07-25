@@ -150,19 +150,30 @@
       const intro = document.querySelector('.hero-intro');
       const ir = intro.getBoundingClientRect();
       const left = ir.left - heroRect.left, width = ir.width;
+      // Chips fall freely and settle into a natural, tilted pile (she asked
+      // for a free fall, not the upright straight-row stack). On phones the
+      // fall is gentler: a shorter drop, more air drag, a smaller starting
+      // tilt, and extra rotational inertia — so they still land organically
+      // but settle at soft angles (close to the Figma pile) instead of
+      // tumbling to steep/vertical ones.
+      const isMobile = W < 640;
       const metrics = chipMetrics(scale);
       bodiesInfo = metrics.map((m, i) => {
         const x = left + ((i + 0.5) / metrics.length) * width + (Math.random() - 0.5) * 32;
         // spawn just above the top edge so they fall into view right away
-        const y = -0.22 * H - Math.random() * 0.16 * H;
+        const y = isMobile
+          ? -0.10 * H - Math.random() * 0.08 * H
+          : -0.22 * H - Math.random() * 0.16 * H;
         const body = Bodies.rectangle(x, y, m.w, m.h, {
           chamfer: { radius: m.h / 2 },
-          restitution: 0.35,
+          restitution: isMobile ? 0.06 : 0.35,
           friction: 0.5,
-          frictionAir: 0.014,
+          frictionAir: isMobile ? 0.03 : 0.014,
           density: 0.0018,
-          angle: (Math.random() - 0.5) * 0.5,
+          angle: (Math.random() - 0.5) * (isMobile ? 0.32 : 0.5),
         });
+        // extra rotational inertia on phones → gentle tilts, not steep spins
+        if (isMobile) Body.setInertia(body, body.inertia * 4);
         Composite.add(world, body);
         return { ...m, body, scale };
       });

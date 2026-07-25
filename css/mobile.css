@@ -1,0 +1,121 @@
+/* ============================================================
+   mobile.css — mobile implementation of the Figma 375 screens.
+   Loads LAST (after components.css) so these overrides win the
+   cascade. Desktop is untouched: every rule lives inside a
+   max-width media query.
+   ============================================================ */
+
+/* ============================================================
+   01 · Home — 375  (Figma frame 438:7741)
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* ---- Nav: mobile component (Figma 438:7782) ----
+     A full-width bar (white 10%, soft shadow) with the tabs spread
+     edge-to-edge (space-between). Only the active tab is a filled
+     pill (white 45%). Replaces the desktop contained glass pill. */
+  .nav-wrap.nav-overlay { padding: 0; }
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+    padding: 10px 20px;
+    background: var(--alpha-10);
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 2px 6px rgba(17, 17, 19, 0.08);
+  }
+  .nav a {
+    padding: 10px 14px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .nav a.active {
+    background: var(--alpha-45);
+    border-radius: var(--radius-full);
+  }
+
+  /* ---- Hero: lift the intro so the chips get room below it ---- */
+  .hero-intro { top: 42%; width: 92%; gap: 8px; }
+  .hero-profile { width: 104px; height: 104px; }
+
+  /* ---- Main Container vertical rhythm (Figma 438:7758) ----
+     Figma: py-48 (48px top/bottom) + 72px gap between Bio and Selected
+     Work. Code stacked .selected-work's 72px top on top of .home-bio's
+     48px → ~120px above the bio. Reset to the Figma spacing. */
+  .selected-work {
+    padding-top: var(--xxl);      /* 48, was --max (72) */
+    padding-bottom: var(--xxl);   /* 48, was 0 */
+    gap: var(--max);              /* 72 between bio and work */
+  }
+
+  /* ---- Bio + work: 20px side margins (Figma m token), no own vertical
+     padding (the container's py-48 owns the top/bottom spacing). ---- */
+  .home-bio { padding: 0 var(--m); }
+  .home-bio p { text-align: left; }
+  .work-content { padding-left: var(--m); padding-right: var(--m); }
+
+  /* ---- Project card covers: Figma mobile cover aspect + radius ----
+     Desktop pins .cover to a fixed 300px; on a 335-wide phone card that
+     over-crops the 1032×600 mockup. The Figma mobile cover is 375×218
+     (1.72:1 = the image's native ratio) with a 16px radius (radius/sm),
+     so follow the image aspect and drop the corner to 16. */
+  .project-card .cover {
+    height: auto;
+    aspect-ratio: 1032 / 600;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ---- Primary buttons: fill the container, label centered
+     (Figma 438:7761 Read More / 438:7769 View All — full width, the
+     label + arrow centered instead of the desktop auto-width pill). */
+  .home-bio .btn,
+  .work-content > .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ---- Contact: two round icon-only buttons (52×52), centered ----
+     Figma 438:7776 — Gmail + LinkedIn as circular glass pills, no text.
+     font-size:0 collapses the bare label text node; the .btn-icon-20
+     keeps its fixed size so the icon survives. */
+  .contact-actions { justify-content: center; gap: 16px; }
+  .contact-actions .btn.btn-plain {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    gap: 0;
+    border-radius: 50%;
+    font-size: 0;
+    justify-content: center;
+  }
+  .contact-actions .btn.btn-plain .btn-icon-20 { width: 22px; height: 22px; }
+
+  /* ---- Contact card: smaller gradient blobs (Figma 438:7771) ----
+     Desktop uses big closest-side blobs; mobile shrinks them to four
+     soft spots on a light-lavender base, matching the mobile design. */
+  .contact-section {
+    border-radius: var(--radius-md);
+    background:
+      radial-gradient(194px 247px at 82% 8%,  rgba(255, 217, 190, 1), rgba(255, 217, 190, 0) 62%),
+      radial-gradient(184px 223px at 10% 20%, rgba(220, 217, 255, 1), rgba(220, 217, 255, 0) 60%),
+      radial-gradient(234px 274px at 55% 92%, rgba(185, 185, 250, 1), rgba(185, 185, 250, 0) 58%),
+      radial-gradient(134px 171px at 38% 40%, rgba(255, 243, 226, 1), rgba(255, 243, 226, 0) 70%),
+      linear-gradient(180deg, #f3f1fe 0%, #eceafb 100%);
+  }
+
+  /* ---- Footer: centered + stacked (name over © 2026) — Figma 438:7779 ---- */
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: center;
+  }
+}
+
+/* Very small phones — keep the nav comfortable */
+@media (max-width: 380px) {
+  .nav { padding: 10px 16px; }
+  .nav a { padding: 9px 10px; }
+}
