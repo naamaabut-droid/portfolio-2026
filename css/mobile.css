@@ -810,6 +810,18 @@
      (were radius-xs 8 / radius-md 20 — too round for these small shots). */
   [data-cs-page="melio-redesign"] .tile .t-img { border-radius: 3px; }
   [data-cs-page="melio-redesign"] .phone-col .p-img { border-radius: 6px; }
+  /* Dense tile rows (Dashboard Tabs+Actions, Cards drill-in): keep every
+     tile in ONE justify-between row like Figma. Tighten the 24px gap,
+     don't wrap, and cap single tiles to the image width so long labels
+     ("Search focus") wrap under instead of widening the tile. */
+  [data-cs-page="melio-redesign"] .area-card > div[style*="space-between"] {
+    gap: 4px !important;
+    flex-wrap: nowrap !important;
+  }
+  [data-cs-page="melio-redesign"] .area-card > div[style*="space-between"] .t-img img { width: 42px !important; }
+  [data-cs-page="melio-redesign"] .area-card > div[style*="space-between"] > .tile:not(:has(.tile-row)) { width: 44px; }
+  [data-cs-page="melio-redesign"] .area-card > div[style*="space-between"] .tile-row { gap: 3px !important; }
+  [data-cs-page="melio-redesign"] .area-card > div[style*="space-between"] .t-label { font-size: 9px; line-height: 1.2; }
 }
 
 /* Very small phones — keep the nav comfortable */
