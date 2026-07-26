@@ -523,6 +523,114 @@
   [data-video-root="finaloop-page"] .features-row .img-caption { font-size: 12px; text-align: left; }
 }
 
+/* ============================================================
+   06 · Penny case-study specifics — 375  (Figma frame 438:8526)
+   Scoped to the Penny page via data-video-root. Penny has the most
+   custom components (quote bubbles, an animated full-bleed screens
+   band, testimonials masonry, a Slack stage, a knowledge grid), so
+   most of this block is compacting those for the phone.
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* Type scale (like Finaloop): section headings 24, highlight 32. */
+  [data-video-root="penny-page"] .cs-inner .h2-med { font-size: 24px; }
+  [data-video-root="penny-page"] .cs-inner .h1 { font-size: 32px; }
+
+  /* Insight cards p-20. */
+  [data-video-root="penny-page"] .insight-card { padding: 20px; }
+
+  /* ---- Quote bubbles (438:8641): full-width ink pills, stacked gap-24,
+     NO CSS tails, 16px centered, py-16 px-12. ---- */
+  [data-video-root="penny-page"] .quotes { gap: 24px; padding: 16px 0 !important; }
+  [data-video-root="penny-page"] .quote-row { gap: 24px; }
+  [data-video-root="penny-page"] .bubble {
+    align-self: stretch !important;
+    font-size: 16px;
+    padding: 16px 12px;
+  }
+  [data-video-root="penny-page"] .bubble::after { display: none; }
+
+  /* Big single images (atomic components, etc.): radius 12, not 32. */
+  [data-video-root="penny-page"] .cs-inner img[style*="radius-xl"] { border-radius: 12px !important; }
+
+  /* Color-contrast block is a WHITE card (438:8707) — the shared rule
+     makes case-cards bare, so restore its fill (it carries an inline
+     --ground background). */
+  [data-video-root="penny-page"] .case-card[style*="--ground"] {
+    background: var(--ground) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+  }
+
+  /* Nested-components pair (438:8725): stack the two videos. */
+  [data-video-root="penny-page"] .case-card > div:has(> .media-video) {
+    flex-direction: column !important;
+    gap: 12px;
+  }
+
+  /* Storybook (438:8740): the two overlapping absolute-positioned shots
+     stack full-width on mobile. */
+  [data-video-root="penny-page"] .case-card > div[style*="height:392px"] {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+  }
+  [data-video-root="penny-page"] .case-card > div[style*="height:392px"] > div {
+    position: static !important;
+    width: 100% !important;
+  }
+
+  /* ---- Screens band (438:8758): the desktop shots are full-viewport
+     (375px) here → 12 of them make a 3000px band. Compact to a wrapped
+     3-up thumbnail grid and drop the spring slide. ---- */
+  [data-video-root="penny-page"] .screens-band { padding: 24px 20px; gap: 8px; }
+  [data-video-root="penny-page"] .screens-row {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+  }
+  [data-video-root="penny-page"] .screens-row .sshot {
+    width: calc(33.333% - 6px);
+    height: auto;
+    aspect-ratio: 375 / 213;
+    transition: none;
+  }
+  [data-video-root="penny-page"] .screens-band.slid .row-l .sshot,
+  [data-video-root="penny-page"] .screens-band.slid .row-r .sshot { transform: none; }
+
+  /* ---- Testimonials (438:9272): a horizontal-scroll row of 220px
+     cards. Flatten the masonry columns so all cards sit in one row. ---- */
+  [data-video-root="penny-page"] .testimonials {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 16px 0;
+  }
+  [data-video-root="penny-page"] .t-col { display: contents; }
+  [data-video-root="penny-page"] .t-item { flex: none; width: 220px; }
+  [data-video-root="penny-page"] .t-item img { width: 100%; }
+
+  /* ---- Knowledge base (438:9219) + Slack (438:9249) sit in cream cards
+     with a left label. ---- */
+  [data-video-root="penny-page"] .case-card:has(.knowledge-grid),
+  [data-video-root="penny-page"] .case-card:has(.slack-stage) {
+    background: var(--card) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    gap: 12px;
+  }
+  [data-video-root="penny-page"] .case-card:has(.knowledge-grid) .card-caption,
+  [data-video-root="penny-page"] .case-card:has(.slack-stage) .card-caption {
+    align-items: flex-start;
+    text-align: left;
+  }
+  [data-video-root="penny-page"] .knowledge-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  [data-video-root="penny-page"] .knowledge-grid .k-label { font-size: 10px; }
+}
+
 /* Very small phones — keep the nav comfortable */
 @media (max-width: 380px) {
   .nav { padding: 12px 12px; }
