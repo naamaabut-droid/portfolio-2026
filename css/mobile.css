@@ -165,6 +165,9 @@
   .exp-row .company { grid-area: company; width: auto; }
   .exp-row .years { grid-area: year; width: auto; font-size: 12px; }
   .exp-row .role { grid-area: role; }
+  /* Rows aren't clickable — kill the hover background (it sticks after a
+     tap on touch and reads as a selectable/interactive state). */
+  .exp-row:hover { background: none; }
   .experience > .btn { width: 100%; justify-content: center; }
 
   /* ---- Recommendations (438:7861): bare cards, no wrapper box ----
