@@ -264,6 +264,10 @@
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
+  /* Highlight statements on Finaloop/Penny are a bare .narrow section with
+     an inline py-48; trim to py-24 so it doesn't stack on the container's
+     32px gap (Wixel's .cs-highlight already sits at 24). */
+  .cs-inner > .narrow:has(> .h1) { padding-top: 24px !important; padding-bottom: 24px !important; }
   .tldr { padding: 0; }
   .kpi-block { padding: 0; gap: 12px; }
   .cs-highlight { padding: 24px 0; }
@@ -535,6 +539,8 @@
   /* Type scale (like Finaloop): section headings 24, highlight 32. */
   [data-video-root="penny-page"] .cs-inner .h2-med { font-size: 24px; }
   [data-video-root="penny-page"] .cs-inner .h1 { font-size: 32px; }
+  /* Penny highlight is py-16 in Figma (Finaloop is 24). */
+  [data-video-root="penny-page"] .cs-inner > .narrow:has(> .h1) { padding-top: 16px !important; padding-bottom: 16px !important; }
 
   /* Insight cards p-20. */
   [data-video-root="penny-page"] .insight-card { padding: 20px; }
