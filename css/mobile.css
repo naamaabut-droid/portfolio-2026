@@ -19,8 +19,9 @@
    exist on the case-study pages, so desktop is untouched. */
 .cap-mobile { display: none; }
 
-/* Penny testimonials scroll-pagination dots exist only on the phone. */
-.t-pagination { display: none; }
+/* Carousel scroll-pagination dots (built by js/carousel-dots.js) exist
+   only on the phone; on desktop the arrow controls stay. */
+.dots-pagination { display: none; }
 
 /* ============================================================
    01 · Home — 375  (Figma frame 438:7741)
@@ -298,6 +299,26 @@
   }
   .page-nav .tab-label { display: inline; }
   .page-nav .tab { padding: 8px 16px 8px 8px; }
+
+  /* ---- Carousels on mobile: replace the arrow chevrons with pagination
+     dots (js/carousel-dots.js builds .dots-pagination after each scroller).
+     One dot per card; the active dot tracks the card nearest centre. ---- */
+  .scroll-arrow { display: none !important; }
+  .dots-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding-top: 12px;
+    width: 100%;
+  }
+  .dots-pagination .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--line);
+    transition: width 0.25s ease, background-color 0.25s ease;
+  }
+  .dots-pagination .dot.active { width: 18px; background: var(--ink); }
 
   /* ---- Intra-section gaps: eyebrow→content and heading→body are gap-8;
      the wider text sections are gap-20 (Figma frames). ---- */
@@ -620,7 +641,9 @@
     gap: 12px;
     overflow-x: auto;
     /* break out of the 20px cs-inner gutter so cards scroll edge-to-edge
-       (cut at the viewport, not at the page margin). */
+       (cut at the viewport, not the page margin). width must grow too —
+       .cs-inner > * pins it to 100%, which blocked the right side. */
+    width: calc(100% + 40px);
     margin-left: -20px;
     margin-right: -20px;
     padding: 16px 20px !important;
@@ -629,21 +652,6 @@
   [data-video-root="penny-page"] .t-col { display: contents; }
   [data-video-root="penny-page"] .t-item { flex: none; width: 220px; scroll-snap-align: start; }
   [data-video-root="penny-page"] .t-item img { width: 100%; }
-  /* scroll pagination dots (built by the inline script) */
-  [data-video-root="penny-page"] .t-pagination {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    padding-top: 12px;
-  }
-  [data-video-root="penny-page"] .t-pagination .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--line);
-    transition: width 0.25s ease, background-color 0.25s ease;
-  }
-  [data-video-root="penny-page"] .t-pagination .dot.active { width: 18px; background: var(--ink); }
 
   /* ---- Knowledge base (438:9219) + Slack (438:9249) sit in cream cards
      with a left label. ---- */
