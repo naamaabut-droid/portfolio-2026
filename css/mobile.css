@@ -114,6 +114,60 @@
   }
 }
 
+/* ============================================================
+   02 · About — 375  (Figma frame 438:7807)
+   Contact card, footer and nav are shared with Home (rules above).
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* Pin the nav bar to the very top on the sticky-nav pages too
+     (Home's overlay nav is already handled above). */
+  .nav-wrap { padding: 0; }
+
+  /* ---- Header (438:7808): lavender top wash + 48px heading ---- */
+  .about-intro {
+    padding: var(--xl) var(--m) var(--xxl);   /* ~40 top · 20 sides · 48 bottom */
+    gap: var(--sm);
+    background: linear-gradient(180deg, #f3f1fe 0%, rgba(255, 255, 255, 0) 460px);
+  }
+  .about-intro .h1 { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
+  .about-intro .body-2-med { font-size: 16px; }
+
+  /* ---- Reasons list: 16px, bold title on its own line (438:7815) ---- */
+  .numbered-list { gap: var(--m); }
+  .numbered-list .num,
+  .numbered-list .text { font-size: 16px; }
+  .numbered-list .text strong { display: block; }
+  .about-intro .body-2.para { font-size: 16px; }
+
+  /* ---- Experience rows: [company … year] / [role] (Figma 438:7831) ---- */
+  .experience { padding-left: var(--m); padding-right: var(--m); }
+  .exp-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "company year"
+      "role    role";
+    column-gap: var(--xs);
+    row-gap: 2px;
+    padding: 14px 0;
+    align-items: baseline;
+    font-size: 16px;
+  }
+  .exp-row .company { grid-area: company; width: auto; }
+  .exp-row .years { grid-area: year; width: auto; font-size: 12px; }
+  .exp-row .role { grid-area: role; }
+  .experience > .btn { width: 100%; justify-content: center; }
+
+  /* ---- Recommendations carousel: 20px gutters ---- */
+  .recs { padding-left: var(--m); padding-right: var(--m); }
+
+  /* Section eyebrows: desktop widens these to 4px; the mobile serif label
+     tracks tight (~0.56px on 14px), so pull them back in. */
+  .experience .label-serif,
+  .recs .label-serif { letter-spacing: 0.04em; }
+}
+
 /* Very small phones — keep the nav comfortable */
 @media (max-width: 380px) {
   .nav { padding: 10px 16px; }
