@@ -283,18 +283,23 @@
      circle + "Back" label). Replaces the desktop centered floating
      glass pill; the label (hidden by the @480 base rule) comes back. */
   .page-nav {
-    position: absolute;
+    position: fixed;                  /* sticky on scroll (was absolute — it
+                                         scrolled away with the page). */
     top: 0;
     left: 0;
     right: 0;
     transform: none;
     width: 100%;
+    z-index: 100;
     justify-content: flex-start;
     gap: 4px;
     padding: 6px 16px;
     border: 0;
     border-radius: 0;
     background: var(--alpha-10);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);      /* frost the content scrolling under
+                                         the now-fixed bar so it stays legible. */
     box-shadow: 0 2px 6px rgba(17, 17, 19, 0.08);
   }
   .page-nav .tab-label { display: inline; }

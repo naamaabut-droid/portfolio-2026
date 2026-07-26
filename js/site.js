@@ -26,18 +26,38 @@
     });
   });
 
-  // Land at the top of the page on Back/Forward navigation instead of
-  // restoring the previous scroll position (the "← Back" button uses
-  // history.back(), and the browser was dropping her mid-page). Only
-  // back/forward — reloads keep their position (she reloads to check
-  // pushes) and real anchor targets (#contact, Back-to-top) are left alone.
+  // Scroll handling across navigations:
+  //  - Back/Forward: open the page at the very top, INSTANTLY — no smooth
+  //    scroll-up animation and no flash of the previous position. (html has
+  //    scroll-behavior:smooth, so we take over restoration ourselves.)
+  //  - Reload: keep the exact position she was at (she reloads to check live
+  //    pushes), restored from sessionStorage.
+  //  - #anchor targets (#contact, Back-to-top): left to the browser.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const scrollKey = 'scroll:' + location.pathname;
+
+  const jumpTo = (y) => {
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';        // defeat the CSS smooth-scroll
+    window.scrollTo(0, y);
+    requestAnimationFrame(() => { html.style.scrollBehavior = prev; });
+  };
+
+  window.addEventListener('pagehide', () => {
+    try { sessionStorage.setItem(scrollKey, String(window.scrollY)); } catch (e) {}
+  });
+
   window.addEventListener('pageshow', (e) => {
+    if (location.hash) return;                  // let the browser reach the anchor
     const nav = performance.getEntriesByType('navigation')[0];
-    const backForward = e.persisted || (nav && nav.type === 'back_forward');
-    if (backForward && !location.hash) {
-      window.scrollTo(0, 0);
-      // beat any late async scroll-restoration the browser does after pageshow
-      requestAnimationFrame(() => { if (!location.hash) window.scrollTo(0, 0); });
+    const isReload = !e.persisted && nav && nav.type === 'reload';
+    if (isReload) {
+      let y = 0;
+      try { y = parseInt(sessionStorage.getItem(scrollKey) || '0', 10) || 0; } catch (e) {}
+      jumpTo(y);                                // restore where she was
+    } else {
+      jumpTo(0);                                // top for back/forward (and fresh loads)
     }
   });
 })();
