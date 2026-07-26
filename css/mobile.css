@@ -443,16 +443,16 @@
   /* ---- Comparison table (438:8258): each pair becomes two stacked,
      labelled rows — a grey "Desktop" row (muted) over a white "Mobile"
      row (ink), an inline label column instead of a header row. ---- */
-  .comparison-table { border-radius: 12px; }
-  .comparison-table .row.head { display: none; }
-  .comparison-table .row {
+  .comparison-table:not(.cols-4) { border-radius: 12px; }
+  .comparison-table:not(.cols-4) .row.head { display: none; }
+  .comparison-table:not(.cols-4) .row {
     display: block;
     padding: 0;
     gap: 0;
     border-bottom: 1px solid var(--line);
   }
-  .comparison-table .row:last-child { border-bottom: 0; }
-  .comparison-table .row p {
+  .comparison-table:not(.cols-4) .row:last-child { border-bottom: 0; }
+  .comparison-table:not(.cols-4) .row p {
     display: grid;
     grid-template-columns: 72px 1fr;
     column-gap: 12px;
@@ -464,23 +464,23 @@
     line-height: 1.4;
     letter-spacing: -0.01em;
   }
-  .comparison-table .row p::before {
+  .comparison-table:not(.cols-4) .row p::before {
     font-size: 10px;
     font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0;
     color: var(--body);
   }
-  .comparison-table .row p:first-child {
+  .comparison-table:not(.cols-4) .row p:first-child {
     background: var(--card);
     color: var(--body);
   }
-  .comparison-table .row p:last-child {
+  .comparison-table:not(.cols-4) .row p:last-child {
     background: var(--ground);
     color: var(--ink);
   }
-  .comparison-table .row p:first-child::before { content: "Desktop"; }
-  .comparison-table .row p:last-child::before { content: "Mobile"; }
+  .comparison-table:not(.cols-4) .row p:first-child::before { content: "Desktop"; }
+  .comparison-table:not(.cols-4) .row p:last-child::before { content: "Mobile"; }
 
   /* Back To Top: fill the container (438:8318) — full-width outlined pill. */
   .cs-inner > .back-top {
@@ -681,6 +681,78 @@
     border-radius: 4px;
   }
   [data-video-root="penny-page"] .knowledge-grid .k-label { font-size: 10px; }
+}
+
+/* ============================================================
+   07 · Melio Redesign case-study specifics — 375  (Figma 438:9297)
+   Scoped via data-cs-page. Lots of bespoke media (a compact 4-col
+   table, tile collages, phone comparisons) that must shrink hard for
+   the phone.
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* Type scale + TL;DR rhythm (Melio: section headings 24, highlight 32,
+     TL;DR bullets gap-8 / label→text gap-12). */
+  [data-cs-page="melio-redesign"] .cs-inner .h2-med { font-size: 24px; }
+  [data-cs-page="melio-redesign"] .cs-inner .h1 { font-size: 32px; }
+  [data-cs-page="melio-redesign"] .tldr-bullets { gap: 8px; }
+  [data-cs-page="melio-redesign"] .tldr-bullet { gap: 12px; }
+  [data-cs-page="melio-redesign"] .insight-card { padding: 20px; }
+  [data-cs-page="melio-redesign"] .card-caption { align-items: center; text-align: center; }
+  [data-cs-page="melio-redesign"] .card-caption p { font-weight: 400 !important; }
+
+  /* IA collage + explorations are cream cards (shared makes case-cards
+     bare); restore the fill just here. */
+  [data-cs-page="melio-redesign"] .case-card.wide {
+    background: var(--card) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+  }
+  /* IA collage: compact 2-up wrapped thumbnails instead of a 339px row. */
+  [data-cs-page="melio-redesign"] .ia-collage { flex-wrap: wrap; gap: 8px !important; justify-content: center; }
+  [data-cs-page="melio-redesign"] .ia-collage img {
+    height: 150px !important;
+    width: auto !important;
+    max-width: calc(50% - 4px);
+  }
+
+  /* Existing-state + tab strips: keep the images from getting oversized. */
+  [data-cs-page="melio-redesign"] .tab-strip .strip { height: auto; aspect-ratio: 335 / 90; }
+
+  /* 4-col comparison table -> a genuine compact 4-col grid (Figma keeps
+     it a dense mini-table, ~10px). */
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row {
+    display: grid;
+    grid-template-columns: 62px 1fr 1fr 1fr;
+    gap: 6px;
+    padding: 8px 10px;
+    font-size: 10px;
+    line-height: 1.35;
+  }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row p:first-child {
+    flex: none;
+    min-width: 0;
+    font-size: 10px;
+  }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row.head { font-size: 9px; }
+
+  /* Exploration + A/B/C grids stay one column but keep the images tidy. */
+  [data-cs-page="melio-redesign"] .explore-grid { grid-template-columns: 1fr; gap: 12px; }
+  [data-cs-page="melio-redesign"] .explore-grid img { height: auto !important; aspect-ratio: 143 / 69; object-fit: contain; }
+  [data-cs-page="melio-redesign"] .finals-row { flex-wrap: nowrap; gap: 8px; justify-content: center; }
+  [data-cs-page="melio-redesign"] .finals-cell img { width: 100% !important; }
+  [data-cs-page="melio-redesign"] .finals-cell { flex: 1; min-width: 0; }
+
+  /* Phone comparison: two small phones side by side (Figma ~187px), not
+     the 605px desktop size. */
+  [data-cs-page="melio-redesign"] .phones-compare { flex-wrap: nowrap; gap: 12px; }
+  [data-cs-page="melio-redesign"] .phone-col .p-img { height: 200px !important; }
+  [data-cs-page="melio-redesign"] .phone-col .p-img img { height: 100% !important; width: auto !important; }
+
+  /* Screens-by-area cream cards + tiny tiles (Figma tiles ~44px). */
+  [data-cs-page="melio-redesign"] .area-card { padding: 16px !important; border-radius: 12px !important; gap: 12px; }
+  [data-cs-page="melio-redesign"] .area-cards-row { flex-direction: column; gap: 12px !important; }
+  [data-cs-page="melio-redesign"] .tile .t-img img { width: 46px !important; }
 }
 
 /* Very small phones — keep the nav comfortable */
