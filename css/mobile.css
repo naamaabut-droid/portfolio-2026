@@ -742,7 +742,9 @@
   [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 8px;
+    /* explicit row-gap 0 — the inline gap:var(--ml) was adding a 24px
+       row-gap between the tab bar and the value row. */
+    gap: 0 8px;
     padding: 0 8px 8px;
     border-bottom: 1px solid var(--line);
   }
