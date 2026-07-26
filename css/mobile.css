@@ -722,9 +722,15 @@
     max-width: calc(50% - 4px);
   }
 
-  /* Tab strips (438:9444): show the FULL table width, clipped to a short
-     top band. cover on a wide image was cropping the sides. */
-  [data-cs-page="melio-redesign"] .tab-strip .strip { height: 84px; aspect-ratio: auto; }
+  /* Tab strips (438:9444): just scale the desktop screenshot to the mobile
+     width — full image, natural height, no cropping. Give it a clean full
+     border + radius (the desktop's top-only radius / no bottom border read
+     as broken once the image is no longer clipped). */
+  [data-cs-page="melio-redesign"] .tab-strip .strip {
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
   [data-cs-page="melio-redesign"] .tab-strip .strip img { width: 100% !important; height: auto !important; object-fit: unset !important; }
 
   /* 4-col comparison table (438:9403): per tab, a grey "Mobile tab: X"
@@ -787,12 +793,23 @@
      and Navigation stay SIDE BY SIDE (438:9546), not stacked. */
   [data-cs-page="melio-redesign"] .area-card { padding: 14px !important; border-radius: 12px !important; gap: 10px; }
   [data-cs-page="melio-redesign"] .area-cards-row { flex-direction: row !important; gap: 12px !important; }
+  /* the screens-by-area blocks are spaced 48px (var(--xxl)) apart — too
+     much on the phone; tighten to 24. */
+  [data-cs-page="melio-redesign"] .wide:has(.area-card) { gap: 24px !important; }
   [data-cs-page="melio-redesign"] .tile .t-img img { width: 44px !important; }
   /* small tile labels so long ones (e.g. "Company switcher") don't force
      the two tiles in a Header/Navigation card to stack. */
   [data-cs-page="melio-redesign"] .tile .t-label { font-size: 11px; line-height: 1.25; }
   [data-cs-page="melio-redesign"] .area-cards-row .tile { flex: 1; min-width: 0; }
   [data-cs-page="melio-redesign"] .area-cards-row .tile-row { gap: 8px; align-items: flex-start; }
+  /* Area group headers are small italic-serif labels (14px) — the shared
+     .cs-inner .h3-med rule was blowing them up to 24px. */
+  [data-cs-page="melio-redesign"] .area-headers .h3-med,
+  [data-cs-page="melio-redesign"] .area-title { font-size: 14px !important; }
+  /* Screenshot radii match Figma: tiles ~3px, comparison phones ~6px
+     (were radius-xs 8 / radius-md 20 — too round for these small shots). */
+  [data-cs-page="melio-redesign"] .tile .t-img { border-radius: 3px; }
+  [data-cs-page="melio-redesign"] .phone-col .p-img { border-radius: 6px; }
 }
 
 /* Very small phones — keep the nav comfortable */
