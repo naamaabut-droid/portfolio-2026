@@ -12,6 +12,13 @@
      · xxl 36 · max 54   |   radius: xs 6 · sm 12 · md 16 · full 999
    ============================================================ */
 
+/* Case-study captions carry a mobile-specific short label (.cap-mobile)
+   next to the desktop-length copy (.cap-desktop). Hide the short label
+   everywhere by default; the phone media query below swaps them. This is
+   the ONE top-level rule in this file — it only affects new classes that
+   exist on the case-study pages, so desktop is untouched. */
+.cap-mobile { display: none; }
+
 /* ============================================================
    01 · Home — 375  (Figma frame 438:7741)
    ============================================================ */
@@ -352,6 +359,14 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+  /* Captions: the Figma mobile design shortens the flow captions to a
+     label ("Remove Background Flow", "Desktop screenshots", …) and drops
+     the "click to enlarge" hints. Swap to the short label, hide the
+     desktop copy and hints. Sprint-board caption is dropped entirely. */
+  .card-caption .cap-desktop { display: none; }
+  .card-caption .cap-mobile { display: block; }
+  .card-caption .dim { display: none; }
+  .card-caption.cap-hide-mobile { display: none; }
 
   /* horizontal flows: desktop shots 300×190, phone shots 190×412,
      radius 6, flow gap-12, figcaption gap-6 (438:7939 / 8038 / 8103). */
