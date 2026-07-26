@@ -701,6 +701,12 @@
   [data-cs-page="melio-redesign"] .card-caption { align-items: center; text-align: center; }
   [data-cs-page="melio-redesign"] .card-caption p { font-weight: 400 !important; }
 
+  /* Existing-state comparison (438:9356) is a single column on mobile —
+     the two dashboards stack full-width, not squeezed side by side. */
+  [data-cs-page="melio-redesign"] .cs-inner > .wide[style*="repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+
   /* IA collage + explorations are cream cards (shared makes case-cards
      bare); restore the fill just here. */
   [data-cs-page="melio-redesign"] .case-card.wide {
