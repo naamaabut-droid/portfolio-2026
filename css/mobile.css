@@ -134,6 +134,9 @@
     background: linear-gradient(180deg, #f3f1fe 0%, rgba(255, 255, 255, 0) 520px);
   }
   .about-intro .h1 { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
+  /* Drop the desktop <br> so the heading wraps naturally on mobile:
+     "Designer by / craft, builder / by habit." (matches the design). */
+  .about-intro .h1 br { display: none; }
   .about-intro .body-2-med { font-size: 16px; }
 
   /* ---- Reasons list: 16px, bold title on its own line (438:7815) ---- */
