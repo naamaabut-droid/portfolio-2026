@@ -250,12 +250,11 @@
    ============================================================ */
 @media (max-width: 640px) {
 
-  /* ---- Main container (438:7912): 16px gutters, 32px section rhythm,
-     pt-32 pb-24. Kill each section's own vertical padding so the
-     container gap owns the spacing (sections carry py-48 / inline
-     padding on desktop). ---- */
+  /* ---- Main container: 20px gutters, 32px section rhythm, pt-32 pb-24.
+     Kill each section's own vertical padding so the container gap owns
+     the spacing (sections carry py-48 / inline padding on desktop). ---- */
   .cs-inner {
-    padding: 32px 16px 24px;
+    padding: 32px 20px 24px;
     gap: 32px;
     align-items: stretch;
   }
@@ -476,15 +475,10 @@
    ============================================================ */
 @media (max-width: 640px) {
 
-  /* 20px side margins (Finaloop Main Container is px-20, not the 16 the
-     shared block uses for Wixel). */
-  [data-video-root="finaloop-page"] .cs-inner {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   /* Insight cards: p-20 (Figma), not the desktop 20/24. */
   [data-video-root="finaloop-page"] .insight-card { padding: 20px; }
+  /* KPI cards have no ordinal number and a larger 24px title (438:8408). */
+  [data-video-root="finaloop-page"] .kpi-card h4 { font-size: 24px; }
 
   /* Finaloop runs a smaller type scale than Wixel: section headings are
      H3-Medium (24) and the highlight is 32 (Wixel used 32 / 48). */
