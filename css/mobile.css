@@ -729,7 +729,7 @@
   [data-cs-page="melio-redesign"] .tab-strip .strip {
     height: auto;
     border: 1px solid var(--line);
-    border-radius: 12px;
+    border-radius: 4px;
   }
   [data-cs-page="melio-redesign"] .tab-strip .strip img { width: 100% !important; height: auto !important; object-fit: unset !important; }
 
@@ -810,8 +810,8 @@
   [data-cs-page="melio-redesign"] .area-title { font-size: 14px !important; }
   /* Screenshot radii match Figma: tiles ~3px, comparison phones ~6px
      (were radius-xs 8 / radius-md 20 — too round for these small shots). */
-  [data-cs-page="melio-redesign"] .tile .t-img { border-radius: 3px; }
-  [data-cs-page="melio-redesign"] .phone-col .p-img { border-radius: 6px; }
+  [data-cs-page="melio-redesign"] .tile .t-img { border: 0; border-radius: 3px; }
+  [data-cs-page="melio-redesign"] .phone-col .p-img { border: 0; border-radius: 6px; height: 187px; }
   /* Dense tile rows (Dashboard Tabs+Actions, Cards drill-in): keep every
      tile in ONE justify-between row like Figma. Tighten the 24px gap,
      don't wrap, and cap single tiles to the image width so long labels
