@@ -203,6 +203,30 @@
   .recs .label-serif { letter-spacing: 0.04em; }
 }
 
+/* ============================================================
+   03 · Case Studies — 375  (Figma frame 438:7783)
+   Header mirrors the About header; project cards, contact card,
+   footer and nav are shared with Home/About (rules above).
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* ---- Header (438:7784): lavender top wash, H1 48px, gap-sm(12) ----
+     pt-96 clears the overlay nav; px-ml(20); pb-xxl(36). */
+  .cs-header {
+    padding: 96px 20px 36px;
+    gap: 12px;
+    background: linear-gradient(180deg, #f3f1fe 0%, rgba(255, 255, 255, 0) 520px);
+  }
+  .cs-header .heading-block { gap: 12px; }   /* eyebrow → heading (sm) */
+  .cs-header .h1 { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
+
+  /* ---- Grid (438:7788): a single column of 335px cards, py-xxl(36)
+     px-ml(20), gap-ml(20) between every card. ---- */
+  .cs-grid { padding: 36px 20px; gap: 20px; }
+  .cs-row { flex-direction: column; gap: 20px; }
+  .cs-row .project-card { flex: none; width: 100%; }
+}
+
 /* Very small phones — keep the nav comfortable */
 @media (max-width: 380px) {
   .nav { padding: 12px 12px; }
