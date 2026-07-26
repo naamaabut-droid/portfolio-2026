@@ -950,19 +950,8 @@
      to ~8 with a negative margin (only this eyebrow matches the selector). */
   [data-cs-page="melio-optimization"] .sec-gap-24 > .label-serif { margin-bottom: -12px; }
 
-  /* Reflection: the mobile design renders this heading as the small
-     purple serif "label" (438:9628), not an H2-Medium. This selector
-     hits only Reflection (the page's one .narrow.sec-gap-12 section). */
-  [data-cs-page="melio-optimization"] .narrow.sec-gap-12 > .h2-med {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.4;
-    letter-spacing: 0.56px;
-    color: var(--accent);
-    font-variation-settings: normal;
-  }
+  /* (Reflection heading stays the standard H2-Medium — 32px ink — per her
+     correction; no restyle to a serif label.) */
 
   /* Flows mapping: the three diagrams stay side by side, scaled to
      thirds (Figma shows them tiny — they convey system scale, not
