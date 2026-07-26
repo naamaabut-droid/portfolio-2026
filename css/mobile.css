@@ -468,6 +468,67 @@
   .discover .cards { flex-direction: column; gap: 24px; }
 }
 
+/* ============================================================
+   05 · Finaloop case-study specifics — 375  (Figma frame 438:8326)
+   Builds on the shared "04" block; only the Finaloop-specific pieces
+   live here, scoped to the page via its data-video-root attribute so
+   they never touch Wixel or the others.
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* 20px side margins (Finaloop Main Container is px-20, not the 16 the
+     shared block uses for Wixel). */
+  [data-video-root="finaloop-page"] .cs-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Insight cards: p-20 (Figma), not the desktop 20/24. */
+  [data-video-root="finaloop-page"] .insight-card { padding: 20px; }
+
+  /* Finaloop runs a smaller type scale than Wixel: section headings are
+     H3-Medium (24) and the highlight is 32 (Wixel used 32 / 48). */
+  [data-video-root="finaloop-page"] .cs-inner .h2-med { font-size: 24px; }
+  [data-video-root="finaloop-page"] .cs-inner .h1 { font-size: 32px; }
+
+  /* Media-section labels ("Pattern inspirations", "Full flow", "Edge
+     Cases", "More Features") are centered 14px regular in Figma. */
+  [data-video-root="finaloop-page"] .card-caption {
+    align-items: center;
+    text-align: center;
+  }
+  [data-video-root="finaloop-page"] .card-caption p { font-weight: 400 !important; }
+
+  /* Pattern inspirations stays a cream card (438:8452) — the shared rule
+     makes every case-card bare, so restore the fill just for this one. */
+  [data-video-root="finaloop-page"] .case-card.wide {
+    background: var(--card) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    gap: 20px;
+  }
+
+  /* Screenshot / video slots: radius 10 for the big steps + full flow,
+     radius 6 for the edge-case and more-features thumbs (Figma). */
+  [data-video-root="finaloop-page"] .media-video { border-radius: 10px !important; }
+  [data-video-root="finaloop-page"] .edge-pair .media-video,
+  [data-video-root="finaloop-page"] .features-row .media-video { border-radius: 6px !important; }
+
+  /* Edge cases stay a 2-column grid on mobile (438:8485), not stacked. */
+  [data-video-root="finaloop-page"] .edge-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  [data-video-root="finaloop-page"] .edge-pair .col { gap: 8px; }
+  [data-video-root="finaloop-page"] .edge-pair .img-caption { font-size: 12px; text-align: left; }
+
+  /* More features: a horizontal-scroll row of ~161px cards (438:8494). */
+  [data-video-root="finaloop-page"] .features-row { gap: 8px; }
+  [data-video-root="finaloop-page"] .features-row .col { width: 161px; gap: 8px; }
+  [data-video-root="finaloop-page"] .features-row .img-caption { font-size: 12px; text-align: left; }
+}
+
 /* Very small phones — keep the nav comfortable */
 @media (max-width: 380px) {
   .nav { padding: 12px 12px; }
