@@ -25,4 +25,19 @@
       }
     });
   });
+
+  // Land at the top of the page on Back/Forward navigation instead of
+  // restoring the previous scroll position (the "← Back" button uses
+  // history.back(), and the browser was dropping her mid-page). Only
+  // back/forward — reloads keep their position (she reloads to check
+  // pushes) and real anchor targets (#contact, Back-to-top) are left alone.
+  window.addEventListener('pageshow', (e) => {
+    const nav = performance.getEntriesByType('navigation')[0];
+    const backForward = e.persisted || (nav && nav.type === 'back_forward');
+    if (backForward && !location.hash) {
+      window.scrollTo(0, 0);
+      // beat any late async scroll-restoration the browser does after pageshow
+      requestAnimationFrame(() => { if (!location.hash) window.scrollTo(0, 0); });
+    }
+  });
 })();
