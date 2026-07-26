@@ -898,6 +898,18 @@
   [data-cs-page="melio-optimization"] .cap-block { font-size: 12px; }
   [data-cs-page="melio-optimization"] .cap-block .dim { display: none; }
 
+  /* Funnel charts: stack the Mobile / Desktop charts one below the other
+     on the phone, each full width (were side by side at 48% each). */
+  [data-cs-page="melio-optimization"] .wide > div:has(> img[src*="imgChart"]) {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  [data-cs-page="melio-optimization"] img[src*="imgChart"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   /* Numbered issues + fixes lists: Body-2 16 (were 20). */
   [data-cs-page="melio-optimization"] .num-bullet { font-size: 16px; gap: 8px; align-items: flex-start; }
   [data-cs-page="melio-optimization"] .fix-bullet { gap: 8px; align-items: flex-start; }
@@ -930,6 +942,13 @@
   /* The "More key actions" band sits OUTSIDE .cs-inner, so its heading
      can't be reached by the shared .cs-inner .h2-med rule — size it. */
   [data-cs-page="melio-optimization"] .cs-container > .reveal .h2-med { font-size: 32px; }
+
+  /* Research: its "Research" eyebrow is the one label-serif that sits as
+     a DIRECT child of a .sec-gap-24 (the other sections wrap the eyebrow
+     with its heading in a .sec-gap-16, so they already get 8px). The
+     20px section gap reads too big before "Discovery questions" — pull it
+     to ~8 with a negative margin (only this eyebrow matches the selector). */
+  [data-cs-page="melio-optimization"] .sec-gap-24 > .label-serif { margin-bottom: -12px; }
 
   /* Reflection: the mobile design renders this heading as the small
      purple serif "label" (438:9628), not an H2-Medium. This selector
