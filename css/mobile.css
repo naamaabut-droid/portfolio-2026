@@ -851,6 +851,147 @@
   [data-cs-page="melio-redesign"] .area-card > div[style*="space-between"] .t-label { font-size: 9px; line-height: 1.2; }
 }
 
+/* ============================================================
+   08 · Melio Optimization case-study specifics — 375
+   (Figma frame 438:9628 — the file mislabels it "Melio Redesign
+   — 375", but the content is the Mobile Web Optimization case
+   study). Scoped via data-cs-page="melio-optimization" on <body>.
+   The shared "04" block already handles .cs-inner, TL;DR, the type
+   scale, nav, discover and footer; this block covers the page's
+   bespoke pieces: insight/stat cards, the annotated + before/after
+   cream cards, the flows/examples/layout strips, and the wide
+   "More key actions" band (which sits OUTSIDE .cs-inner).
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* Hero: the mobile design titles this "Closing the Mobile Gap"
+     (438:9628), not the desktop "Melio Mobile Web" — swap via the
+     cap-desktop/cap-mobile spans. The phone art is already hidden by
+     the page's own @1100 rule (.mo-art { display:none }). */
+  [data-cs-page="melio-optimization"] .cs-hero-copy .h1 .cap-desktop { display: none; }
+  [data-cs-page="melio-optimization"] .cs-hero-copy .h1 .cap-mobile { display: inline; }
+
+  /* Insight / stat cards. Rows stay 2-up by default (Problem 6%/34%,
+     Impact 6%/14%). Two research instances differ (Figma): the
+     SMB/vendor pair stacks full-width (.mo-stack) and the payment-mix
+     quartet becomes a 2-col grid (.mo-grid2); the mapping 01/02/03
+     cards stack too. */
+  /* the page's own @1100 rule forces every .insight-row to column;
+     restore row so the 2-up pairs (Problem 6%/34%, Impact 6%/14%) stay
+     side by side — .mo-stack / .mo-grid2 override this below. */
+  [data-cs-page="melio-optimization"] .insight-row { flex-direction: row; gap: 12px; }
+  [data-cs-page="melio-optimization"] .insight-row.mo-stack { flex-direction: column; }
+  [data-cs-page="melio-optimization"] .insight-row.mo-grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  [data-cs-page="melio-optimization"] .insight-card { padding: 16px; border-radius: 12px; }
+  [data-cs-page="melio-optimization"] .insight-card .big { font-size: 40px; }
+  [data-cs-page="melio-optimization"] .insight-card h4 { font-size: 18px; }
+  [data-cs-page="melio-optimization"] .insight-card p.b { font-size: 14px; }
+  [data-cs-page="melio-optimization"] .insight-card .k12 { font-size: 11px; }
+
+  /* Captions (.cap-block): keep them centred, drop the "Click to
+     enlarge" hint (no hover on the phone; the lightbox still opens on
+     tap). */
+  [data-cs-page="melio-optimization"] .cap-block { font-size: 12px; }
+  [data-cs-page="melio-optimization"] .cap-block .dim { display: none; }
+
+  /* Numbered issues + fixes lists: Body-2 16 (were 20). */
+  [data-cs-page="melio-optimization"] .num-bullet { font-size: 16px; gap: 8px; align-items: flex-start; }
+  [data-cs-page="melio-optimization"] .fix-bullet { gap: 8px; align-items: flex-start; }
+  [data-cs-page="melio-optimization"] .fix-bullet p { font-size: 16px; }
+
+  /* Annotated screens + Before/After sit on CREAM cards in the mobile
+     design; the shared rule bares every .case-card, so restore these
+     two via :has(). Two phones stay side by side inside each. */
+  [data-cs-page="melio-optimization"] .case-card:has(.annot-pair),
+  [data-cs-page="melio-optimization"] .case-card:has(.before-after) {
+    background: var(--card) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    gap: 12px;
+  }
+  [data-cs-page="melio-optimization"] .annot-pair {
+    flex-direction: row !important;
+    gap: 12px;
+    padding: 0 !important;
+    justify-content: center;
+    width: 100%;
+  }
+  [data-cs-page="melio-optimization"] .annot { flex: 1 1 0; min-width: 0; }
+  [data-cs-page="melio-optimization"] .annot img { width: 100% !important; height: auto; }
+  [data-cs-page="melio-optimization"] .annot .a-cap { font-size: 11px; margin-top: 8px; }
+  [data-cs-page="melio-optimization"] .before-after { gap: 16px !important; }
+  [data-cs-page="melio-optimization"] .ba-col .imgs { gap: 8px; }
+  [data-cs-page="melio-optimization"] .ba-col .ba-label { font-size: 11px; }
+
+  /* The "More key actions" band sits OUTSIDE .cs-inner, so its heading
+     can't be reached by the shared .cs-inner .h2-med rule — size it. */
+  [data-cs-page="melio-optimization"] .cs-container > .reveal .h2-med { font-size: 32px; }
+
+  /* Reflection: the mobile design renders this heading as the small
+     purple serif "label" (438:9628), not an H2-Medium. This selector
+     hits only Reflection (the page's one .narrow.sec-gap-12 section). */
+  [data-cs-page="melio-optimization"] .narrow.sec-gap-12 > .h2-med {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.56px;
+    color: var(--accent);
+    font-variation-settings: normal;
+  }
+
+  /* Flows mapping: the three diagrams stay side by side, scaled to
+     thirds (Figma shows them tiny — they convey system scale, not
+     legible detail). */
+  [data-cs-page="melio-optimization"] .flows-cols {
+    flex-direction: row !important;
+    gap: 8px !important;
+    padding: 0 20px !important;
+    align-items: flex-start;
+  }
+  [data-cs-page="melio-optimization"] .flows-cols .fc {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto !important;
+    gap: 8px !important;
+    max-height: none !important;
+  }
+  [data-cs-page="melio-optimization"] .flows-cols .fc img { width: 100% !important; height: auto; }
+
+  /* Responsive layouts: the config panels stack; the screen previews
+     stay a full-bleed side-scroll strip (slide-in JS is inline on the
+     page) — add the edge fade the other scrollers use. */
+  [data-cs-page="melio-optimization"] .layouts-grid { padding: 0 20px !important; gap: 16px; }
+  [data-cs-page="melio-optimization"] .layouts-screens {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
+  }
+
+  /* More examples: the 3×3 before/after grid becomes a full-bleed
+     side-scroll strip of pairs (Figma), each pair a snap target. */
+  [data-cs-page="melio-optimization"] .examples-grid {
+    display: flex !important;
+    grid-template-columns: none;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0 20px;
+    scroll-snap-type: x proximity;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
+  }
+  [data-cs-page="melio-optimization"] .examples-grid::-webkit-scrollbar { display: none; }
+  [data-cs-page="melio-optimization"] .ex-pair { flex: none; width: 220px; scroll-snap-align: start; gap: 8px; }
+}
+
 /* Very small phones — keep the nav comfortable */
 @media (max-width: 380px) {
   .nav { padding: 12px 12px; }

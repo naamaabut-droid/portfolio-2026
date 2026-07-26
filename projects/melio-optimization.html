@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../css/site.css?v=25" />
   <link rel="stylesheet" href="../css/case-study.css?v=23" />
   <link rel="stylesheet" href="../css/components.css?v=10" />
+  <link rel="stylesheet" href="../css/mobile.css?v=41" />
   <style>
     /* geometry 1:1 from Figma hero image 210:5426 (528×512):
        phones 166×359.5 at y 72 / 122 / 30 — staggered, center lowest */
@@ -125,7 +126,7 @@
     }
   </style>
 </head>
-<body>
+<body data-cs-page="melio-optimization">
 
   <a class="page-nav" href="../case-studies.html" onclick="if(history.length&gt;1){history.back();return false;}">
     <span class="btn-icon-40"><img src="../assets/shared/icons/arrow-left-16.svg" alt="" /></span>
@@ -137,10 +138,10 @@
     <canvas class="hero-canvas" aria-hidden="true"></canvas>
     <div class="cs-hero-grid">
       <div class="cs-hero-copy">
-        <h1 class="h1">Melio<br />Mobile Web</h1>
+        <h1 class="h1"><span class="cap-desktop">Melio<br />Mobile Web</span><span class="cap-mobile">Closing the<br />Mobile Gap</span></h1>
         <p class="h3 subtitle">Conversion Optimization &amp; Responsive Redesign</p>
         <div class="cs-hero-tags">
-          <span class="tag">Melio</span>
+          <span class="tag">Melio.com</span>
           <span class="tag">Product Designer</span>
           <span class="tag">Project owner</span>
           <span class="tag">Mobile Web</span>
@@ -213,7 +214,7 @@
         </div>
         <p class="body-2 txt-ink">We pulled the following data:</p>
         <div class="sec sec-gap-16" style="width:100%;">
-          <div class="insight-row">
+          <div class="insight-row mo-stack">
             <div class="insight-card">
               <h4>82% are SMB owners</h4>
               <p class="b">Usually paying instant bills and tracking payments on mobile.</p>
@@ -223,7 +224,7 @@
               <p class="b">Are added inside the “Pay a Bill” flow, not the dedicated “Add a Vendor” flow.</p>
             </div>
           </div>
-          <div class="insight-row">
+          <div class="insight-row mo-grid2">
             <div class="insight-card">
               <h4>72%</h4>
               <p class="b">Pay by bank transfer</p>
@@ -267,7 +268,7 @@
           <p class="label-serif" style="width:100%;">Mapping user flows</p>
           <p class="body-2 txt-ink">A thorough analysis of all user flows surfaced usability problems, inconsistencies, and bugs. Focusing on the core Pay a Bill flow revealed three critical problems:</p>
         </div>
-        <div class="insight-row">
+        <div class="insight-row mo-stack">
           <div class="insight-card">
             <p class="label-serif">01</p>
             <h4>Dead ends, no 'Back'</h4>
