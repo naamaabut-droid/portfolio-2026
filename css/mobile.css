@@ -722,32 +722,60 @@
     max-width: calc(50% - 4px);
   }
 
-  /* Existing-state + tab strips: keep the images from getting oversized. */
-  [data-cs-page="melio-redesign"] .tab-strip .strip { height: auto; aspect-ratio: 335 / 90; }
+  /* Tab strips (438:9444): show the FULL table width, clipped to a short
+     top band. cover on a wide image was cropping the sides. */
+  [data-cs-page="melio-redesign"] .tab-strip .strip { height: 84px; aspect-ratio: auto; }
+  [data-cs-page="melio-redesign"] .tab-strip .strip img { width: 100% !important; height: auto !important; object-fit: unset !important; }
 
-  /* 4-col comparison table -> a genuine compact 4-col grid (Figma keeps
-     it a dense mini-table, ~10px). */
+  /* 4-col comparison table (438:9403): per tab, a grey "Mobile tab: X"
+     bar, then a 3-column row of [label / value]. The head row's column
+     names become the per-cell labels (hardcoded, since CSS can't pull
+     them from the hidden head row). */
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 { border-radius: 10px; }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row.head { display: none; }
   [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row {
     display: grid;
-    grid-template-columns: 62px 1fr 1fr 1fr;
-    gap: 6px;
-    padding: 8px 10px;
-    font-size: 10px;
-    line-height: 1.35;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 8px;
+    padding: 0 8px 8px;
+    border-bottom: 1px solid var(--line);
   }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row:last-child { border-bottom: 0; }
   [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row p:first-child {
+    grid-column: 1 / -1;
+    background: var(--card);
+    margin: 0 -8px 6px;
+    padding: 6px 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--body);
+    line-height: 1.3;
+  }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row p:first-child::before { content: "Mobile tab: "; }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row p:nth-child(n+2) {
     flex: none;
     min-width: 0;
-    font-size: 10px;
+    font-size: 11px;
+    line-height: 1.35;
+    color: var(--ink);
   }
-  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row.head { font-size: 9px; }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row p:nth-child(n+2)::before {
+    display: block;
+    font-size: 9px;
+    color: var(--body);
+    margin-bottom: 3px;
+  }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row p:nth-child(2)::before { content: "Target task"; }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row p:nth-child(3)::before { content: "Primary focus"; }
+  [data-cs-page="melio-redesign"] .comparison-table.cols-4 .row p:nth-child(4)::before { content: "Interaction model"; }
 
   /* Exploration + A/B/C grids stay one column but keep the images tidy. */
   [data-cs-page="melio-redesign"] .explore-grid { grid-template-columns: 1fr; gap: 12px; }
   [data-cs-page="melio-redesign"] .explore-grid img { height: auto !important; aspect-ratio: 143 / 69; object-fit: contain; }
-  [data-cs-page="melio-redesign"] .finals-row { flex-wrap: nowrap; gap: 8px; justify-content: center; }
+  /* Finals (438:9474): three cards STACKED full-width, not a squeezed row. */
+  [data-cs-page="melio-redesign"] .finals-row { flex-direction: column; flex-wrap: nowrap; gap: 12px; width: 100%; }
+  [data-cs-page="melio-redesign"] .finals-cell { flex: none; width: 100%; }
   [data-cs-page="melio-redesign"] .finals-cell img { width: 100% !important; }
-  [data-cs-page="melio-redesign"] .finals-cell { flex: 1; min-width: 0; }
 
   /* Phone comparison: two small phones side by side (Figma ~187px), not
      the 605px desktop size. */
@@ -755,10 +783,16 @@
   [data-cs-page="melio-redesign"] .phone-col .p-img { height: 200px !important; }
   [data-cs-page="melio-redesign"] .phone-col .p-img img { height: 100% !important; width: auto !important; }
 
-  /* Screens-by-area cream cards + tiny tiles (Figma tiles ~44px). */
-  [data-cs-page="melio-redesign"] .area-card { padding: 16px !important; border-radius: 12px !important; gap: 12px; }
-  [data-cs-page="melio-redesign"] .area-cards-row { flex-direction: column; gap: 12px !important; }
-  [data-cs-page="melio-redesign"] .tile .t-img img { width: 46px !important; }
+  /* Screens-by-area cream cards + tiny tiles (Figma tiles ~44px). Header
+     and Navigation stay SIDE BY SIDE (438:9546), not stacked. */
+  [data-cs-page="melio-redesign"] .area-card { padding: 14px !important; border-radius: 12px !important; gap: 10px; }
+  [data-cs-page="melio-redesign"] .area-cards-row { flex-direction: row !important; gap: 12px !important; }
+  [data-cs-page="melio-redesign"] .tile .t-img img { width: 44px !important; }
+  /* small tile labels so long ones (e.g. "Company switcher") don't force
+     the two tiles in a Header/Navigation card to stack. */
+  [data-cs-page="melio-redesign"] .tile .t-label { font-size: 11px; line-height: 1.25; }
+  [data-cs-page="melio-redesign"] .area-cards-row .tile { flex: 1; min-width: 0; }
+  [data-cs-page="melio-redesign"] .area-cards-row .tile-row { gap: 8px; align-items: flex-start; }
 }
 
 /* Very small phones — keep the nav comfortable */
