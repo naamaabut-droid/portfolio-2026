@@ -228,41 +228,143 @@
 }
 
 /* ============================================================
-   04 · Case study pages — 375  (Wixel: Figma 438:7882)
-   These pages are already responsive via case-study.css; this block
-   pulls the mobile layout to the Figma mobile design. mobile.css loads
-   last, so it wins. Mobile-mode px: s8 sm12 m16 ml20 l24 xl32 ·
-   radius sm12 xs6.
+   04 · Case study pages — 375  (Wixel: Figma frame 438:7882)
+   Rebuilt from the Figma mobile export (ground-truth tokens), section
+   by section. Mobile-mode px: 3xs2 xxs4 xs6 s8 sm12 m16 ml20 l24 xl32
+   xxl36 max54 · radius xs6 sm12 full999. mobile.css loads LAST so it
+   wins — but the base rules in case-study.css use 2-class selectors
+   (.stat-card .k-number, .cs-inner > .case-card) and the sections
+   carry inline padding/gap, so these overrides deliberately match that
+   specificity / use !important to actually take effect.
+
+   Cream card (bg --card, radius 12, p-20) is used ONLY by TL;DR, the
+   KPI/stat cards, and the mini feature cards. Every image gallery sits
+   BARE on the page — no cream wrapper (that's the Figma mobile design).
    ============================================================ */
 @media (max-width: 640px) {
 
-  /* Content column: 16px side margins (Figma Main Container px-m). */
-  .cs-inner { padding-left: 16px; padding-right: 16px; }
-
-  /* ---- TL;DR: plain text blocks, not the cream card (438:7914/7917) ---- */
-  .tldr-bullets {
-    display: flex;
-    flex-direction: column;
+  /* ---- Main container (438:7912): 16px gutters, 32px section rhythm,
+     pt-32 pb-24. Kill each section's own vertical padding so the
+     container gap owns the spacing (sections carry py-48 / inline
+     padding on desktop). ---- */
+  .cs-inner {
+    padding: 32px 16px 24px;
     gap: 32px;
-    padding: 0;
-    background: none;
-    border-radius: 0;
+    align-items: stretch;
   }
-  .tldr-bullet { display: flex; flex-direction: column; gap: 8px; }
+  .cs-inner .sec { padding-top: 0 !important; padding-bottom: 0 !important; }
+  .cs-inner > .wide:not(.case-card) {
+    gap: 32px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .tldr { padding: 0; }
+  .kpi-block { padding: 0; gap: 12px; }
+  .cs-highlight { padding: 24px 0; }
+  .discover { padding: 0; gap: 16px; }
+  .cs-footer-margin { padding-top: 0 !important; }
+
+  /* ---- Intra-section gaps: eyebrow→content and heading→body are gap-8;
+     the wider text sections are gap-20 (Figma frames). ---- */
+  .sec-gap-12 { gap: 8px; }
+  .sec-gap-16 { gap: 8px; }
+  .sec-gap-24 { gap: 20px; }
+
+  /* ---- Mobile type scale (Figma Mobile text styles) ---- */
+  .cs-hero-copy .h1 { font-size: 48px; }        /* hero (438:7885) */
+  .cs-hero-copy .subtitle { font-size: 24px; }  /* hero subtitle (438:7886) */
+  .cs-inner .h1 { font-size: 48px; }            /* highlight quote (438:7997) */
+  .cs-inner .h2-med { font-size: 32px; }        /* H2 Medium */
+  .cs-inner .h3-med { font-size: 24px; }        /* H3 Medium */
+  .cs-inner .body-2 { font-size: 16px; }        /* Body 2 (site gives 20) */
+  .cs-inner .body-3 { font-size: 14px; }        /* Body 3 (base 16) */
+  /* "A phone is not a small desktop" is an H2-Medium in Figma (438:7977),
+     though the markup tags it h3-med — bump just that one. */
+  .sec-gap-24 > .h3-med { font-size: 32px; letter-spacing: -0.01em; }
+  .cs-bullet { font-size: 16px; gap: 6px; }     /* bullets = Body 2 */
+  .cs-list, .cs-list.gap-8 { gap: 6px; }
+
+  /* ---- TL;DR: a cream card (438:7913), not plain text. bg card,
+     radius 12, p-20; two bullets stacked gap-16, each label→text
+     gap-8, text 16px. ---- */
+  .tldr-bullets {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .tldr-bullet { gap: 8px; }
   .tldr-bullet .txt { font-size: 16px; }
 
-  /* ---- Body copy = 16px (Figma Body 2) ---- */
-  .cs-inner .body-2 { font-size: 16px; }
-
-  /* ---- KPIs: stacked cards, p-ml(20), gap-sm(12), radius sm(12) (438:7923) ---- */
+  /* ---- KPI / stat cards (438:7923): stacked, p-20, radius 12, gap-4;
+     label 10 (body), number 42 SemiBold (ink), desc 14 (ink). ---- */
   .stats { flex-direction: column; gap: 12px; }
-  .stat-card { flex: none; width: 100%; padding: 20px; border-radius: 12px; }
-  .k-number { font-size: 42px; }
-  .k-label { font-size: 10px; }
+  .stat-card { padding: 20px; border-radius: 12px; gap: 4px; }
+  .stat-card .k-label { font-size: 10px; }
+  .stat-card .k-number { font-size: 42px; font-weight: 600; letter-spacing: 0; }
+  .stat-card .k-desc { font-size: 14px; color: var(--ink); }
 
-  /* ---- "Phone is not a desktop" cards: radius sm(12), gap sm(12) (438:7979) ---- */
-  .grid-2x2 { gap: 12px; }
-  .mini-card { border-radius: 12px; }
+  /* ---- Media cards go BARE: every image gallery sits directly on the
+     page (438:7937 / 8018 / 8036 / 8090 / 8101 …) — no cream wrapper,
+     no padding, no radius. Captions are 14px, left-aligned. ---- */
+  .case-card {
+    background: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    gap: 20px;
+  }
+  .cs-inner > .case-card { margin: 0; }
+  .card-caption {
+    align-items: flex-start;
+    text-align: left;
+    font-size: 14px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* horizontal flows: desktop shots 300×190, phone shots 190×412,
+     radius 6, flow gap-12, figcaption gap-6 (438:7939 / 8038 / 8103). */
+  .flow { gap: 12px; }
+  .figcaption { gap: 6px; }
+  .shot-desktop { width: 300px; height: 190px; border-radius: 6px; }
+  .shot-phone { width: 190px; height: 412px; border-radius: 6px; }
+
+  /* field references (438:8023): 8 thumbnails, wrap 4-up, justify-
+     between, ~77px wide, radius 6 — override the inline w/h. */
+  .img-row-wrap { gap: 8px; justify-content: space-between; }
+  .img-row-wrap .shot {
+    width: 77px !important;
+    height: auto !important;
+    aspect-ratio: 77 / 170;
+    border-radius: 6px;
+  }
+
+  /* consent pair (438:8091): two phones side by side, centered, gap-12. */
+  .consent-pair { gap: 12px; flex-wrap: nowrap; }
+  .consent-pair .shot {
+    flex: 1 1 0;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 102 / 222;
+    border-radius: 8px;
+  }
+
+  /* drill-grid (Act 2): single column, two phones per cell. */
+  .drill-grid { grid-template-columns: 1fr; gap: 24px; }
+  .drill-cell { gap: 8px; }
+  .drill-cell .images { gap: 8px; }
+
+  /* ---- "A phone is not a small desktop" cards (438:7978): stacked
+     single column gap-12; each p-20 radius-12 gap-6, title 20,
+     body 16 (ink). ---- */
+  .grid-2x2 { grid-template-columns: 1fr; gap: 12px; }
+  .mini-card { border-radius: 12px; padding: 20px; gap: 6px; }
+  .mini-card .body-3 { font-size: 16px; color: var(--ink); }
+
+  /* ---- Discover: project cards stacked (cover rules shared from the
+     Home block above). ---- */
+  .discover .cards { flex-direction: column; gap: 24px; }
 }
 
 /* Very small phones — keep the nav comfortable */
