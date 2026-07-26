@@ -120,15 +120,18 @@
    ============================================================ */
 @media (max-width: 640px) {
 
-  /* Pin the nav bar to the very top on the sticky-nav pages too
-     (Home's overlay nav is already handled above). */
-  .nav-wrap { padding: 0; }
+  /* Nav becomes a fixed overlay on the sticky-nav pages too, so the page
+     background (the header wash) runs up behind the translucent bar
+     instead of leaving a white strip above it. */
+  .nav-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0; }
 
-  /* ---- Header (438:7808): lavender top wash + 48px heading ---- */
+  /* ---- Header (438:7808): lavender top wash + 48px heading ----
+     pt-96 clears the overlay nav so the gradient starts at the very top
+     (behind the bar) and "About Me" lands ~96px down, matching Figma. */
   .about-intro {
-    padding: var(--xl) var(--m) var(--xxl);   /* ~40 top · 20 sides · 48 bottom */
+    padding: 96px var(--m) var(--xxl);
     gap: var(--sm);
-    background: linear-gradient(180deg, #f3f1fe 0%, rgba(255, 255, 255, 0) 460px);
+    background: linear-gradient(180deg, #f3f1fe 0%, rgba(255, 255, 255, 0) 520px);
   }
   .about-intro .h1 { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
   .about-intro .body-2-med { font-size: 16px; }
@@ -159,8 +162,18 @@
   .exp-row .role { grid-area: role; }
   .experience > .btn { width: 100%; justify-content: center; }
 
-  /* ---- Recommendations carousel: 20px gutters ---- */
-  .recs { padding-left: var(--m); padding-right: var(--m); }
+  /* ---- Recommendations carousel (438:7861): bare cards, no wrapper box ----
+     Figma has no grey container — just 320×175 cards sitting on the page
+     that scroll horizontally with the next one peeking off the right edge. */
+  .recs { padding-left: var(--m); padding-right: 0; }
+  .reviews {
+    background: transparent;
+    border-radius: 0;
+    padding: 0 var(--m) 0 0;   /* first card at the 20px recs gutter; last card gets 20px */
+    gap: var(--xs);
+    scroll-padding-left: 0;
+  }
+  .reviews .review { width: 320px; max-width: 82vw; }
 
   /* Section eyebrows: desktop widens these to 4px; the mobile serif label
      tracks tight (~0.56px on 14px), so pull them back in. */
