@@ -227,6 +227,44 @@
   .cs-row .project-card { flex: none; width: 100%; }
 }
 
+/* ============================================================
+   04 · Case study pages — 375  (Wixel: Figma 438:7882)
+   These pages are already responsive via case-study.css; this block
+   pulls the mobile layout to the Figma mobile design. mobile.css loads
+   last, so it wins. Mobile-mode px: s8 sm12 m16 ml20 l24 xl32 ·
+   radius sm12 xs6.
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* Content column: 16px side margins (Figma Main Container px-m). */
+  .cs-inner { padding-left: 16px; padding-right: 16px; }
+
+  /* ---- TL;DR: plain text blocks, not the cream card (438:7914/7917) ---- */
+  .tldr-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+  }
+  .tldr-bullet { display: flex; flex-direction: column; gap: 8px; }
+  .tldr-bullet .txt { font-size: 16px; }
+
+  /* ---- Body copy = 16px (Figma Body 2) ---- */
+  .cs-inner .body-2 { font-size: 16px; }
+
+  /* ---- KPIs: stacked cards, p-ml(20), gap-sm(12), radius sm(12) (438:7923) ---- */
+  .stats { flex-direction: column; gap: 12px; }
+  .stat-card { flex: none; width: 100%; padding: 20px; border-radius: 12px; }
+  .k-number { font-size: 42px; }
+  .k-label { font-size: 10px; }
+
+  /* ---- "Phone is not a desktop" cards: radius sm(12), gap sm(12) (438:7979) ---- */
+  .grid-2x2 { gap: 12px; }
+  .mini-card { border-radius: 12px; }
+}
+
 /* Very small phones — keep the nav comfortable */
 @media (max-width: 380px) {
   .nav { padding: 12px 12px; }
