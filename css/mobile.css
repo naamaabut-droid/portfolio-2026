@@ -785,6 +785,23 @@
   [data-cs-page="melio-redesign"] .finals-cell { flex: none; width: 100%; }
   [data-cs-page="melio-redesign"] .finals-cell img { width: 100% !important; }
 
+  /* A/B/C comparison → a full-bleed horizontal carousel with an edge fade
+     (carousel-dots.js adds the pagination dots). */
+  [data-cs-page="melio-redesign"] .abc-grid {
+    display: flex;
+    align-self: stretch;
+    overflow-x: auto;
+    gap: 12px;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0 20px;
+    scroll-snap-type: x proximity;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
+  }
+  [data-cs-page="melio-redesign"] .abc-cell { flex: none; width: 280px; scroll-snap-align: start; }
+
   /* Phone comparison: two small phones side by side (Figma ~187px), not
      the 605px desktop size. */
   [data-cs-page="melio-redesign"] .phones-compare { flex-wrap: nowrap; gap: 12px; }
@@ -804,10 +821,18 @@
   [data-cs-page="melio-redesign"] .tile .t-label { font-size: 11px; line-height: 1.25; }
   [data-cs-page="melio-redesign"] .area-cards-row .tile { flex: 1; min-width: 0; }
   [data-cs-page="melio-redesign"] .area-cards-row .tile-row { gap: 8px; align-items: flex-start; }
-  /* Area group headers are small italic-serif labels (14px) — the shared
-     .cs-inner .h3-med rule was blowing them up to 24px. */
+  /* Area group headers restyled in Figma (438:9538) from italic-serif to
+     the small "Label/Note" style: DM Sans Light 8px, body colour. */
   [data-cs-page="melio-redesign"] .area-headers .h3-med,
-  [data-cs-page="melio-redesign"] .area-title { font-size: 14px !important; }
+  [data-cs-page="melio-redesign"] .area-title {
+    font-family: "DM Sans", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 300 !important;
+    font-size: 8px !important;
+    line-height: 10px !important;
+    letter-spacing: 0.08px !important;
+    font-variation-settings: normal !important;
+  }
   /* Screenshot radii match Figma: tiles ~3px, comparison phones ~6px
      (were radius-xs 8 / radius-md 20 — too round for these small shots). */
   [data-cs-page="melio-redesign"] .tile .t-img { border: 0; border-radius: 3px; }

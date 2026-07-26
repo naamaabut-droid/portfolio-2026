@@ -9,6 +9,7 @@
     ['.features-row', ':scope > .col'],
     ['.testimonials', '.t-item'],
     ['.reviews', ':scope > .review'],
+    ['.abc-grid', ':scope > .abc-cell'],
   ];
 
   function build(scroller, itemSel) {
