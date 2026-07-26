@@ -97,8 +97,13 @@
   }
   .contact-actions .btn.btn-plain .btn-icon-20 { width: 22px; height: 22px; }
 
-  /* ---- Contact card (438:7771): radius/md(16) + shrunken gradient blobs ---- */
+  /* ---- Contact card (438:7771): radius/md(16), py-xl(32) px-ml(20)
+     internal padding, gap-l(24), 20px side margins. ---- */
+  .contact-anchor { padding-left: 20px; padding-right: 20px; }
+  .contact-content { padding: 0; gap: 24px; }
+  .contact-content .contact-body { gap: 8px; }   /* heading → description (s) */
   .contact-section {
+    padding: 32px 20px;               /* py-xl 32 · px-ml 20 (was 72/0) */
     border-radius: 16px;              /* radius/md (was 20) */
     background:
       radial-gradient(194px 247px at 82% 8%,  rgba(255, 217, 190, 1), rgba(255, 217, 190, 0) 62%),
