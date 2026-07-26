@@ -303,6 +303,10 @@
   /* "A phone is not a small desktop" is an H2-Medium in Figma (438:7977),
      though the markup tags it h3-med — bump just that one. */
   .sec-gap-24 > .h3-med { font-size: 32px; letter-spacing: -0.01em; }
+  /* The comparison-table heading is H3-Medium (24) in Figma (438:8258),
+     not h2-med (32) — at 32 it wraps to 3 lines; 24 keeps the intended
+     two-line break. */
+  .sec-gap-24 > .h2-med { font-size: 24px; letter-spacing: -0.03em; }
   .cs-bullet { font-size: 16px; gap: 6px; }     /* bullets = Body 2 */
   .cs-list, .cs-list.gap-8 { gap: 6px; }
 
@@ -348,6 +352,9 @@
   /* horizontal flows: desktop shots 300×190, phone shots 190×412,
      radius 6, flow gap-12, figcaption gap-6 (438:7939 / 8038 / 8103). */
   .flow { gap: 12px; }
+  /* the scroll-edge fade is the card colour (beige) by default; the
+     mobile galleries sit on the white page, so fade to white. */
+  .cs-inner .scroll-wrap { --fade-bg: var(--ground); }
   .figcaption { gap: 6px; }
   .shot-desktop { width: 300px; height: 190px; border-radius: 6px; }
   .shot-phone { width: 190px; height: 412px; border-radius: 6px; }
@@ -362,15 +369,18 @@
     border-radius: 6px;
   }
 
-  /* consent pair (438:8091): two phones side by side, centered, gap-12. */
-  .consent-pair { gap: 12px; flex-wrap: nowrap; }
+  /* consent pair (438:8091): two phones side by side, gap-12. Show each
+     screenshot in FULL at its natural aspect — object-fit:cover was
+     clipping the sides. */
+  .consent-pair { gap: 12px; flex-wrap: nowrap; align-items: flex-start; }
   .consent-pair .shot {
     flex: 1 1 0;
     max-width: none;
     height: auto;
-    aspect-ratio: 102 / 222;
+    aspect-ratio: auto;
     border-radius: 8px;
   }
+  .consent-pair .shot img { height: auto; object-fit: contain; }
 
   /* drill-grid (Act 2): single column, two phones per cell. */
   .drill-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -383,6 +393,48 @@
   .grid-2x2 { grid-template-columns: 1fr; gap: 12px; }
   .mini-card { border-radius: 12px; padding: 20px; gap: 6px; }
   .mini-card .body-3 { font-size: 16px; color: var(--ink); }
+
+  /* ---- Comparison table (438:8258): each pair becomes two stacked,
+     labelled rows — a grey "Desktop" row (muted) over a white "Mobile"
+     row (ink), an inline label column instead of a header row. ---- */
+  .comparison-table { border-radius: 12px; }
+  .comparison-table .row.head { display: none; }
+  .comparison-table .row {
+    display: block;
+    padding: 0;
+    gap: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .comparison-table .row:last-child { border-bottom: 0; }
+  .comparison-table .row p {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    column-gap: 12px;
+    align-items: start;
+    margin: 0;
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .comparison-table .row p::before {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: var(--body);
+  }
+  .comparison-table .row p:first-child {
+    background: var(--card);
+    color: var(--body);
+  }
+  .comparison-table .row p:last-child {
+    background: var(--ground);
+    color: var(--ink);
+  }
+  .comparison-table .row p:first-child::before { content: "Desktop"; }
+  .comparison-table .row p:last-child::before { content: "Mobile"; }
 
   /* ---- Discover: project cards stacked (cover rules shared from the
      Home block above). ---- */
