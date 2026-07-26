@@ -126,7 +126,7 @@
       .screens-row { flex-wrap: wrap; }
     }
   </style>
-  <link rel="stylesheet" href="../css/mobile.css?v=25" />
+  <link rel="stylesheet" href="../css/mobile.css?v=26" />
 </head>
 <body data-video-root="penny-page">
 
@@ -556,6 +556,7 @@
           </div>
         </div>
       </section>
+      <div class="t-pagination" aria-hidden="true"></div>
 
       <!-- Back to top -->
       <a class="btn back-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back To Top<span class="btn-icon arrow-nudge"><img src="../assets/shared/icons/arrow-right-s.svg" alt="" style="transform:rotate(-90deg);" /></span></a>
@@ -628,6 +629,31 @@
       new IntersectionObserver((es, io) => {
         if (es[0].isIntersecting) { band.classList.add('slid'); io.disconnect(); }
       }, { threshold: 0.25 }).observe(band);
+    })();
+
+    // testimonials scroll-pagination (mobile): one dot per card, active
+    // dot tracks the card nearest the scroller's centre.
+    (() => {
+      const scroller = document.querySelector('.testimonials');
+      const pag = document.querySelector('.t-pagination');
+      if (!scroller || !pag) return;
+      const items = [...scroller.querySelectorAll('.t-item')];
+      if (!items.length) return;
+      items.forEach(() => { const d = document.createElement('span'); d.className = 'dot'; pag.appendChild(d); });
+      const dots = [...pag.children];
+      const update = () => {
+        const mid = scroller.scrollLeft + scroller.clientWidth / 2;
+        let idx = 0, best = Infinity;
+        items.forEach((it, i) => {
+          const c = it.offsetLeft + it.offsetWidth / 2;
+          const dist = Math.abs(c - mid);
+          if (dist < best) { best = dist; idx = i; }
+        });
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      };
+      scroller.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
     })();
 
     (() => {

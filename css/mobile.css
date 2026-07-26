@@ -19,6 +19,9 @@
    exist on the case-study pages, so desktop is untouched. */
 .cap-mobile { display: none; }
 
+/* Penny testimonials scroll-pagination dots exist only on the phone. */
+.t-pagination { display: none; }
+
 /* ============================================================
    01 · Home — 375  (Figma frame 438:7741)
    ============================================================ */
@@ -588,21 +591,24 @@
   }
 
   /* ---- Screens band (438:8758): the desktop shots are full-viewport
-     (375px) here → 12 of them make a 3000px band. Compact to a wrapped
-     3-up thumbnail grid and drop the spring slide. ---- */
-  [data-video-root="penny-page"] .screens-band { padding: 24px 20px; gap: 8px; }
-  [data-video-root="penny-page"] .screens-row {
-    flex-wrap: wrap;
+     (375px) here → 12 of them make a 3000px band. Flatten the three rows
+     into one 3-column grid so every row is a clean 3-up (no orphan single
+     shot), and drop the spring slide. ---- */
+  [data-video-root="penny-page"] .screens-band {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    justify-content: center;
-    width: 100%;
+    padding: 24px 20px;
+    align-items: start;
   }
+  [data-video-root="penny-page"] .screens-row { display: contents; }
   [data-video-root="penny-page"] .screens-row .sshot {
-    width: calc(33.333% - 6px);
+    width: auto;
     height: auto;
     aspect-ratio: 375 / 213;
     transition: none;
   }
+  [data-video-root="penny-page"] .screens-band > .card-caption { grid-column: 1 / -1; }
   [data-video-root="penny-page"] .screens-band.slid .row-l .sshot,
   [data-video-root="penny-page"] .screens-band.slid .row-r .sshot { transform: none; }
 
@@ -613,11 +619,31 @@
     justify-content: flex-start;
     gap: 12px;
     overflow-x: auto;
-    padding: 16px 0;
+    /* break out of the 20px cs-inner gutter so cards scroll edge-to-edge
+       (cut at the viewport, not at the page margin). */
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 16px 20px !important;
+    scroll-padding-left: 20px;
   }
   [data-video-root="penny-page"] .t-col { display: contents; }
-  [data-video-root="penny-page"] .t-item { flex: none; width: 220px; }
+  [data-video-root="penny-page"] .t-item { flex: none; width: 220px; scroll-snap-align: start; }
   [data-video-root="penny-page"] .t-item img { width: 100%; }
+  /* scroll pagination dots (built by the inline script) */
+  [data-video-root="penny-page"] .t-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding-top: 12px;
+  }
+  [data-video-root="penny-page"] .t-pagination .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--line);
+    transition: width 0.25s ease, background-color 0.25s ease;
+  }
+  [data-video-root="penny-page"] .t-pagination .dot.active { width: 18px; background: var(--ink); }
 
   /* ---- Knowledge base (438:9219) + Slack (438:9249) sit in cream cards
      with a left label. ---- */
@@ -633,7 +659,13 @@
     align-items: flex-start;
     text-align: left;
   }
-  [data-video-root="penny-page"] .knowledge-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  [data-video-root="penny-page"] .knowledge-grid { grid-template-columns: 1fr 1fr; gap: 12px 12px; align-items: start; }
+  /* uniform image height → the labels line up across the 2-up row. */
+  [data-video-root="penny-page"] .knowledge-grid .k-cell img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 4px;
+  }
   [data-video-root="penny-page"] .knowledge-grid .k-label { font-size: 10px; }
 }
 
