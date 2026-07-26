@@ -421,12 +421,16 @@
   .consent-pair { gap: 12px; flex-wrap: nowrap; align-items: flex-start; }
   .consent-pair .shot {
     flex: 1 1 0;
+    min-width: 0;        /* let the two phones actually shrink to half —
+                            without this their intrinsic width kept them at
+                            170px each (170+170+12 > 335), overflowing and
+                            clipping past the card's side margins. */
     max-width: none;
     height: auto;
     aspect-ratio: auto;
     border-radius: 8px;
   }
-  .consent-pair .shot img { height: auto; object-fit: contain; }
+  .consent-pair .shot img { width: 100%; height: auto; object-fit: contain; }
 
   /* drill-grid (Act 2): single column, two phones per cell. */
   .drill-grid { grid-template-columns: 1fr; gap: 24px; }
