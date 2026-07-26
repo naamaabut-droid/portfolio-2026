@@ -914,6 +914,11 @@
   [data-cs-page="melio-optimization"] .num-bullet { font-size: 16px; gap: 8px; align-items: flex-start; }
   [data-cs-page="melio-optimization"] .fix-bullet { gap: 8px; align-items: flex-start; }
   [data-cs-page="melio-optimization"] .fix-bullet p { font-size: 16px; }
+  /* Both list sections carry an inline padding-bottom:48 — not .sec, so the
+     shared "kill section padding" rule misses them; it doubles up with the
+     32px container gap (and the next block's own top padding). Drop it. */
+  [data-cs-page="melio-optimization"] .cs-inner > .fix-list,
+  [data-cs-page="melio-optimization"] .cs-inner > .num-bullets { padding-bottom: 0 !important; }
 
   /* Annotated screens + Before/After sit on CREAM cards in the mobile
      design; the shared rule bares every .case-card, so restore these
@@ -942,6 +947,11 @@
   /* The "More key actions" band sits OUTSIDE .cs-inner, so its heading
      can't be reached by the shared .cs-inner .h2-med rule — size it. */
   [data-cs-page="melio-optimization"] .cs-container > .reveal .h2-med { font-size: 32px; }
+  /* The band uses a uniform gap:48 between every child, so its captions
+     float equidistant from the content they label. Tighten the gap and
+     pull each caption down toward its media block below it. */
+  [data-cs-page="melio-optimization"] .cs-container > .reveal { gap: 28px !important; }
+  [data-cs-page="melio-optimization"] .cs-container > .reveal > .cap-block { margin-bottom: -16px; }
 
   /* Research: its "Research" eyebrow is the one label-serif that sits as
      a DIRECT child of a .sec-gap-24 (the other sections wrap the eyebrow
