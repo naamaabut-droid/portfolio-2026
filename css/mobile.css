@@ -326,6 +326,10 @@
   /* ---- KPI / stat cards (438:7923): stacked, p-20, radius 12, gap-4;
      label 10 (body), number 42 SemiBold (ink), desc 14 (ink). ---- */
   .stats { flex-direction: column; gap: 12px; }
+  /* The five-tap-flow stats are a 2×2 grid, not a stacked column
+     (438:8245). Only this instance lives inside a .sec — the KPI .stats
+     sits in .kpi-block and stays a single column. */
+  .sec .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .stat-card { padding: 20px; border-radius: 12px; gap: 4px; }
   .stat-card .k-label { font-size: 10px; }
   .stat-card .k-number { font-size: 42px; font-weight: 600; letter-spacing: 0; }
@@ -435,6 +439,14 @@
   }
   .comparison-table .row p:first-child::before { content: "Desktop"; }
   .comparison-table .row p:last-child::before { content: "Mobile"; }
+
+  /* Back To Top: fill the container (438:8318) — full-width outlined pill. */
+  .cs-inner > .back-top {
+    width: 100%;
+    align-self: stretch;
+    margin: 0;
+    justify-content: center;
+  }
 
   /* ---- Discover: project cards stacked (cover rules shared from the
      Home block above). ---- */
