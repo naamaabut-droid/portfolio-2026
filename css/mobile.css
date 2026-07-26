@@ -996,7 +996,7 @@
   [data-cs-page="melio-optimization"] .examples-grid {
     display: flex !important;
     grid-template-columns: none;
-    gap: 12px;
+    gap: 28px;
     overflow-x: auto;
     scrollbar-width: none;
     width: calc(100% + 40px);
@@ -1008,7 +1008,7 @@
     mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
   }
   [data-cs-page="melio-optimization"] .examples-grid::-webkit-scrollbar { display: none; }
-  [data-cs-page="melio-optimization"] .ex-pair { flex: none; width: 220px; scroll-snap-align: start; gap: 8px; }
+  [data-cs-page="melio-optimization"] .ex-pair { flex: none; width: 244px; scroll-snap-align: start; gap: 16px; }
 }
 
 /* Very small phones — keep the nav comfortable */
