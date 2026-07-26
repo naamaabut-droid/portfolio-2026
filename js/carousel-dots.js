@@ -10,6 +10,8 @@
     ['.testimonials', '.t-item'],
     ['.reviews', ':scope > .review'],
     ['.abc-grid', ':scope > .abc-cell'],
+    ['.layouts-screens', ':scope > img'],
+    ['.examples-grid', ':scope > .ex-pair'],
   ];
 
   function build(scroller, itemSel) {

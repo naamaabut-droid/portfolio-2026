@@ -982,32 +982,34 @@
   [data-cs-page="melio-optimization"] .flows-cols .fc img { width: 100% !important; height: auto; }
 
   /* Responsive layouts: the config panels stack; the screen previews
-     stay a full-bleed side-scroll strip (slide-in JS is inline on the
-     page) — add the edge fade the other scrollers use. */
+     become a snapping CAROUSEL within the 20px margins (no bleed / no
+     edge-cut), with pagination dots (carousel-dots.js → .layouts-screens).
+     Slide-in JS stays inline on the page. */
   [data-cs-page="melio-optimization"] .layouts-grid { padding: 0 20px !important; gap: 16px; }
   [data-cs-page="melio-optimization"] .layouts-screens {
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
-    mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
+    padding: 0 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
+  [data-cs-page="melio-optimization"] .layouts-screens img { scroll-snap-align: center; }
 
-  /* More examples: the 3×3 before/after grid becomes a full-bleed
-     side-scroll strip of pairs (Figma), each pair a snap target. */
+  /* More examples: the 3×3 before/after grid becomes a CAROUSEL — one
+     full-width before/after pair per view, snapping (no edge-cut / no
+     bleed), with pagination dots (carousel-dots.js → .examples-grid). */
   [data-cs-page="melio-optimization"] .examples-grid {
     display: flex !important;
     grid-template-columns: none;
-    gap: 28px;
+    gap: 16px;
     overflow-x: auto;
     scrollbar-width: none;
-    width: calc(100% + 40px);
-    margin-left: -20px;
-    margin-right: -20px;
-    padding: 0 20px;
-    scroll-snap-type: x proximity;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
-    mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 24px), transparent);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-snap-type: x mandatory;
   }
   [data-cs-page="melio-optimization"] .examples-grid::-webkit-scrollbar { display: none; }
-  [data-cs-page="melio-optimization"] .ex-pair { flex: none; width: 244px; scroll-snap-align: start; gap: 16px; }
+  [data-cs-page="melio-optimization"] .ex-pair { flex: none; width: 100%; scroll-snap-align: center; gap: 16px; }
 }
 
 /* Very small phones — keep the nav comfortable */
