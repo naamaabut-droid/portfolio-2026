@@ -305,6 +305,43 @@
   .page-nav .tab-label { display: inline; }
   .page-nav .tab { padding: 8px 16px 8px 8px; }
 
+  /* ---- Hero art on mobile: she added the header image to every case-study
+     hero (Figma 438:7883 / 8327 / 8527 / 9298 / 9629). The desktop art is a
+     528×512 absolutely-composed box (was hidden on mobile) — un-hide it below
+     the copy and scale the whole composition down to fit the phone. The 528px
+     box is centred in the column and overflows it; .cs-hero's overflow:hidden
+     clips the empty sides, and the negative margin reclaims the empty space
+     the unscaled box would otherwise leave below the shrunk art. ---- */
+  .cs-hero-grid { row-gap: 20px; }
+  /* Each composition is scaled so its natural width lands at ~355px (a hair
+     under the 375 viewport). Because every composition starts at its box's
+     left edge, fitting them all to the same 355 target means the centring
+     margin is constant; only the per-page scale + bottom-reclaim differ
+     (overrides live in each page block). transform-origin:top-left keeps the
+     visual left edge at the box's margin-left. */
+  .cs-hero-art {
+    display: block !important;
+    justify-self: start;
+    width: 528px;
+    height: 512px;
+    margin-left: calc((100% - 355px) / 2);
+    transform: scale(0.672);          /* 355 / 528 (Wixel · Penny · Melio-opt) */
+    transform-origin: top left;
+    margin-bottom: -168px;            /* 512 − 512×0.672 */
+  }
+  /* Freeze the hero-art entrance/float on mobile — the continuous float
+     overshoots the shrunk composition and gets clipped by .cs-hero. Rest
+     the cards at their static positions (mirror the reduced-motion rule). */
+  .cs-hero-art .rise-1, .cs-hero-art .rise-2, .cs-hero-art .rise-3 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .cs-hero-art .float-a, .cs-hero-art .float-b {
+    animation: none !important;
+    transform: none !important;
+  }
+
   /* ---- Carousels on mobile: replace the arrow chevrons with pagination
      dots (js/carousel-dots.js builds .dots-pagination after each scroller).
      One dot per card; the active dot tracks the card nearest centre. ---- */
@@ -513,6 +550,13 @@
 @media (max-width: 640px) {
 
   /* Insight cards: p-20 (Figma), not the desktop 20/24. */
+  /* Hero art is a wider composition (~639px natural) — scale it smaller so
+     it fits the 355 target, and reclaim its shorter height. */
+  [data-video-root="finaloop-page"] .cs-hero-art {
+    transform: scale(0.556);          /* 355 / 639 */
+    margin-bottom: -245px;
+  }
+
   [data-video-root="finaloop-page"] .insight-card { padding: 20px; }
   /* KPI cards have no ordinal number and a larger 24px title (438:8408). */
   [data-video-root="finaloop-page"] .kpi-card h4 { font-size: 24px; }
@@ -570,6 +614,13 @@
 @media (max-width: 640px) {
 
   /* Type scale (like Finaloop): section headings 24, highlight 32. */
+  /* Hero art = the design-system collage, which spills ~598px past its box —
+     scale it down further so the Avatar panel / swatches don't clip. */
+  [data-video-root="penny-page"] .cs-hero-art {
+    transform: scale(0.594);          /* 355 / 598 */
+    margin-bottom: -208px;
+  }
+
   [data-video-root="penny-page"] .cs-inner .h2-med { font-size: 24px; }
   [data-video-root="penny-page"] .cs-inner .h1 { font-size: 32px; }
   /* Penny highlight is py-16 in Figma (Finaloop is 24). */
@@ -699,6 +750,24 @@
    the phone.
    ============================================================ */
 @media (max-width: 640px) {
+
+  /* Hero art = a faded Safari window + a phone (natural ~619 wide, and its
+     box is 412 tall, not 512). Scale to the 355 target and reclaim off 412.
+     The shared animation-freeze zeroes .melio-safari's centring translate and
+     forces it opaque — restore both here. */
+  [data-cs-page="melio-redesign"] .cs-hero-art {
+    height: 412px;
+    transform: scale(0.573);          /* 355 / 619 */
+    margin-bottom: -176px;            /* 412 − 412×0.573 */
+  }
+  [data-cs-page="melio-redesign"] .melio-safari,
+  [data-cs-page="melio-redesign"] .melio-phone {
+    display: block !important;        /* the page hides these below 1100 — show them in the mobile hero */
+  }
+  [data-cs-page="melio-redesign"] .melio-safari {
+    transform: translateX(-50%) !important;
+    opacity: 0.7 !important;
+  }
 
   /* Type scale + TL;DR rhythm (Melio: section headings 24, highlight 32,
      TL;DR bullets gap-8 / label→text gap-12). */
@@ -879,6 +948,9 @@
      the page's own @1100 rule (.mo-art { display:none }). */
   [data-cs-page="melio-optimization"] .cs-hero-copy .h1 .cap-desktop { display: none; }
   [data-cs-page="melio-optimization"] .cs-hero-copy .h1 .cap-mobile { display: inline; }
+  /* Hero art = the 3 phones (natural 528×~482); scale 0.672 (default) but a
+     slightly larger reclaim since the phones end higher than the 512 box. */
+  [data-cs-page="melio-optimization"] .cs-hero-art { margin-bottom: -188px; }
 
   /* Insight / stat cards. Rows stay 2-up by default (Problem 6%/34%,
      Impact 6%/14%). Two research instances differ (Figma): the
