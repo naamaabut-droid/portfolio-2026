@@ -19,6 +19,10 @@
    exist on the case-study pages, so desktop is untouched. */
 .cap-mobile { display: none; }
 
+/* Penny's mobile hero art is a single Figma export shown only on the phone
+   (the desktop hero keeps its HTML composition). Hidden by default. */
+.penny-hero-mobile { display: none; }
+
 /* Carousel scroll-pagination dots (built by js/carousel-dots.js) exist
    only on the phone; on desktop the arrow controls stay. */
 .dots-pagination { display: none; }
@@ -313,6 +317,8 @@
      clips the empty sides, and the negative margin reclaims the empty space
      the unscaled box would otherwise leave below the shrunk art. ---- */
   .cs-hero-grid { row-gap: 24px; }
+  /* Hero tag chips sit 8px apart in Figma (both axes), not 12 (438:*Container). */
+  .cs-hero-tags { gap: 8px; }
   /* Figma sits the "hero image" at x=20, width 335 — i.e. the SAME 20px side
      margins as the content block (438:9640/8538/7894). So fit every
      composition to a 335 target: the centring margin is then a constant 20px
@@ -614,11 +620,21 @@
 @media (max-width: 640px) {
 
   /* Type scale (like Finaloop): section headings 24, highlight 32. */
-  /* Hero art = the design-system collage, which spills ~598px past its box —
-     scale it down further so the Avatar panel / swatches don't clip. */
+  /* Hero art: the desktop HTML collage drifted from Figma (old 3-chip layout).
+     On mobile, drop it and show the exact Figma export (438:8538, updated
+     4-chip art) full-bleed — the export already bakes the 20px content margins
+     and the header gradient, so it lines up with the hero. */
   [data-video-root="penny-page"] .cs-hero-art {
-    transform: scale(0.560);          /* 335 / 598 */
-    margin-bottom: -225px;
+    transform: none;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  [data-video-root="penny-page"] .penny-art .layer { display: none; }
+  [data-video-root="penny-page"] .penny-hero-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   [data-video-root="penny-page"] .cs-inner .h2-med { font-size: 24px; }
