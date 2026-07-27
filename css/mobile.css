@@ -312,22 +312,22 @@
      box is centred in the column and overflows it; .cs-hero's overflow:hidden
      clips the empty sides, and the negative margin reclaims the empty space
      the unscaled box would otherwise leave below the shrunk art. ---- */
-  .cs-hero-grid { row-gap: 20px; }
-  /* Each composition is scaled so its natural width lands at ~355px (a hair
-     under the 375 viewport). Because every composition starts at its box's
-     left edge, fitting them all to the same 355 target means the centring
-     margin is constant; only the per-page scale + bottom-reclaim differ
-     (overrides live in each page block). transform-origin:top-left keeps the
-     visual left edge at the box's margin-left. */
+  .cs-hero-grid { row-gap: 24px; }
+  /* Figma sits the "hero image" at x=20, width 335 — i.e. the SAME 20px side
+     margins as the content block (438:9640/8538/7894). So fit every
+     composition to a 335 target: the centring margin is then a constant 20px
+     (they all start at their box's left edge), and only the per-page scale +
+     bottom-reclaim differ (overrides live in each page block).
+     transform-origin:top-left keeps the visual left edge at margin-left. */
   .cs-hero-art {
     display: block !important;
     justify-self: start;
     width: 528px;
     height: 512px;
-    margin-left: calc((100% - 355px) / 2);
-    transform: scale(0.672);          /* 355 / 528 (Wixel · Penny · Melio-opt) */
+    margin-left: calc((100% - 335px) / 2);
+    transform: scale(0.634);          /* 335 / 528 (Wixel default) */
     transform-origin: top left;
-    margin-bottom: -168px;            /* 512 − 512×0.672 */
+    margin-bottom: -187px;            /* 512 − 512×0.634 */
   }
   /* Freeze the hero-art entrance/float on mobile — the continuous float
      overshoots the shrunk composition and gets clipped by .cs-hero. Rest
@@ -553,8 +553,8 @@
   /* Hero art is a wider composition (~639px natural) — scale it smaller so
      it fits the 355 target, and reclaim its shorter height. */
   [data-video-root="finaloop-page"] .cs-hero-art {
-    transform: scale(0.556);          /* 355 / 639 */
-    margin-bottom: -245px;
+    transform: scale(0.524);          /* 335 / 639 */
+    margin-bottom: -260px;
   }
 
   [data-video-root="finaloop-page"] .insight-card { padding: 20px; }
@@ -617,8 +617,8 @@
   /* Hero art = the design-system collage, which spills ~598px past its box —
      scale it down further so the Avatar panel / swatches don't clip. */
   [data-video-root="penny-page"] .cs-hero-art {
-    transform: scale(0.594);          /* 355 / 598 */
-    margin-bottom: -208px;
+    transform: scale(0.560);          /* 335 / 598 */
+    margin-bottom: -225px;
   }
 
   [data-video-root="penny-page"] .cs-inner .h2-med { font-size: 24px; }
@@ -757,8 +757,8 @@
      forces it opaque — restore both here. */
   [data-cs-page="melio-redesign"] .cs-hero-art {
     height: 412px;
-    transform: scale(0.573);          /* 355 / 619 */
-    margin-bottom: -176px;            /* 412 − 412×0.573 */
+    transform: scale(0.541);          /* 335 / 619 */
+    margin-bottom: -189px;            /* 412 − 412×0.541 */
   }
   [data-cs-page="melio-redesign"] .melio-safari,
   [data-cs-page="melio-redesign"] .melio-phone {
@@ -950,7 +950,7 @@
   [data-cs-page="melio-optimization"] .cs-hero-copy .h1 .cap-mobile { display: inline; }
   /* Hero art = the 3 phones (natural 528×~482); scale 0.672 (default) but a
      slightly larger reclaim since the phones end higher than the 512 box. */
-  [data-cs-page="melio-optimization"] .cs-hero-art { margin-bottom: -188px; }
+  [data-cs-page="melio-optimization"] .cs-hero-art { margin-bottom: -206px; }
 
   /* Insight / stat cards. Rows stay 2-up by default (Problem 6%/34%,
      Impact 6%/14%). Two research instances differ (Figma): the

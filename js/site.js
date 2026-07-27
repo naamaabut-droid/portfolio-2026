@@ -37,11 +37,10 @@
   const scrollKey = 'scroll:' + location.pathname;
 
   const jumpTo = (y) => {
-    const html = document.documentElement;
-    const prev = html.style.scrollBehavior;
-    html.style.scrollBehavior = 'auto';        // defeat the CSS smooth-scroll
-    window.scrollTo(0, y);
-    requestAnimationFrame(() => { html.style.scrollBehavior = prev; });
+    // behavior:'instant' forces an immediate jump regardless of the CSS
+    // scroll-behavior:smooth on <html> — no scroll-up animation on Back.
+    try { window.scrollTo({ top: y, left: 0, behavior: 'instant' }); }
+    catch (e) { window.scrollTo(0, y); }
   };
 
   window.addEventListener('pagehide', () => {
