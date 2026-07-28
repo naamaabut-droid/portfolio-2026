@@ -1,18 +1,16 @@
-// Video slots — shared component. A .media-video[data-video] slot is turned
-// into a muted, inline, looping <video> whose poster frame is the slot's
-// original <img>, streaming ../assets/<data-video-root>/<name>.mp4.
+// Video slots — shared component. A .media-video[data-video] slot keeps its
+// poster <img> visible and lays a muted, inline, looping <video> on top of it
+// (streaming ../assets/<data-video-root>/<name>.mp4); the video fades in only
+// once it actually starts PLAYING, so the slot is never a blank rectangle.
 //
 // Mobile-robust (iPhone / iOS WebKit — incl. iOS Chrome):
-//  • the <video> goes into the DOM IMMEDIATELY (poster attribute shows the
-//    still until it plays) so iOS's NATIVE inline-autoplay engine engages —
-//    the previous "wait for loadeddata, then swap" left the element out of the
-//    DOM and iOS never started it;
-//  • muted + playsinline + autoplay + loop are set as ATTRIBUTES (iOS ignores
-//    the JS-only properties for autoplay);
-//  • an IntersectionObserver plays the on-screen video and pauses the rest
-//    (keeps desktop light and matches iOS's scroll behaviour);
-//  • play is retried on the first user gesture (covers Low-Power / strict
-//    blocks — a tap or scroll starts them).
+//  • the poster <img> is never removed → always shows something;
+//  • the <video> is in the DOM from the start (iOS only inline-autoplays
+//    elements that are in the DOM) with muted/playsinline/autoplay/loop set as
+//    ATTRIBUTES (iOS ignores the JS-only properties);
+//  • an IntersectionObserver plays the on-screen video and pauses the rest;
+//  • play is retried on the first user gesture (Low-Power / strict blocks — a
+//    tap or scroll starts them, then the video fades in over the poster).
 // No fetch/CORS involved, so it works over http and file:// alike.
 (() => {
   const root = document.body.dataset.videoRoot;
@@ -30,22 +28,24 @@
     : null;
 
   document.querySelectorAll('.media-video[data-video]').forEach((slot) => {
-    const poster = slot.querySelector('img');
-    const posterSrc = poster && poster.getAttribute('src');
+    if (getComputedStyle(slot).position === 'static') slot.style.position = 'relative';
     const v = document.createElement('video');
     v.muted = true;
     v.defaultMuted = true;
     v.loop = true;
     v.autoplay = true;
     v.playsInline = true;
-    v.preload = 'metadata';
+    v.preload = 'auto';
     v.setAttribute('muted', '');
     v.setAttribute('playsinline', '');
     v.setAttribute('autoplay', '');
     v.setAttribute('loop', '');
-    if (posterSrc) v.setAttribute('poster', posterSrc);
+    // sit on top of the poster <img>, hidden until the clip actually plays
+    v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;' +
+      'object-fit:cover;display:block;opacity:0;transition:opacity .35s ease';
+    v.addEventListener('playing', () => { v.style.opacity = '1'; });
     v.src = `../assets/${root}/${slot.dataset.video}.mp4`;
-    slot.replaceChildren(v);          // in the DOM now — poster shows until play
+    slot.appendChild(v);              // in the DOM now (over the poster)
     v.play().catch(() => {});
     if (io) io.observe(slot);
   });
