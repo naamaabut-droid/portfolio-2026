@@ -206,6 +206,7 @@
       // rAF (fast path in real browsers) and an interval fallback for
       // environments that throttle rAF — `last` prevents double-stepping.
       lastStep = performance.now();
+      buildTime = lastStep;
       paused = false;
       const loop = () => { advance(); rafId = requestAnimationFrame(loop); };
       cancelAnimationFrame(rafId);
@@ -214,7 +215,7 @@
       stepTimer = setInterval(advance, 33);
     }
 
-    let lastStep = 0, paused = false, rafId = 0;
+    let lastStep = 0, paused = false, rafId = 0, buildTime = 0;
     function advance() {
       if (!engine || paused) return;
       const now = performance.now();
@@ -226,6 +227,15 @@
         elapsed -= 16.667;
       }
       render();
+      // On touch there is no drag to keep the sim alive, so once every chip has
+      // settled (or after a safety timeout) STOP stepping entirely — otherwise a
+      // stray mobile resize / rounding can keep nudging the pile ("dancing").
+      if (isTouch && stepTimer && bodiesInfo.length &&
+          (bodiesInfo.every((b) => b.body.isSleeping) || now - buildTime > 8000)) {
+        cancelAnimationFrame(rafId);
+        clearInterval(stepTimer);
+        stepTimer = null;
+      }
     }
 
     function roundRect(c, x, y, w, h, r) {
@@ -300,7 +310,9 @@
     let rt = null;
     let lastW = hero.clientWidth;
     addEventListener('resize', () => {
-      if (hero.clientWidth === lastW) return;
+      // Ignore small width wobble (iOS URL-bar show/hide can nudge it a px or
+      // two); only a real width change — orientation, desktop resize — rebuilds.
+      if (Math.abs(hero.clientWidth - lastW) <= 16) return;
       lastW = hero.clientWidth;
       clearTimeout(rt);
       rt = setTimeout(build, 250);
