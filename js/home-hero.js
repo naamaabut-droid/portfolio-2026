@@ -219,7 +219,9 @@
     function advance() {
       if (!engine || paused) return;
       const now = performance.now();
-      let elapsed = Math.min(now - lastStep, 700);
+      // cap catch-up tightly: a long frame gap (background tab, jank) must not
+      // unleash dozens of substeps at once and lurch the settled pile.
+      let elapsed = Math.min(now - lastStep, 120);
       lastStep = now;
       if (elapsed <= 0) return;
       while (elapsed > 0) {
