@@ -395,15 +395,13 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 }
 .recs .label-serif { letter-spacing: 4px; }
 .reviews {
-  background: var(--card);
-  border-radius: var(--radius-xl);
-  padding: var(--xxl);
+  background: transparent;
+  padding: 0;
   display: flex;
   gap: var(--ml);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  /* keep snap points inside the 48px padding (otherwise the first card snaps flush to the edge) */
-  scroll-padding: 0 var(--xxl);
+  scroll-padding: 0;
   -webkit-overflow-scrolling: touch;
 }
 .reviews::-webkit-scrollbar { height: 8px; }
