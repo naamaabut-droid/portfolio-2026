@@ -396,13 +396,18 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 .recs .label-serif { letter-spacing: 4px; }
 .reviews {
   background: transparent;
-  padding: 0;
   display: flex;
   gap: var(--ml);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding: 0;
   -webkit-overflow-scrolling: touch;
+  /* Full-bleed to the right: the strip starts at the content margin but runs
+     off the right edge of the VIEWPORT, so the next card is cut by the screen
+     edge, not by the container. (50% = half the centred container's content
+     width, so 50% − 50vw is exactly the gap to the viewport edge.) */
+  margin-right: calc(50% - 50vw);
+  padding: 0 var(--xl) 0 0;   /* breathing room once scrolled to the last card */
 }
 .reviews::-webkit-scrollbar { height: 8px; }
 .reviews::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }

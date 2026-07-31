@@ -201,6 +201,11 @@
     padding: 0 20px 0 0;              /* first card at the 20px gutter; last card gets 20px */
     gap: 8px;
     scroll-padding-left: 0;
+    /* the desktop rule bleeds the strip past the container with a negative
+       right margin; here .recs already has padding-right:0, so the strip
+       reaches the edge on its own — keep the margin at 0 or the page gains a
+       horizontal scrollbar. */
+    margin-right: 0;
   }
   .reviews .review {
     flex: none;
