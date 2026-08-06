@@ -666,7 +666,7 @@
   [data-video-root="penny-page"] .bubble::after { display: none; }
 
   /* Big single images (atomic components, etc.): radius 12, not 32. */
-  [data-video-root="penny-page"] .cs-inner img[style*="radius-xl"] { border-radius: 12px !important; }
+  [data-video-root="penny-page"] .cs-inner img[style*="radius-md"] { border-radius: 12px !important; }
 
   /* Color-contrast block is a WHITE card (438:8707) — the shared rule
      makes case-cards bare, so restore its fill (it carries an inline

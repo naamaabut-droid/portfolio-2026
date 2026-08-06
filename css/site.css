@@ -132,7 +132,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 .contact-section {
   position: relative;
   height: 396px;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   overflow: hidden;
   background:
     radial-gradient(closest-side at 38% -6%, rgba(255, 243, 226, 1), rgba(255, 243, 226, 0) 78%),
@@ -451,7 +451,7 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
   width: 744px;
   max-width: 82vw;
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   overflow: hidden;
   scroll-snap-align: start;
   background: #fff;
