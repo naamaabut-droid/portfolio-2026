@@ -128,6 +128,19 @@
       });
     }
 
+    // Right edge of the widest headline line, in hero-local px. The <h1> is a
+    // full-width block, so its rect is useless here — measure the laid-out text
+    // itself with a Range.
+    function headlineRight(heroRect) {
+      const line = document.querySelector('.hero-lines .line-2');
+      if (!line) return 0;
+      const range = document.createRange();
+      range.selectNodeContents(line);
+      const rects = Array.from(range.getClientRects());
+      if (!rects.length) return 0;
+      return Math.max(...rects.map((r) => r.right)) - heroRect.left;
+    }
+
     function build() {
       fit();
       const W = hero.clientWidth, H = hero.clientHeight;
@@ -138,18 +151,28 @@
       engine.enableSleeping = true;
       const world = engine.world;
 
-      // floor + walls, 16px inset like the reference
-      Composite.add(world, [
-        Bodies.rectangle(W / 2, H - 16 + 200, W * 3, 400, { isStatic: true }),
-        Bodies.rectangle(-184, H / 2, 400, H * 4, { isStatic: true }),
-        Bodies.rectangle(W - 16 + 200, H / 2, 400, H * 4, { isStatic: true }),
-      ]);
-
-      // chips fall past the headline all the way to the floor — no text colliders
+      // chips fall past the headline all the way to the floor — no text colliders.
+      // The headline is a left-aligned block sitting on the bottom of the hero, so
+      // the drop lane starts at the right edge of its longest line (measured, not
+      // guessed) and the pile stacks up beside it — the Figma composition
+      // (482:2056), where the chips fill the space the type leaves.
       const heroRect = hero.getBoundingClientRect();
       const intro = document.querySelector('.hero-intro');
       const ir = intro.getBoundingClientRect();
-      const left = ir.left - heroRect.left, width = ir.width;
+      // phones keep the full-width lane — there the headline sits at the top and
+      // the pile lands clear of it
+      const laneStart = W < 640 ? 0 : Math.min(headlineRight(heroRect), W * 0.62);
+      const left = Math.max(ir.left - heroRect.left, laneStart);
+      const width = (ir.left - heroRect.left) + ir.width - left;
+
+      // floor + walls, 16px inset like the reference. The left wall is the lane
+      // edge, not the viewport edge — without it the pile creeps sideways and
+      // ends up sitting on top of the headline.
+      Composite.add(world, [
+        Bodies.rectangle(W / 2, H - 16 + 200, W * 3, 400, { isStatic: true }),
+        Bodies.rectangle(left - 200, 0, 400, H * 8, { isStatic: true }),
+        Bodies.rectangle(W - 16 + 200, H / 2, 400, H * 4, { isStatic: true }),
+      ]);
       // Chips fall freely and settle into a natural, tilted pile (she asked
       // for a free fall, not the upright straight-row stack). On phones the
       // fall is gentler: a shorter drop, more air drag, a smaller starting
@@ -159,7 +182,12 @@
       const isMobile = W < 640;
       const metrics = chipMetrics(scale);
       bodiesInfo = metrics.map((m, i) => {
-        const x = left + ((i + 0.5) / metrics.length) * width + (Math.random() - 0.5) * 32;
+        // keep the whole pill inside the lane so it doesn't spawn overlapping a wall
+        const half = m.w / 2;
+        const x = Math.min(
+          Math.max(left + ((i + 0.5) / metrics.length) * width + (Math.random() - 0.5) * 32, left + half + 4),
+          W - 16 - half - 4
+        );
         // spawn just above the top edge so they fall into view right away
         const y = isMobile
           ? -0.10 * H - Math.random() * 0.08 * H

@@ -57,9 +57,9 @@
     border-radius: var(--radius-full);
   }
 
-  /* ---- Hero: lift the intro so the chips get room below it ---- */
-  .hero-intro { top: 42%; width: 92%; gap: 8px; }
-  .hero-profile { width: 104px; height: 104px; }
+  /* ---- Hero: the copy stays near the top on the phone (the desktop's
+     bottom anchor would put it under the chip pile), on the 20px margin ---- */
+  .hero-intro { left: 20px; top: 14%; bottom: auto; width: calc(100% - 40px); }
 
   /* ---- Main Container (Figma 438:7758): py-xxl(36), gap-max(54) ---- */
   .selected-work {
@@ -155,10 +155,14 @@
     gap: 12px;
     background: linear-gradient(180deg, #f3f1fe 0%, rgba(255, 255, 255, 0) 520px);
   }
-  .about-intro .h1 { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
-  /* Drop the desktop <br> so the heading wraps naturally on mobile:
-     "Designer by / craft, builder / by habit." (matches the design). */
-  .about-intro .h1 br { display: none; }
+  .about-intro .display-2 { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
+  /* The portrait overlaps a 120px heading; at 48px it would cover the words,
+     so on the phone it sits under the heading instead. */
+  .about-portrait {
+    position: static;
+    width: 140px;
+    margin-top: 4px;
+  }
   .about-intro .body-2-med { font-size: 16px; }
 
   /* ---- Reasons list: 16px, bold title on its own line (438:7815) ---- */
@@ -238,7 +242,7 @@
     background: linear-gradient(180deg, #f3f1fe 0%, rgba(255, 255, 255, 0) 520px);
   }
   .cs-header .heading-block { gap: 12px; }   /* eyebrow → heading (sm) */
-  .cs-header .h1 { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
+  .cs-header .display-2 { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
 
   /* ---- Grid (438:7788): a single column of 335px cards, py-xxl(36)
      px-ml(20), gap-ml(20) between every card. ---- */

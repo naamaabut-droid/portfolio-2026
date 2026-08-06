@@ -65,7 +65,8 @@
 }
 
 /* ---------- Type ramp (Desktop/*) ---------- */
-.display   { font-size: 120px; font-weight: 500; line-height: 1.05; letter-spacing: -0.04em; } /* Desktop/Display */
+.display   { font-size: 240px; font-weight: 500; line-height: 0.85; letter-spacing: -0.03em; } /* Desktop/Display */
+.display-2 { font-size: 120px; font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; } /* Desktop/Display 2 (Display/XL) */
 .h1        { font-size: 76px;  font-weight: 500; line-height: 1.05; letter-spacing: -0.03em; } /* Desktop/Heading/H1 */
 .h2        { font-size: 48px;  font-weight: 400; line-height: 1.1;  letter-spacing: -0.01em; } /* Desktop/Heading/H2 */
 .h2-med    { font-size: 48px;  font-weight: 500; line-height: 1.1;  letter-spacing: -0.03em; } /* Desktop/Heading/H2 Medium */
