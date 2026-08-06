@@ -176,7 +176,7 @@
 }
 .tldr-bullets {
   background: var(--card);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: var(--xxl);
   max-width: 1180px;
   width: 100%;
@@ -196,7 +196,7 @@
   flex: 1 1 0;
   min-width: 1px;
   background: var(--card);
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-xs);
   padding: var(--m) var(--ml);
   display: flex;
   flex-direction: column;
@@ -233,7 +233,7 @@
 .cs-inner > .case-card { margin-top: var(--xxl); margin-bottom: var(--xxl); }
 .case-card {
   background: var(--card);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: var(--xxl);
   display: flex;
   flex-direction: column;
@@ -345,7 +345,7 @@
 }
 .mini-card {
   background: var(--card);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   padding: var(--ml);
   display: flex;
   flex-direction: column;
@@ -363,7 +363,7 @@
   width: 100%;
   background: var(--ground);
   border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   overflow: hidden;
 }
 .comparison-table .row {
@@ -471,7 +471,7 @@
   .kpi-block { padding: var(--l) 0; }
   .cs-highlight { padding: var(--l) 0; }
   .cs-inner > .case-card { margin-top: var(--l); margin-bottom: var(--l); }
-  .case-card { padding: var(--sm); border-radius: var(--radius-md); }
+  .case-card { padding: var(--sm); border-radius: var(--radius-sm); }
   .card-caption, .case-card .card-caption { padding: 0; }
 
   .stat-card { flex: 1 1 100%; }
