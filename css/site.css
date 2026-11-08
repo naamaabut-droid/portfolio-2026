@@ -523,11 +523,12 @@ button { font: inherit; border: 0; background: none; padding: 0; cursor: pointer
 /* ============================================================
    Responsive — mobile adaptation from the same tokens
    ============================================================ */
-/* Display is sized for the 1440 frame (240px across a 1344 column). Below that
-   it tracks the viewport at the same ratio so "Product Builder." keeps its
-   two-line break instead of overflowing. */
-@media (max-width: 1440px) {
-  .display { font-size: min(240px, 16.67vw); }
+/* Hero display: "Senior Product Designer." holds a two-line break
+   ("Senior Product" / "Designer.") across every desktop width. 14vw tracks the
+   viewport down to ~900px and caps at 210px on wide monitors; below 900px the
+   mobile sizes (64/48px) take over. */
+@media (min-width: 901px) {
+  .display { font-size: min(210px, 14vw); }
 }
 @media (max-width: 900px) {
   .display { font-size: 64px; letter-spacing: -0.05em; }
